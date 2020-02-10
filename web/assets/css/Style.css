@@ -14,87 +14,6 @@ nav{
     background-attachment: fixed ;
     /*    background-color: #5FA7B7;*/
 }
-
-
-.visita{
-    text-align: center;
-}
-.botones 
-{  
-    margin-left: 400px;
-
-
-}
-#boton{
-    width: 150px; 
-    height: 50px;
-}
-
-.campos{
-    margin-left: 1000px;
-}
-.fa fa-user{
-    width: 20px;
-    height: 20px;
-}
-.caja{
-    color: #5a6c7d;
-    font-family: Poppins-Medium;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #666666;
-    display: block;
-    width: 100%;
-    background: #e6e6e6;
-    height: 50px;
-    border-radius: 25px;
-    padding: 0 30px 0 68px;
-}
-#tiulo{
-    float: right;
-}
-.centro{
-    /*    margin-left: 300px;*/
-    width: 400px;
-}
-
-nav ul li {
-    display:inline-block;
-    position:sticky;
-}
-
-h3 {
-    text-align: center;
-    margin-top: -30px;
-}
-.titulo1 {
-    text-align: center;
-    margin-top: 10px;
-}
-
-
-.menu{
-    color:rgba(58, 58, 189, 0.671);
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-}
-
-#items{
-    margin-left: 350px;
-}
-.logo{
-    width: 70px;
-    height: 70px;
-}
-#conte{
-    margin-top: 1px;
-}
-/*.tabla{
-    margin-right: 400px
-}*/
 .calendar {
   background: #82CACD;
   width: 100%;
@@ -185,10 +104,94 @@ h3 {
     border-radius: 10%;
     margin: auto;
     border-color: #ffffba;
+    
   }
   .activate {
     background-color: #5D9B9B;
     width: 50%;
     margin: auto;
     border-radius: 10%;
+    
+
   }
+
+.visita{
+    text-align: center;
+}
+.botones 
+{  
+    margin-left: 400px;
+
+
+}
+#boton{
+    width: 150px; 
+    height: 50px;
+}
+
+.campos{
+    margin-left: 1000px;
+}
+.fa fa-user{
+    width: 20px;
+    height: 20px;
+}
+.caja{
+    color: #5a6c7d;
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+}
+#tiulo{
+    float: right;
+}
+.centro{
+    /*    margin-left: 300px;*/
+    width: 400px;
+}
+
+nav ul li {
+    display:inline-block;
+    position:sticky;
+}
+
+h3 {
+    text-align: center;
+    margin-top: -30px;
+}
+.titulo1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.menu{
+    color:rgba(58, 58, 189, 0.671);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+}
+
+#items{
+    margin-left: 350px;
+}
+.logo{
+    width: 70px;
+    height: 70px;
+}
+#conte{
+    margin-top: 1px;
+}
+
+/*.tabla{
+    margin-right: 400px
+}*/

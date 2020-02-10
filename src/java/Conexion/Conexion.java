@@ -38,9 +38,9 @@ public class Conexion {
         ResultSet rs = st.executeQuery("select * from usuarios");
         
         while(rs.next()){
-            String con = rs.getString("Contrasena");
-            String nombre = rs.getString("Usuario");
-            System.out.println(con+" "+nombre);
+            int id = rs.getInt(1);
+            String nombre = rs.getString(2);
+            System.out.println(id+" "+nombre);
         }
     }
 //        

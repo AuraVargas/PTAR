@@ -4,12 +4,6 @@
  * and open the template in the editor.
  */
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 var monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
 var currentDate = new Date();
@@ -48,6 +42,7 @@ const writeMonth = (month) => {
 
     for (var i = 1; i <= getTotalDays(month); i++) {
         mes = monthNames[monthNumber];
+        var c = new Date();
         año = currentYear.toString();
         if (i == 5) {
             dates.innerHTML += ` <div id="${i}" onclick="fecha('${mes}',${i},${año},this.id)" id=${i} id="aa" class="calendar__date calendar__item calendar_event1">${i}</div>`;
@@ -62,16 +57,18 @@ const writeMonth = (month) => {
         } else if (i == 11) {
             dates.innerHTML += ` <div id="${i}" onclick="fecha('${mes}',${i},${año},this.id)" id=${i} class="calendar__date calendar__item calendar_event6">${i}</div>`;
         } else {
-            if (i == currentDay) {
-                dates.innerHTML += ` <div id="${i}" onclick="fecha('${mes}',${i},${año},this.id)" id=${i} class="calendar__date calendar__item calendar__today">${i}</div>`;
-            } else {
+            if (i != currentDay ) {
                 dates.innerHTML += ` <div id="${i}" onclick="fecha('${mes}',${i},${año},this.id)"id=${i} class="calendar__date calendar__item">${i}</div>`;
             }
         }
+        if (i == currentDay && monthNumber == c.getMonth()) {
+                document.getElementById(i).className += " calendar__today";
+            }
     }
 }
 
 function fecha(mes, dia, año,num) {
+    
     document.getElementById(num).className += " activate";
     document.getElementById("uno").innerHTML=mes + "/" + dia + "/" + año;
     n = document.getElementsByClassName("activate");
