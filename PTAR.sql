@@ -21,12 +21,6 @@ Nombre varchar(50) not null,
 Email varchar(50) not null,
 Rol varchar(20)check(rol in('Funcionario','Ayudante')) not null
 )
---Crear tabla Categorias
-create table Categorias
-(
-CodigoC int identity(0,1) primary key not null,
-NombreCategoria varchar(50) not null
-)
 go
 -- Crear tabla de agenda
 create table agenda
@@ -40,18 +34,7 @@ IdU int,
 constraint FK_Agenda_IdU foreign key (IdU) References Usuarios(ID)
 )
 go
--- Crear tabla de Reportes
-create table Reportes
-(
-CodigoR int identity(0,1) primary key not null,
-nombre varchar(50) not null,
-Fecha varchar(10) not null,
-IdCategorias int,
-IdUsuario int,
-constraint FK_Reportes_IdCategorias foreign key (IdCategorias) References Categorias(CodigoC),
-constraint FK_Reportes_IdUsuario foreign key (IdUsuario) References Usuarios(ID)
-)
-go
+
 --Crear tabla Representante
 create table Representante
 (
@@ -90,7 +73,7 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values('12','aura','1234','317635253','Santiago','sn@gmail.com','Funcionario')
+insert into Usuarios values('12','Santiago','1234','317635253','Santiago','sn@gmail.com','Funcionario')
 go
 create PROC Inicio
 @USU varchar(30),
@@ -138,66 +121,6 @@ as
 delete from Usuarios
 where ID = @ID
 go
-
---categorias
-
-create proc registrarcategoria
-@nombre varchar(50)
-as
-insert into categorias values(@nombre)
-GO
-
-
-create proc actualizarcategoria
-@codigoc int, @nombre varchar(50)
-as
-update categorias set NombreCategoria= @nombre where CodigoC=@codigoc 
-
-GO
-
-create proc consultarcategoria
-@codigoc int
-as
-select * from Categorias where codigoc= @codigoc
-
-GO
-
-create proc eliminarcategoria
-@codigoc int
-as
-delete from reportes where idcategorias=@codigoc
-delete from Categorias where CodigoC=@codigoc
-
-GO
-select * from reportes
---reportes
-go
-CREATE proc registrarreporte
-@nombre varchar(50),
-@Fecha varchar(10),
-@IdCategorias int,
-@IdUsuario int
-as
-insert into reportes values(@nombre,@Fecha,@IdCategorias,@IdUsuario)
-
-GO
-
-select * from categorias
-go
-
-create proc consultarreporte
-@codigor int
-as
-select * from reportes where codigor= @codigor
-
-GO
-
-CREATE proc eliminarreporte
-@codigor int
-as
-delete from Reportes where Codigor=@codigor
-
-GO
 
 --agenda
 CREATE proc registraragenda
@@ -283,9 +206,7 @@ as
 delete Visitas where codigoV= @codigov
 
 GO
-select * from Visitas
 --encargado
-go
 CREATE proc registrarrepresentante
 @IDRepresentante int,
 @Correo varchar(50),
@@ -363,19 +284,3 @@ as
 delete agenda where codigoe=(select codia from deleted)
 go
 
-select * from categorias 
-select* from reportes
-select*from visitas
-select*from agenda
-select*from Empresa
-go
-exec eliminaragenda '6294'
-go
-Create proc consultavisitaagenda
-@codigoevento int
-as
-select v.numeropersonas,v.encargado,v.codia,v.IDempresa, a.Fecha,a.Estado, a.Descripcion from visitas v 
-inner join agenda a on v.codia= a.CodigoE where v.codia=@codigoevento
-go
-
-select * from Usuarios
