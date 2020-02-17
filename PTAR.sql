@@ -26,9 +26,9 @@ go
 create table agenda
 (
 CodigoE int primary key not null,
-Fecha varchar(10) not null,
+Fecha date,
 Descripcion varchar(300),
-Estado varchar(30) check(Estado in('Activo','Desactivo')) not null,
+Estado varchar(30) check(Estado in('Activo','Cancelado')) not null,
 TipoEvento varchar(50) not null,
 IdU int,
 constraint FK_Agenda_IdU foreign key (IdU) References Usuarios(ID)
@@ -150,6 +150,13 @@ create proc consultaragenda
 @codigoe int
 as
 select * from agenda where codigoe= @codigoe
+
+GO
+
+create proc consultaragendaFecha
+@fecha date
+as
+select * from agenda where Fecha= @fecha
 
 GO
 

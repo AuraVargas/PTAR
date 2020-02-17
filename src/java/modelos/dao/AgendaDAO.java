@@ -84,6 +84,30 @@ public class AgendaDAO implements Crud{
 
         return null;
     }
+    public ArrayList<Object> consultaragendaFecha() {
+        try {
+            String consulta = "exec consultaragendaFecha ?";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ps.setString(1, vo.getFecha());
+            ResultSet resultSet = ps.executeQuery();
+
+            ArrayList<AgendaVO> list = new ArrayList<AgendaVO>();
+
+            while (resultSet.next()) {
+                AgendaVO temp = new AgendaVO();
+                temp.setCodigoa(resultSet.getInt("codigoe"));
+                temp.setFecha(resultSet.getString("Fecha"));
+                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setTipo(resultSet.getString("tipoevento"));
+                temp.setEstado(resultSet.getString("estado"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
 
     @Override
     public boolean eliminar() {
@@ -185,17 +209,17 @@ public class AgendaDAO implements Crud{
         AgendaVO vo = new AgendaVO();
         
         AgendaDAO dao = new AgendaDAO(vo);
-        vo.setCodigoa(1909);
-        vo.setFecha("2019/10/29");
-        vo.setDescripcion("pos fue cancelado we");
-        vo.setEstado("desactivo");
-        vo.setTipo("prueba 2");
-        vo.setFKUidentificacion(12);
-        dao.registrar();
-//ArrayList<AgendaVO> pru =(ArrayList) dao.listar();
-//for(AgendaVO obj : pru){
-//    System.out.println(obj.getDescripcion());
-//}
+//        vo.setCodigoa(1909);
+        vo.setFecha("2020-02-13");
+//        vo.setDescripcion("pos fue cancelado we");
+//        vo.setEstado("desactivo");
+//        vo.setTipo("prueba 2");
+//        vo.setFKUidentificacion(12);
+//        dao.registrar();
+ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendaFecha();
+for(AgendaVO obj : pru){
+    System.out.println(obj.getDescripcion());
+}
 //vo.setCodigoa(5);
 //            AgendaVO pru = (AgendaVO)dao.consultar();
 //            vo.setCodigo(1);

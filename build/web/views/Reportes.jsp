@@ -65,7 +65,7 @@
                                 <i class="far fa-address-book"></i> Eventos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarAgenda.jsp"> Registrar Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
 

@@ -11,24 +11,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Registrar Agenda </title>
-        <link rel="shortcut icon" href="../assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
         <!--===============================================================================================-->
-        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
-        <link href="../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/fonts/fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/fonts/fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
-        <link href="../assets/vendor/animate/animate.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/vendor/animate/animate.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->	
-        <link href="../assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
-        <link href="../assets/vendor/select2/select2.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
-        <link href="../assets/css/util.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/main.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/Style.css" rel="stylesheet" type="text/css"/>
-        <script src="../Validaciones.js" type="text/javascript"></script>
+        <link href="assets/css/util.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
+        <script src="Validaciones.js" type="text/javascript"></script>
     </head>
     <body class="editar">
         <header class="menu">
@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul id="items" class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="../ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
                         </li>
 
 
@@ -52,7 +52,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="RegistrarUsuario.jsp">Registrar Usuario</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../ControladorUsuario?accion=listar">Lista de Usuarios</a>
+                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
                             </div>
                         </li>
                         <li class="nav-item active">
@@ -60,9 +60,9 @@
                                 <i class="far fa-address-book"></i> Eventos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="RegistrarAgenda.jsp"> Registrar Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../ControladorAgenda?accion=listar"> Lista de Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
 
                             </div>
                         </li>
@@ -72,9 +72,9 @@
                                 <i class="far fa-eye"></i> Visitas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="../SolicitudVisita.jsp"> Registrar Visita</a>
+                                <a class="dropdown-item" href="SolicitudVisita.jsp"> Registrar Visita</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../ControladorVisita?accion=listar"> Listar Visitas</a>
+                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Listar Visitas</a>
                                 <!--                                <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
                             </div>
@@ -84,7 +84,7 @@
                                 <i class="far fa-sticky-note"></i> Reportes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="../ControladorCategorias?accion=listar">Categorias</a>
+                                <a class="dropdown-item" href="ControladorCategorias?accion=listar">Categorias</a>
                             </div>
                         </li>
                         <li class="nav-item active">
@@ -96,9 +96,9 @@
             </nav>
         </header>
         <br>
-
+        
         <!--<div id="" class="wrap-login103">-->
-        <form action ="../ControladorAgenda" class=" validate-form">
+        <form action ="ControladorAgenda" class=" validate-form">
             <h1><b> Registro de evento en la Agenda</b></h1>
             <hr><br>
            <center>
@@ -123,16 +123,23 @@
                             <br>
                         </div>
                     </div>
+                    <% 
+            String fecha = ((String) request.getAttribute("fecha"));
+        %>
                     <div class="form-family mr-md-3 ">
                         <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha del evento">
-                            <input type="date" class="form-control input100" name="txtfecha"  placeholder="Fecha del evento">
+                            <input type="date" class="form-control input100" name="txtfecha" value='<%=fecha%>' placeholder="Fecha del evento">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
                     </div>
-
+                    <% 
+            String desde = ((String) request.getAttribute("desde"));
+        %>
+        
+<input type='hidden' name='desde' value='<%=desde%>'>
                     <div class="form-family mr-md-3 ">
                         <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Escribe nombre de encargado, lugar, etc">
                             <input class="input1 input100" type="text" name="txtDescripcion" placeholder="Descripción del evento ">
@@ -165,22 +172,22 @@
 
 
             <!--===============================================================================================-->	
-            <script src="../assets/js/alertas.js" type="text/javascript"></script>
-            <script src="../assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+            <script src="assets/js/alertas.js" type="text/javascript"></script>
+            <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
             <!--===============================================================================================-->
-            <script src="../assets/vendor/bootstrap/js/popper.js" type="text/javascript"></script>
-            <script src="../assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="assets/vendor/bootstrap/js/popper.js" type="text/javascript"></script>
+            <script src="assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
             <!--===============================================================================================-->
-            <script src="../assets/vendor/select2/select2.min.js" type="text/javascript"></script>
+            <script src="assets/vendor/select2/select2.min.js" type="text/javascript"></script>
             <!--===============================================================================================-->
-            <script src="../assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
+            <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
             <script >
                                         $('.js-tilt').tilt({
                                             scale: 1.1
                                         })
             </script>
             <!--===============================================================================================-->
-
-            <script src="../assets/js/main.js" type="text/javascript"></script>
+            
+            <script src="assets/js/main.js" type="text/javascript"></script>
     </body>
 </html>

@@ -4,6 +4,9 @@
     Author     : Karito
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelos.dao.AgendaDAO"%>
+<%@page import="modelos.vo.AgendaVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -61,7 +64,7 @@
                                 <i class="far fa-address-book"></i> Eventos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarAgenda.jsp"> Registrar Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
 
@@ -121,17 +124,60 @@
 
     <div class="calendar__dates" id="dates" ></div>
 </div>
-                    <h6 id="uno">uso</h6>
                 </div>
+                
                 <div class="col-4">
+                    <hr>
                     <button href="ControladorVisita?accion=listar" type="button" class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button>
                     <button href="ControladorAgenda?accion=listar" type="button" class="btn btn-outline-success h-25 w-100">Gestionar informes <i class="fas fa-chart-line"></i></button>
                     <button href="ControladorCategorias?accion=listar" type="button" class="btn btn-outline-success h-25 w-100">Gestionar usuarios <i class="fas fa-user"></i></button>
                 </div>
             </div>
         </div>
-
-
+            <div class="modal fade" id="ventana1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="uno" class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: #a3d5d1">
+        <div class="form-group" id="modal-events">
+            
+            <a id='sii' class="abajo-derecha"href="">Registrar un evento</a>
+  </div>
+          
+      
+      </div>
+    </div>
+            </div>
+</div>
+        <div class="modal fade" id="ventana2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+      <div class="modal-header">
+          <div aria-hidden="true" href="#ventana1" style="cursor: default" type="button" data-toggle="modal" onclick="$('#ventana2').modal('hide');">&#9664;</div>
+        <h5 id="Titulo" class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: #a3d5d1">
+        <div class="form-group">
+    <label id="descripcion">Informacion de los eventos</label><br>
+    <label id="fecha">Informacion de los eventos</label><br>
+    <label id="estado">Informacion de los eventos</label><br>
+    <a style="color:red;position:absolute;bottom:10px;right:90px;cursor: pointer;"onclick="elim()">Eliminar</a>
+    <a id="editar" class="btn btn-success abajo-derecha"href="">Editar</a>
+  </div>
+          
+          
+      </div>
+    </div>
+            </div>
+</div>
 
 
 
@@ -168,7 +214,29 @@
                 scale: 1.1
             })
         </script>
+        
         <script src="assets/js/Calendario.js"></script>
+        
+             <%
+                 AgendaVO vo = new AgendaVO();
+                            AgendaDAO dao = new AgendaDAO(vo);
+                            ArrayList<AgendaVO> list = (ArrayList) dao.listar();
+
+                        %>
+                        <script type="text/javascript">
+            var ac =  new Array();
+            var eventos = new Array();
+            <%
+                for (AgendaVO obj2 : list) {
+            %>
+            	ac.push('<%=obj2.getFecha()%>');
+                eventos.push(['<%=obj2.getFecha()%>','<%=obj2.getTipo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>']);
+                <%
+                }
+                %>
+            cal(ac,eventos);
+        </script>
+        <script src="assets/js/acciones.js"></script>
         <!--===============================================================================================-->
 
         <script src="assets/js/main.js" type="text/javascript"></script>

@@ -64,7 +64,7 @@
                                 <i class="far fa-address-book"></i> Eventos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarAgenda.jsp"> Registrar Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
 
@@ -102,8 +102,8 @@
         <br>
         <div class="container">
 
-            <h1>Listar agenda</h1><hr>
-            <a href="views/RegistrarAgenda.jsp">Registrar</a><br>
+            <h1>Eventos</h1><hr>
+            <a href="ControladorAgenda?accion=add">Registrar</a><br>
 
             <nav class="navbar navbar-light bg-">
                 <form class="form-inline" >
@@ -114,14 +114,14 @@
 
             <form class="form-inline" action ="ControladorAgenda">
                 <center>
-                    <table class=" table-bordered table-dark" >
-                        <tr>
-                            <th>Código del evento</th>
+                    <table class="table2" >
+                        <thead>
                             <th>Fecha</th>
-                            <th>Descripción</th>
+                            <th >Descripción</th>
                             <th>Estado</th>
                             <th>Tipo de evento</th>
-                        </tr>
+                            <th>            </th>
+                    </thead>
                         <%
                             AgendaVO vo = new AgendaVO();
                             AgendaDAO dao = new AgendaDAO(vo);
@@ -130,7 +130,6 @@
                             for (AgendaVO obj : list) {
                         %>
                         <tr>
-                            <td rowspan="2"><%=obj.getCodigoa()%></td>
                             <td rowspan="2"><%=obj.getFecha()%></td>
                             <td rowspan="2"><%=obj.getDescripcion()%></td>
                             <td rowspan="2"><%=obj.getEstado()%></td>
@@ -138,30 +137,8 @@
                             <td> <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a> </td>
                         </tr>
                         <tr>
-                            <td> <a href="#ventana1" class="btn tbn-primary btn-1g" data-toggle="modal"onclick="set(<%=obj.getCodigoa()%>);">Eliminar</a>
-                                <div class="modal fade" id="ventana1" >
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Eliminar Evento</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <h5>¿Esta seguro de eliminar este evento de la agenda?</h5><br>
-                                                    <input type="hidden"id="txtcodigo"name="txtcodigo">
-                                                </div>
-
-
-                                            </div>
-                                            <div class="modal-footer" >
-                                                <Button class="btn btn-success" type="submit" name="accion" value="eliminar" >Eliminar</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <td> <a class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a>
+                                
                         </tr>
                         <%
                             }
@@ -198,6 +175,7 @@
         </script>
         <!--===============================================================================================-->
 
+        <script src="assets/js/acciones.js" type="text/javascript"></script>
         <script src="assets/js/main.js" type="text/javascript"></script>
 
     </body>

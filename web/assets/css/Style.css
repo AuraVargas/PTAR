@@ -84,6 +84,7 @@ nav{
     margin: auto;
     border-color: #ffbdbd
   }
+  
   .calendar_event4 {
     border-style: solid;
     width: 50%;
@@ -191,7 +192,12 @@ h3 {
 #conte{
     margin-top: 1px;
 }
-
-/*.tabla{
-    margin-right: 400px
-}*/
+.abajo-derecha{
+    position:absolute;
+    bottom:5px;
+    right:10px;
+}
+.tabla{
+    width: 1200px;
+    right: 30px;
+}

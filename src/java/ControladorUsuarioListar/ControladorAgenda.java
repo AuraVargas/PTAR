@@ -40,11 +40,15 @@ public class ControladorAgenda extends HttpServlet {
             throws ServletException, IOException {
         String acceso ="";
         String action=request.getParameter("accion");
+        
     if(action.equalsIgnoreCase("listar")){
         acceso=listar;
     }else if(action.equalsIgnoreCase("add")){
+        request.setAttribute("fecha", request.getParameter("fecha"));
+        request.setAttribute("desde", request.getParameter("desde"));
         acceso=add;
     }else if(action.equalsIgnoreCase("Registrar")){
+        
         int jaja =(int)(Math.random() * 10000) + 1;
         int ca=dao.validar2(jaja);
                 while (ca > 0) {
@@ -57,24 +61,41 @@ public class ControladorAgenda extends HttpServlet {
                 vo.setFKUidentificacion(12);
                 vo.setTipo(request.getParameter("txttipo"));
                 dao.registrar();
+                String direccion=request.getParameter("desde");
+                if(direccion.equals("1")){
+                    acceso="views/Menú.jsp";
+                }else{
                 acceso=listar;
+                }
     }else if(action.equalsIgnoreCase("editar")){
+        request.setAttribute("desde", request.getParameter("desde"));
         request.setAttribute("codigoa", request.getParameter("codigo"));
         acceso=edit;
     }else if(action.equalsIgnoreCase("Actualizar")){
         id = Integer.parseInt(request.getParameter("txtcodigo"));
+        String direccion = request.getParameter("desde");
         vo.setCodigoa(id);
                 vo.setDescripcion(request.getParameter("txtDescripcion"));
-                vo.setEstado("activo");
+                vo.setEstado(request.getParameter("txtestado"));
                 vo.setFecha(request.getParameter("txtfecha"));
                 vo.setTipo(request.getParameter("txttipo"));
                 dao.actualizar();
+                if(direccion.equals("1")){
+                    acceso="views/Menú.jsp";
+                }else{
                 acceso=listar;
+                }
     }else if(action.equalsIgnoreCase("eliminar")){
         id = Integer.parseInt(request.getParameter("txtcodigo"));
         vo.setCodigoa(id);
         dao.eliminar();
         acceso=listar;
+        
+    }else if(action.equalsIgnoreCase("elim")){
+        id = Integer.parseInt(request.getParameter("txtcodigo"));
+        vo.setCodigoa(id);
+        dao.eliminar();
+        acceso="views/Menú.jsp";
         
     }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);

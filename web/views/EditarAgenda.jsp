@@ -63,7 +63,7 @@
                                 <i class="far fa-address-book"></i> Eventos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarAgenda.jsp"> Registrar Evento</a>
+                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
 
@@ -133,11 +133,13 @@
                                         AgendaVO vo = new AgendaVO();
                                         AgendaDAO dao = new AgendaDAO(vo);
                                      int cod = Integer.parseInt((String) request.getAttribute("codigoa"));
+                                     String desde = (String) request.getAttribute("desde");
                                         vo.setCodigoa(cod);
                                         AgendaVO age = (AgendaVO) dao.consultar();
                 %>
                 <div class="form-row">
-                    <input type="hidden" value="<%=age.getCodigoa()%>" name ="txtcodigo" value="">
+                    <input type="hidden" value="<%=age.getCodigoa()%>" name ="txtcodigo">
+                    <input type="hidden" value="<%=desde%>" name ="desde">
                     <div class="col-md-6 mb-3">
                         <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
                             <label>Tipo de evento</label>
@@ -161,9 +163,9 @@
                         <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Estado del Evento?">
                             <label>Estado de evento</label>
                             <select class="selectpicker input100" data-live-search="true" name="txtestado">
-                                <option data-tokens="selecciona"><%=age.getEstado()%></option>
+                                <option data-tokens="selecciona"></option>
                                 <option data-tokens="Activo"> Activo</option>
-                                <option data-tokens="Inactivo">Inactivo</option>
+                                <option data-tokens="Cancelado">Cancelado</option>
                             </select>
                             <span class="focus-input100"></span>
                             <br>
