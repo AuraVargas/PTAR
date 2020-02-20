@@ -14,11 +14,11 @@ go
 create table Usuarios
 (
 ID int primary key not null,
-Usuario varchar(30) not null,
 Contrasena varchar(40)not null,
-Telefono int not null,
+Telefono int unique not null,
 Nombre varchar(50) not null,
-Email varchar(50) not null,
+Apellido varchar(50) not null,
+Email varchar(50) unique not null,
 Rol varchar(20)check(rol in('Funcionario','Ayudante')) not null
 )
 go
@@ -73,38 +73,53 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values('12','Santiago','1234','317635253','Santiago','sn@gmail.com','Funcionario')
+insert into Usuarios values(12,'1234',304522909,'Alexandra','Barriga','salitre@acueducto.com.co','Funcionario')
 go
 create PROC Inicio
-@USU varchar(30),
+@EMAIL varchar(30),
 @PASS varchar(40)
 as
-select * from Usuarios where Usuario=@USU AND Contrasena = @PASS
+select * from Usuarios where Email=@EMAIL AND Contrasena = @PASS
+go
+--Consultar contraseña con correo
+create proc adviseWith
+@EMAIL varchar(30)
+as
+select * from Usuarios where Email = @EMAIL
+go
+--Volver al estado original la contraseña para ser cambiada
+create proc recoverPassword
+@Email varchar(30),
+@Contrasena varchar(40)
+as
+update Usuarios
+set Contrasena = @Contrasena
+where @Email = Email
 go
 
 create proc crearUsu
-@ID int,
-@Usuario varchar(30),
-@Contrasena varchar(40),
+@Id int,
+@Contrasena int,
 @Telefono int,
 @Nombre varchar(50),
+@Apellido varchar(50),
 @Email varchar(50),
 @Rol varchar(20)
 as
-insert into Usuarios values(@ID, @Usuario,@Contrasena,@Telefono, @Nombre, @Email, @Rol)
+insert into Usuarios values(@Id,@Contrasena,@Telefono, @Nombre,@Apellido, @Email, @Rol)
 go
 
 create proc actulizarUsu
 @ID int,
-@Usuario varchar(30),
 @Contrasena varchar(40),
 @Telefono int,
 @Nombre varchar(50),
+@Apellido varchar(50),
 @Email varchar(50),
 @Rol varchar(20)
 as
 update Usuarios
-set Usuario = @Usuario, Contrasena = @Contrasena, Telefono = @Telefono, Nombre = @Nombre, Email = @Email, Rol = @Rol
+set Contrasena = @Contrasena, Telefono = @Telefono, Nombre = @Nombre,Apellido = @Apellido, Email = @Email, Rol = @Rol
 where ID = @ID
 go
 
@@ -290,4 +305,5 @@ for delete
 as
 delete agenda where codigoe=(select codia from deleted)
 go
+select * from Usuarios
 

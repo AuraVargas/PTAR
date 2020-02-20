@@ -128,8 +128,8 @@
                     <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Usuario</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Rol</th>
                     <th>Numero de telefono</th>
                     <th>Correo</th>
@@ -148,13 +148,13 @@
              <tbody>
                 <tr>
                     <td><%=oj.getID()%></td>
-                    <td><%=oj.getUsuario()%></td>
                     <td><%=oj.getNombre()%></td>
+                    <td><%=oj.getApellido()%></td>
                     <td><%=oj.getRol()%></td>
                     <td><%=oj.getTelefono()%></td>
                     <td><%=oj.getEmail()%></td>
-                    <td><a href="UsuarioControlador?accion=editar&ID=<%=oj.getID()%>">Actualizar</a></td>
-                    <td><a href="UsuarioControlador?accion=eliminar&ID=<%=oj.getID()%>">Eliminar</a></td>
+                    <td><a href="ControladorUsuario?accion=editar&ID=<%=oj.getID()%>">Actualizar</a></td>
+                    <td><a href="ControladorUsuario?accion=eliminar&ID=<%=oj.getID()%>">Eliminar</a></td>
                 </tr>
             
            <%   }
@@ -164,12 +164,12 @@
              <tbody>
                 <tr>
                     <td><%=obj.getID()%></td>
-                    <td><%=obj.getUsuario()%></td>
                     <td><%=obj.getNombre()%></td>
+                    <td><%=obj.getApellido()%></td>
                     <td><%=obj.getRol()%></td>
                     <td><%=obj.getTelefono()%></td>
                     <td><%=obj.getEmail()%></td>
-                    <td><a href="UsuarioControlador?accion=editar&ID=<%=obj.getID()%>">Actualizar</a></td>
+                    <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a></td>
                     <td><a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
                     <div class="modal fade" id="ventana1" >
                                 <div class="modal-dialog">

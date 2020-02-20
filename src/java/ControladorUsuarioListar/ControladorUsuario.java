@@ -53,12 +53,11 @@ public class ControladorUsuario extends HttpServlet {
 //               while (ca > 0) {
 //                }
         vo.setID(Integer.parseInt(request.getParameter("ID")));
-        vo.setUsuario(request.getParameter("Usuario"));
-        vo.setContrasena(request.getParameter("pass"));
         vo.setNombre(request.getParameter("nombre"));
+        vo.setApellido(request.getParameter("apellido"));
         vo.setTelefono(Integer.parseInt(request.getParameter("telefono")));
         vo.setEmail(request.getParameter("email"));
-        vo.setRol(request.getParameter("rol"));
+        vo.setContrasena(request.getParameter("ID"));
         dao.registrar();
         acceso=listar;
                 
@@ -70,10 +69,10 @@ public class ControladorUsuario extends HttpServlet {
     }else if(action.equalsIgnoreCase("Actualizar")){
         id = Integer.parseInt(request.getParameter("txtID"));
         vo.setID(id);
-                vo.setUsuario(request.getParameter("txtUsuario"));
                 vo.setContrasena(request.getParameter("txtpass"));
                 vo.setTelefono(Integer.parseInt(request.getParameter("txttelefono")));
                 vo.setNombre(request.getParameter("txtnombre"));
+                vo.setApellido(request.getParameter("txtapellido"));
                 vo.setEmail(request.getParameter("txtemail"));
                 vo.setRol(request.getParameter("txtrol"));
                 dao.actualizar();
@@ -88,8 +87,7 @@ public class ControladorUsuario extends HttpServlet {
     }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
-        }
-    
+        }  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

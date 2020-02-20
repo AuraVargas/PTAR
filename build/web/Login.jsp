@@ -47,8 +47,8 @@
                             <b> INICIA SESIÓN</b>
                         </span>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Valid Usuario is required">
-                            <input class="input100" type="text" name="User" placeholder="Usuario ">
+                        <div class="wrap-input100 validate-input" data-validate = "Email is requerided example@hotmail.com">
+                            <input class="input100" type="email" name="User" placeholder="Email">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-user"></i>

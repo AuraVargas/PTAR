@@ -114,6 +114,13 @@
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
                         </div>
+                       <div class="wrap-input100 validate-input" data-validate = "Your full last name is required">
+                            <input class="input100" type="text" name="apellido" placeholder="Apellido Completo ">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid ID is required">
                             <input class="input100" type="number" name="ID" placeholder="Número de Documento ">
@@ -134,7 +141,7 @@
                          </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="Email ">
+                            <input class="input100" type="email" name="email" placeholder="Email ">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -147,28 +154,7 @@
                                 <i class="fas fa-phone"></i>
                             </span>
                         </div>
-                        <div class="wrap-input100 validate-input" data-validate = "Valid Usuario is required">
-                            <input class="input100" type="text" name="Usuario" placeholder="Nombre de Usuario ">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Contraseña">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input class="input100" type="password" name="confirmar" placeholder="Confirma Contraseña">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
                         <!--                        <div class="centro">-->
                     <%
                      UsuarioVO vo = new UsuarioVO();

@@ -33,14 +33,21 @@ public class Login extends HttpServlet {
         String user=null,pass=null;
             user = request.getParameter("User");
             pass = request.getParameter("pass");
-            vo.setUsuario(user);
+            vo.setEmail(user);
             vo.setContrasena(pass);
             int ca=dao.validar(user, pass);
             if (ca > 0) {
-                System.out.println("<h2>Binvenido encargado"+user+"al sistema");
-                System.out.println("<br><br>");
-                request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
-                } else {
+                if (vo.getRol() == "Funcionario"){
+                    System.out.println("<h2>Binvenido encargado"+user+"al sistema");
+                    System.out.println("<br><br>"); 
+                    request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
+                }
+                else{
+                    System.out.println("<h2>Binvenido encargado"+user+"al sistema");
+                    System.out.println("<br><br>"); 
+                   request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
+                }
+            } else {
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 
                 }

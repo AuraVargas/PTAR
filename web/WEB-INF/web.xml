@@ -28,6 +28,10 @@
         <servlet-name>ControladorUsuario</servlet-name>
         <servlet-class>ControladorUsuarioListar.ControladorUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorPassword</servlet-name>
+        <servlet-class>ControladorUsuarioListar.ControladorPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ControladorUsuario</servlet-name>
         <url-pattern>/ControladorUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorPassword</servlet-name>
+        <url-pattern>/ControladorPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

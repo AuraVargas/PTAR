@@ -119,6 +119,14 @@
                             <i class="fas fa-pencil-alt"></i>
                         </span>
                     </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
+                        <input type="text" class="form-control input100" name="txtnombre" value="<%=temp.getApellido()%>" placeholder="Nombres Y Apellidos" >
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                    </div>
 
                     <div class="wrap-input100 validate-input col-md-6 mb-3">
                         <input class="form-control input100" type="number" name="txtID"  placeholder="ID" value="<%=temp.getID()%>" readonly>
@@ -135,7 +143,7 @@
                         </span>
                     </div>
                     <div class=" wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu Email?">
-                        <input class="input100" type="text" name="txtemail" value="<%=temp.getEmail()%>" placeholder="Email ">
+                        <input class="input100" type="email" name="txtemail" value="<%=temp.getEmail()%>" placeholder="Email ">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -151,22 +159,8 @@
                             <i class="fa fa-phone-alt"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Escribe un nombre de Usuario">
-                        <input class="input100" type="text" name="txtUsuario" value="<%=temp.getUsuario()%>"placeholder="Nombre de Usuario ">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-user"></i>
-                        </span>
-                    </div>
                     <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Contraseña Obligatoria">
                         <input class="input100" type="password" name="txtpass" value="<%=temp.getContrasena()%>"placeholder="Contraseña">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu contraseña?">
-                        <input class="input100" type="password" name="txtconfirmar" value="<%=temp.getContrasena()%>" placeholder="Confirmar Contraseña">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>

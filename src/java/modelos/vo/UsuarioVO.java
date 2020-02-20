@@ -12,10 +12,10 @@ package modelos.vo;
 public class UsuarioVO {
     //Atributos
     private int ID;
-    private String Usuario;
     private String Contrasena;
     private int Telefono;
     private String Nombre;
+    private String Apellido;
     private String Email;
     private String Rol;
 
@@ -30,9 +30,9 @@ public class UsuarioVO {
     public UsuarioVO(int ID) {
         this.ID = ID;
     }
-    public UsuarioVO(int ID,String Usuario,String Contrasena){
+    public UsuarioVO(int ID,String Email,String Contrasena){
     this.ID = ID;
-    this.Usuario = Usuario;
+    this.Email = Email;
     this.Contrasena = Contrasena;
     }
 
@@ -46,14 +46,6 @@ public class UsuarioVO {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public String getUsuario() {
-        return Usuario;
-    }
-
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
     }
 
     public String getContrasena() {
@@ -79,10 +71,17 @@ public class UsuarioVO {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
+    public String getApellido(){
+       return Apellido;
+    }
+    public void setApellido(String Apellido){
+        this.Apellido = Apellido;
+    }
 
     public String getEmail() {
         return Email;
     }
+
 
     public void setEmail(String Email) {
         this.Email = Email;
@@ -90,7 +89,7 @@ public class UsuarioVO {
 
     @Override
     public String toString() {
-        return "UsuarioVO{" + "ID=" + ID + ", Usuario=" + Usuario + ", Contrasena=" + Contrasena + ", Telefono=" + Telefono + ", Nombre=" + Nombre + ", Email=" + Email + '}';
+        return "UsuarioVO{" + "ID=" + ID + ", Contrasena=" + Contrasena + ", Telefono=" + Telefono + ", Nombre=" + Nombre + ",Apellido ="+ Apellido +", Email=" + Email + '}';
     }
     
 

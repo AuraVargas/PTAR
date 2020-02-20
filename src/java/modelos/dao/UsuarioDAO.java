@@ -54,6 +54,23 @@ public class UsuarioDAO implements Crud {
         }
         return r;
     }
+     public int validar2 (String Correo){
+        int r=0;
+        try {
+            PreparedStatement ps = null;
+            ResultSet rs= null;
+            ps = cn.prepareStatement("exec adviseWith ?");
+            ps.setString(1, Correo);
+            rs=ps.executeQuery();
+            if(rs.next()==true){
+                r=1;
+                cn.close();
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return r;
+        }
 
     @Override
     public Object consultar() {
@@ -65,8 +82,8 @@ public class UsuarioDAO implements Crud {
             UsuarioVO temp = new UsuarioVO();
             while (resultSet.next()) {
                 temp.setID((int) Long.parseLong(resultSet.getString("ID")));
-                temp.setUsuario(resultSet.getString("Usuario"));
                 temp.setNombre(resultSet.getString("nombre"));
+                temp.setApellido(resultSet.getString("APellido"));
                 temp.setContrasena(resultSet.getString("Contrasena"));
                 temp.setEmail(resultSet.getString("Email"));
                 temp.setTelefono((int) resultSet.getLong("telefono"));
@@ -77,6 +94,31 @@ public class UsuarioDAO implements Crud {
             } else {
                 return null;
             }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return null;
+    }
+    public Object consultarContra() {
+        try {
+            String consultarContra = "exec adviseWith ?";
+            PreparedStatement ps1 = this.cn.prepareStatement(consultarContra);
+            ps1.setString(1, vo.getEmail());
+            ResultSet resultSet = ps1.executeQuery();
+
+            UsuarioVO temp = new UsuarioVO();
+            while (resultSet.next()) {
+                temp.setContrasena(resultSet.getString("Contrasena"));
+                temp.setEmail(resultSet.getString("Email"));
+            }
+            if (temp.getEmail() != null) {
+                return temp;
+            } else {
+                return null;
+            }
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -113,12 +155,12 @@ public class UsuarioDAO implements Crud {
                 String sentencia = "exec crearUsu " + "?,?,?,?,?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getID());
-                ps.setString(2, vo.getUsuario());
-                ps.setString(3, vo.getContrasena());
-                ps.setInt(4, vo.getTelefono());
-                ps.setString(5, vo.getNombre());
+                ps.setString(2, vo.getContrasena());
+                ps.setInt(3, vo.getTelefono());
+                ps.setString(4, vo.getNombre());
+                ps.setString(5, vo.getApellido());
                 ps.setString(6, vo.getEmail());
-                ps.setString(7, vo.getRol());
+                ps.setString(7, "Ayudante");
                 ps.execute();
 
                 ps.getGeneratedKeys();
@@ -143,13 +185,35 @@ public class UsuarioDAO implements Crud {
                 System.out.println(sentencia);
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setInt(1, vo.getID());
-                ps.setString(2, vo.getUsuario());
-                ps.setString(3, vo.getContrasena());
-                ps.setInt(4, vo.getTelefono());
-                ps.setString(5, vo.getNombre());
+                ps.setString(2, vo.getContrasena());
+                ps.setInt(3, vo.getTelefono());
+                ps.setString(4, vo.getNombre());
+                ps.setString(5, vo.getApellido());
                 ps.setString(6, vo.getEmail());
-                ps.setString(7, vo.getRol());
+                ps.setString(7, "Ayudante");
                 ps.execute();
+
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return false;
+    }
+    public boolean olvidePassword() {
+        try {
+            if (this.consultarContra() != null) {
+                String sentencia = "exec recoverPassword "
+                        +"?,?";
+                System.out.println(sentencia);
+                PreparedStatement ps1 = this.cn.prepareStatement(sentencia);
+                ps1.setString(2, vo.getContrasena());
+                ps1.setString(1, vo.getEmail());
+                ps1.execute();
 
                 return true;
             } else {
@@ -175,8 +239,8 @@ public class UsuarioDAO implements Crud {
             while (resultSet.next()) {
                 UsuarioVO temp = new UsuarioVO();
                 temp.setID((int) Long.parseLong(resultSet.getString("ID")));
-                temp.setUsuario(resultSet.getString("Usuario"));
                 temp.setNombre(resultSet.getString("nombre"));
+                temp.setApellido(resultSet.getString("apellido"));
                 temp.setContrasena(resultSet.getString("Contrasena"));
                 temp.setEmail(resultSet.getString("Email"));
                 temp.setTelefono((int) resultSet.getLong("telefono"));
@@ -215,7 +279,7 @@ for(UsuarioVO obj : pru){
 //        UsuarioVO temp = (UsuarioVO)dao.consultar();
 //        dao.consultar();
 //        
-        System.out.println(obj.getUsuario());
+        System.out.println(obj.getEmail());
         System.out.println(obj.getContrasena());
 }
     }
@@ -229,9 +293,9 @@ for(UsuarioVO obj : pru){
 
             UsuarioVO temp = new UsuarioVO();
             while (resultSet.next()) {
-                temp.setUsuario(resultSet.getString("Usuario"));
                 temp.setTelefono((int) resultSet.getLong("telefono"));
                 temp.setNombre(resultSet.getString("nombre"));
+                temp.setApellido(resultSet.getString("apellido"));
                 temp.setEmail(resultSet.getString("Email"));
 
             }

@@ -114,7 +114,7 @@
 
             <form class="form-inline" action ="ControladorAgenda">
                 <center>
-                    <table class="tabla" >
+                    <table class="table2" >
                         <thead>
                             <th>Fecha</th>
                             <th >Descripción</th>
@@ -129,7 +129,7 @@
 
                             for (AgendaVO obj : list) {
                         %>
-                        <tr class="table-info">
+                        <tr>
                             <td rowspan="2"><%=obj.getFecha()%></td>
                             <td rowspan="2"><%=obj.getDescripcion()%></td>
                             <td rowspan="2"><%=obj.getEstado()%></td>
