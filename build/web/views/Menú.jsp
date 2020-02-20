@@ -4,6 +4,8 @@
     Author     : Karito
 --%>
 
+<%@page import="modelos.dao.UsuarioDAO"%>
+<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelos.dao.AgendaDAO"%>
 <%@page import="modelos.vo.AgendaVO"%>
@@ -35,12 +37,22 @@
 
     </head>
     <body>
+        <%
+        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        UsuarioVO vo = new UsuarioVO();
+        UsuarioDAO d = new UsuarioDAO(vo);
+        if(u == null){
+           request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }else{
+        %>
         <header class="menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
+                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i><%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
+                    <%out.println("Cargo: " + u.getRol());%> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
+                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul id="items" class="navbar-nav mr-auto">
@@ -92,7 +104,7 @@
                             </div>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="cerrarSesion.do"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
@@ -218,8 +230,8 @@
         <script src="assets/js/Calendario.js"></script>
         
              <%
-                 AgendaVO vo = new AgendaVO();
-                            AgendaDAO dao = new AgendaDAO(vo);
+                 AgendaVO lo = new AgendaVO();
+                            AgendaDAO dao = new AgendaDAO(lo);
                             ArrayList<AgendaVO> list = (ArrayList) dao.listar();
 
                         %>
@@ -240,5 +252,6 @@
         <!--===============================================================================================-->
 
         <script src="assets/js/main.js" type="text/javascript"></script>
+        <%}%>
     </body>
 </html>

@@ -6,10 +6,14 @@
 package ControladorUsuarioListar;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelos.dao.UsuarioDAO;
 import modelos.vo.UsuarioVO;
 
@@ -30,27 +34,26 @@ public class Login extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {   
-        String user=null,pass=null;
+
+            String user=null,pass=null;
             user = request.getParameter("User");
             pass = request.getParameter("pass");
-            vo.setEmail(user);
-            vo.setContrasena(pass);
-            int ca=dao.validar(user, pass);
-            if (ca > 0) {
-                if (vo.getRol() == "Funcionario"){
-                    System.out.println("<h2>Binvenido encargado"+user+"al sistema");
-                    System.out.println("<br><br>"); 
-                    request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
-                }
-                else{
-                    System.out.println("<h2>Binvenido encargado"+user+"al sistema");
-                    System.out.println("<br><br>"); 
-                   request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
-                }
-            } else {
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            //            vo.setEmail(user);
+//            vo.setContrasena(pass);
+//            int ca=dao.validar(user, pass);
+            UsuarioVO u = dao.getUsuario(user ,pass);
+            if(u == null){
+//            if (ca > 0) {
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }else{
+            System.out.println("<h2>Binvenido encargado"+user+"al sistema");
+            System.out.println("<br><br>");
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("Id", u);
+            request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
+               }
+         
                 
-                }
             }
     
 

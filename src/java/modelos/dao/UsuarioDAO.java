@@ -49,11 +49,38 @@ public class UsuarioDAO implements Crud {
                 r = 1;
                 cn.close();
             }
+            
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         return r;
-    }
+     }
+     public UsuarioVO getUsuario (String Usuario, String Contrasena){
+         UsuarioVO u = null;
+        try {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            ps = cn.prepareStatement("exec Inicio ?,?");
+            ps.setString(1, Usuario);
+            ps.setString(2, Contrasena);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                u = new UsuarioVO();
+                u.setID(rs.getInt(1));
+                u.setContrasena(rs.getString(2));
+                u.setTelefono(rs.getInt(3));
+                u.setNombre(rs.getString(4));
+                u.setApellido(rs.getString(5));
+                u.setEmail(rs.getString(6));
+                u.setRol(rs.getString(7));
+                cn.close();
+            }
+         } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return u;   
+     }
+     
      public int validar2 (String Correo){
         int r=0;
         try {
@@ -66,6 +93,7 @@ public class UsuarioDAO implements Crud {
                 r=1;
                 cn.close();
             }
+            
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

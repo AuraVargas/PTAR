@@ -1,3 +1,6 @@
+<%@page import="modelos.dao.UsuarioDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelos.vo.UsuarioVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 
@@ -8,6 +11,7 @@
     response.setDateHeader("Expires", 0);
 
 %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -62,7 +66,6 @@
                                 <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
                         </div>
-
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
                                 Aceptar
