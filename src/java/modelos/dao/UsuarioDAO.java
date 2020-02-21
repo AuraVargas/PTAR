@@ -180,7 +180,9 @@ public class UsuarioDAO implements Crud {
         try {
 
             if (this.consultar() == null) {
-                String sentencia = "exec crearUsu " + "?,?,?,?,?,?,?";
+                String sentencia = "INSERT INTO Usuarios "
+                        + "(ID, Contrasena, Telefono, Nombre, Apellido, Email,rol)"
+                        + "VALUES(?,?,?,?,?,?,?)";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getID());
                 ps.setString(2, vo.getContrasena());
