@@ -73,6 +73,8 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
+insert into Usuarios values('13','1234','317635253','Santiago','Neira','sn@gmail.com','Funcionario')
+go
 insert into Usuarios values(12,'1234',304522909,'Alexandra','Barriga','salitre@acueducto.com.co','Funcionario')
 go
 create PROC Inicio
@@ -305,5 +307,4 @@ for delete
 as
 delete agenda where codigoe=(select codia from deleted)
 go
-select * from Usuarios
 

@@ -29,12 +29,12 @@
         <servlet-class>ControladorUsuarioListar.ControladorUsuario</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControladorPassword</servlet-name>
-        <servlet-class>ControladorUsuarioListar.ControladorPassword</servlet-class>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>ControladorUsuarioListar.CerrarSesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CerrarSesionServlet</servlet-name>
-        <servlet-class>ControladorUsuarioListar.CerrarSesionServlet</servlet-class>
+        <servlet-name>ControladorPassword</servlet-name>
+        <servlet-class>ControladorUsuarioListar.ControladorPassword</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -65,12 +65,12 @@
         <url-pattern>/ControladorUsuario</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControladorPassword</servlet-name>
-        <url-pattern>/ControladorPassword</url-pattern>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CerrarSesionServlet</servlet-name>
-        <url-pattern>/cerrarSesion.do</url-pattern>
+        <servlet-name>ControladorPassword</servlet-name>
+        <url-pattern>/ControladorPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

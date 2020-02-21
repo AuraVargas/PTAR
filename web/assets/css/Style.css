@@ -3,15 +3,42 @@ body{
 }
 nav{
     font-family: cursive;
-
+    height: 60px;
 }
-.editar{
-    background-image: url(../img/degrade_2_formularios.png);
+.editar {
     font-family: cursive;
     background-position:bottom;
-    background-size: 1800px;
+    background-size: 100%;
+    height: 100%;
     background-repeat: no-repeat ;
     background-attachment: fixed ;
+    
+    /*    background-color: #5FA7B7;*/
+}
+.uno::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../img/Fondo_4.png);
+    opacity: 0.3;
+    
+    /*    background-color: #5FA7B7;*/
+}
+.dos::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../img/Fondo_4.png);
+    opacity: 0.7;
+    
     /*    background-color: #5FA7B7;*/
 }
 .calendar {
@@ -161,6 +188,7 @@ nav{
 nav ul li {
     display:inline-block;
     position:sticky;
+    
 }
 
 h3 {
@@ -186,8 +214,8 @@ h3 {
     margin-left: 350px;
 }
 .logo{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
 }
 #conte{
     margin-top: 1px;
@@ -197,7 +225,32 @@ h3 {
     bottom:5px;
     right:10px;
 }
-.tabla{
-    width: 1200px;
-    right: 30px;
+.table2{
+	background-color: #a5d1f6;
+	text-align: left;
+	border-collapse: collapse;
+	width: 1100px;
+    border-radius: 10px 10px 10px 10px;
+    
+    
+}
+.scr{
+    height: 400px;
+    overflow: auto;
+}
+th, td{
+	padding: 20px;
+}
+
+thead{
+    border-radius: 10px 10px 10px 10px;
+	background-color: #68509a;
+	border-bottom: solid 5px #b3a4cc;
+	color: white;
+}
+
+tr:hover td{
+	background-color: #a7b7f4;
+	color: white;
+        
 }

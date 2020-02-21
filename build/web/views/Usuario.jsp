@@ -36,14 +36,14 @@
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
     </head>
-    <body class="editar">
+    <body class="editar dos">
                 <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
         <header class="menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i> <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
-                    <%out.println("Cargo: " + u.getRol());%> </a>
+                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
+                     </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
@@ -128,7 +128,7 @@
         
         
         %>
-                <table class=" table-bordered table-dark">
+                <table class=" table2">
                     <thead>
                 <tr>
                     <th>ID</th>
@@ -137,6 +137,7 @@
                     <th>Rol</th>
                     <th>Numero de telefono</th>
                     <th>Correo</th>
+                    <th>Acciones</th>
                     
                 </tr>
             </thead>
@@ -157,8 +158,9 @@
                     <td><%=oj.getRol()%></td>
                     <td><%=oj.getTelefono()%></td>
                     <td><%=oj.getEmail()%></td>
-                    <td><a href="ControladorUsuario?accion=editar&ID=<%=oj.getID()%>">Actualizar</a></td>
-                    <td><a href="ControladorUsuario?accion=eliminar&ID=<%=oj.getID()%>">Eliminar</a></td>
+                    <td><a href="ControladorUsuario?accion=editar&ID=<%=oj.getID()%>">Actualizar</a>
+                        <a href="ControladorUsuario?accion=eliminar&ID=<%=oj.getID()%>">Eliminar</a></td>
+                    
                 </tr>
             
            <%   }
@@ -173,8 +175,9 @@
                     <td><%=obj.getRol()%></td>
                     <td><%=obj.getTelefono()%></td>
                     <td><%=obj.getEmail()%></td>
-                    <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a></td>
-                    <td><a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
+                    <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a>
+                        <a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
+                    
                     <div class="modal fade" id="ventana1" >
                                 <div class="modal-dialog">
                                     <div class="modal-content">

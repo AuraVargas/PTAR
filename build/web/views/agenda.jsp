@@ -4,7 +4,6 @@
     Author     : HP
 --%>
 
-<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelos.dao.AgendaDAO"%>
@@ -35,19 +34,15 @@
         <script src="Validaciones.js" type="text/javascript"></script>
 
     </head>
-    <body class="editar">
-                <%
-        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
-        %>
+    <body class="editar dos">
         <header class="menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
-                    <%out.println("Cargo: " + u.getRol());%> </a>
+                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div style="" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul id="items" class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
@@ -97,7 +92,7 @@
                             </div>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="cerrarSesion.do"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
@@ -107,26 +102,31 @@
         <br>
         <div class="container">
 
-            <h1>Eventos</h1><hr>
+            <h4>Eventos</h4><hr>
             <a href="ControladorAgenda?accion=add">Registrar</a><br>
 
             <nav class="navbar navbar-light bg-">
-                <form class="form-inline" >
+<!--                <form class="form-inline" >
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
                     <button class="btn btn-success my-2 my-sm-0" type="submit"href="ListaVisita.jsp">Consultar</button>
-                </form><br><br><br>
+                </form><br><br><br>-->
             </nav>
 
             <form class="form-inline" action ="ControladorAgenda">
                 <center>
+                    <div class="scr">
                     <table class="table2" >
+                        
                         <thead>
-                            <th>Fecha</th>
-                            <th >Descripción</th>
-                            <th>Estado</th>
+                        <tr>
                             <th>Tipo de evento</th>
-                            <th>            </th>
-                    </thead>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        
+                        </thead>
                         <%
                             AgendaVO vo = new AgendaVO();
                             AgendaDAO dao = new AgendaDAO(vo);
@@ -135,20 +135,22 @@
                             for (AgendaVO obj : list) {
                         %>
                         <tr>
+                            <td rowspan="2"><%=obj.getTipo()%></div></td>
                             <td rowspan="2"><%=obj.getFecha()%></td>
                             <td rowspan="2"><%=obj.getDescripcion()%></td>
                             <td rowspan="2"><%=obj.getEstado()%></td>
-                            <td rowspan="2"><%=obj.getTipo()%></td>
-                            <td> <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a> </td>
+                            <td rowspan="2"> <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
+                                <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
                         </tr>
                         <tr>
-                            <td> <a class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a>
                                 
                         </tr>
                         <%
                             }
                         %>
+                        
                     </table>
+                        </div>
                 </center>
             </form>
 

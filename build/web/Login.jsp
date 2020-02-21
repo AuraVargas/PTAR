@@ -1,6 +1,3 @@
-<%@page import="modelos.dao.UsuarioDAO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="modelos.vo.UsuarioVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 
@@ -11,7 +8,6 @@
     response.setDateHeader("Expires", 0);
 
 %>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,8 +47,8 @@
                             <b> INICIA SESIÓN</b>
                         </span>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Email is requerided example@hotmail.com">
-                            <input class="input100" type="email" name="User" placeholder="Email">
+                        <div class="wrap-input100 validate-input" data-validate = "Valid Usuario is required">
+                            <input class="input100" type="text" name="User" placeholder="Usuario ">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-user"></i>
@@ -66,6 +62,7 @@
                                 <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
                         </div>
+
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
                                 Aceptar

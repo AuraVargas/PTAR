@@ -38,7 +38,7 @@
         %>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
-                    <%out.println("Cargo: " + u.getRol());%> </a>
+                     </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>

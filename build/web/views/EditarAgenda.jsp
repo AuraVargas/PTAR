@@ -4,7 +4,6 @@
     Author     : HP
 --%>
 
-<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="modelos.dao.AgendaDAO"%>
 <%@page import="modelos.vo.AgendaVO"%>
 <%@page import="java.util.Calendar"%>
@@ -34,14 +33,10 @@
         <script src="Validaciones.js" type="text/javascript"></script>
 
     </head>
-       <%
-        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
-        %>
     <body class="editar">
         <header class="menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i><%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
-                    <%out.println("Cargo: " + u.getRol());%> </a>
+                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
@@ -96,7 +91,7 @@
                             </div>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="cerrarSesion.do"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
