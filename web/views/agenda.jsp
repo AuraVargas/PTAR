@@ -4,6 +4,7 @@
     Author     : HP
 --%>
 
+<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelos.dao.AgendaDAO"%>
@@ -35,68 +36,15 @@
 
     </head>
     <body class="editar dos">
+        <%
+        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        %>
         <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
-                </button>
-
-                <div style="" class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarUsuario.jsp">Registrar Usuario</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-address-book"></i> Eventos
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
-
-                            </div>
-                        </li>
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-eye"></i> Visitas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="SolicitudVisita.jsp"> Registrar Visita</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Listar Visitas</a>
-                                <!--                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-sticky-note"></i> Reportes
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorCategorias?accion=listar">Categorias</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-
-                </div>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
+               <div class="contenido"></div>
+                
             </nav>
         </header>
         <br>
@@ -119,6 +67,7 @@
                         
                         <thead>
                         <tr>
+                        
                             <th>Tipo de evento</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
@@ -134,16 +83,14 @@
 
                             for (AgendaVO obj : list) {
                         %>
-                        <tr>
-                            <td rowspan="2"><%=obj.getTipo()%></div></td>
-                            <td rowspan="2"><%=obj.getFecha()%></td>
-                            <td rowspan="2"><%=obj.getDescripcion()%></td>
-                            <td rowspan="2"><%=obj.getEstado()%></td>
-                            <td rowspan="2"> <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
+                        
+                        <tr >
+                            <td ><%=obj.getTipo()%></div></td>
+                            <td ><%=obj.getFecha()%></td>
+                            <td ><div class="des"><%=obj.getDescripcion()%></div></td>
+                            <td ><%=obj.getEstado()%></td>
+                            <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
                                 <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
-                        </tr>
-                        <tr>
-                                
                         </tr>
                         <%
                             }
@@ -179,6 +126,9 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
+            $(document).ready(function () {
+      $('.contenido').load('Template/menu.html');
+    });
         </script>
         <!--===============================================================================================-->
 

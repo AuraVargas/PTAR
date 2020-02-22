@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import modelos.vo.ReporteVO;
 import modelos.vo.UsuarioVO;
 import modelos.vo.VisitasVO;
 

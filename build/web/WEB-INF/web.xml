@@ -17,10 +17,6 @@
         <servlet-class>ControladorUsuarioListar.ControladorAgenda</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControladorCategorias</servlet-name>
-        <servlet-class>ControladorUsuarioListar.ControladorCategorias</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ControladorReporte</servlet-name>
         <servlet-class>ControladorUsuarioListar.ControladorReporte</servlet-class>
     </servlet>
@@ -51,10 +47,6 @@
     <servlet-mapping>
         <servlet-name>ControladorAgenda</servlet-name>
         <url-pattern>/ControladorAgenda</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorCategorias</servlet-name>
-        <url-pattern>/ControladorCategorias</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControladorReporte</servlet-name>

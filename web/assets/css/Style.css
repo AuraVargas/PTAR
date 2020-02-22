@@ -1,17 +1,19 @@
-body{
 
-}
-nav{
-    font-family: cursive;
-    height: 60px;
-}
-.editar {
+
+body{
     font-family: cursive;
     background-position:bottom;
     background-size: 100%;
     height: 100%;
     background-repeat: no-repeat ;
     background-attachment: fixed ;
+}
+nav{
+    font-family: cursive;
+    height: 60px;
+}
+.editar {
+    
     
     /*    background-color: #5FA7B7;*/
 }
@@ -28,6 +30,18 @@ nav{
     
     /*    background-color: #5FA7B7;*/
 }
+.tres::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../img/Fondo_4.png);
+    
+    /*    background-color: #5FA7B7;*/
+}
 .dos::after {
     content: "";
     position: absolute;
@@ -37,7 +51,7 @@ nav{
     left: 0;
     right: 0;
     background-image: url(../img/Fondo_4.png);
-    opacity: 0.7;
+    opacity: 0.5;
     
     /*    background-color: #5FA7B7;*/
 }
@@ -187,7 +201,8 @@ nav{
 
 nav ul li {
     display:inline-block;
-    position:sticky;
+    position:relative;
+    left:180px;
     
 }
 
@@ -225,8 +240,16 @@ h3 {
     bottom:5px;
     right:10px;
 }
-.table2{
-	background-color: #a5d1f6;
+.peligro{
+    color: red;
+    position:absolute;
+    bottom:9%;
+    right:18%;
+    cursor: pointer;
+    
+}
+table{
+	background-color: #beebe9;
 	text-align: left;
 	border-collapse: collapse;
 	width: 1100px;
@@ -234,23 +257,29 @@ h3 {
     
     
 }
+.des{
+    height: 25px;
+    overflow: auto;
+}
 .scr{
     height: 400px;
     overflow: auto;
 }
 th, td{
-	padding: 20px;
+	padding: 13px;
+        
 }
 
 thead{
     border-radius: 10px 10px 10px 10px;
-	background-color: #68509a;
-	border-bottom: solid 5px #b3a4cc;
+	background-color: #36b5b0 ;
+	border-bottom: solid 5px #8ac6d1;
 	color: white;
 }
 
 tr:hover td{
-	background-color: #a7b7f4;
+	background-color: #9de3d0;
 	color: white;
+        
         
 }

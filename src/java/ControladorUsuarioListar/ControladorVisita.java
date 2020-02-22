@@ -50,7 +50,7 @@ public class ControladorVisita extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String listar="views/listarVisitas.jsp";
-    String add="SolicitudVisita.jsp";
+    String add="views/RegistrarVisita.jsp";
     String edit="views/actualizarVisita.jsp";
     int cod;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -95,7 +95,7 @@ public class ControladorVisita extends HttpServlet {
                 jaja =(int)(Math.random() * 10000) + 1;
                 }
                 avo.setCodigoa(jaja);
-                avo.setDescripcion("visita a la planta con la institucion: "+Evo.getDescripcion());
+                avo.setDescripcion(Evo.getDescripcion());
                 avo.setEstado("activo");
                 avo.setFecha(request.getParameter("txtfecha"));
                 avo.setFKUidentificacion(12);

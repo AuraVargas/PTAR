@@ -4,6 +4,7 @@
     Author     : HP
 --%>
 
+<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,76 +31,24 @@
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
     </head>
-    <body class="editar">
+    <body class="tres">
+        <%
+        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        %>
+        
         <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="RegistrarUsuario.jsp">Registrar Usuario</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-address-book"></i> Eventos
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
-
-                            </div>
-                        </li>
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-eye"></i> Visitas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="SolicitudVisita.jsp"> Registrar Visita</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Listar Visitas</a>
-                                <!--                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-sticky-note"></i> Reportes
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorCategorias?accion=listar">Categorias</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-
-                </div>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
+               <div class="contenido"></div>
+                
             </nav>
         </header>
-        <br>
-        
         <!--<div id="" class="wrap-login103">-->
         <form action ="ControladorAgenda" class=" validate-form">
-            <h1><b> Registro de evento en la Agenda</b></h1>
+            <br>
+             <br>
+            <h4><b> Registro de evento en la Agenda</b></h4>
             <hr><br>
            <center>
                 <div class="container">
@@ -142,7 +91,7 @@
 <input type='hidden' name='desde' value='<%=desde%>'>
                     <div class="form-family mr-md-3 ">
                         <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Escribe nombre de encargado, lugar, etc">
-                            <input class="input1 input100" type="text" name="txtDescripcion" placeholder="Descripción del evento ">
+                            <input class="form-control input1 input100" type="text" name="txtDescripcion" placeholder="Descripción del evento ">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fas fa-envelope-open-text"></i>
@@ -150,17 +99,15 @@
                         </div> 
                     </div>
 
-                    <div class="container-login100-form-btn">
-                        <div class="container-login100-form-btn">
+                    <div class="form-family mr-md-3">
+                            <div class="container-login100-form-btn">
+                                <a class="peligro"style="right:45%;bottom: 24%;color: firebrick" onclick="return cancelarregistroA()">Cancelar</a>
+                            </div>
+                        <div style="right:33%;bottom: 22%;position:absolute;" >
                             <button class="login100-form-btn" type="submit" name="accion" value="Registrar">
                                 <b> Registrar</b>
                             </button> 
-                            <div class="container-login100-form-btn">
-                                <button class="login100-form-btn" type="submit" onclick="return cancelarregistroA()">
-                                    <b> Cancelar</b>
-                                </button>
                             </div>
-                        </div>
                     </div>
                     </form>
                 </div>
@@ -185,6 +132,9 @@
                                         $('.js-tilt').tilt({
                                             scale: 1.1
                                         })
+            $(document).ready(function () {
+            $('.contenido').load('Template/menu.html');
+            });
             </script>
             <!--===============================================================================================-->
             

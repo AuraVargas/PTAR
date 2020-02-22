@@ -36,83 +36,26 @@
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
     </head>
-    <body class="editar dos">
+    <body class="dos">
                 <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
         <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>
-                     </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarUsuario.jsp">Registrar Usuario</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-address-book"></i> Eventos
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
-
-                            </div>
-                        </li>
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-eye"></i> Visitas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="SolicitudVisita.jsp"> Registrar Visita</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Listar Visitas</a>
-                                <!--                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-sticky-note"></i> Reportes
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorCategorias?accion=listar">Categorias</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="cerrarSesion.do"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-
-                </div>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
+               <div class="contenido"></div>
+                
             </nav>
         </header>
         <br>
         <div class="container">
 
-            <h1><b> Lista de usuarios</b></h1><hr>
+            <h4><b> Lista de usuarios</b></h4><hr>
             <nav class="navbar navbar-light">
                 <form class="form-inline"accion="ControladorAgenda">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-success" type="submit" >Consultar Registros</button> 
+<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-success" type="submit" >Consultar Registros</button> -->
                     <!--                    <input type="button" class="btn btn-danger" onclick="window.location.href = ('actualizarVisita.jsp');" value="Editar Visita"/> <br>
                                         <button class="btn btn-success" type="submit" onclick="return eliminarVisita()">Eliminar Visita</button>-->
                 </form>
@@ -128,7 +71,8 @@
         
         
         %>
-                <table class=" table2">
+        <div class="scr">
+        <table class=" table2">
                     <thead>
                 <tr>
                     <th>ID</th>
@@ -208,6 +152,7 @@
                 %>
             </tbody>
         </table>
+            </div>
             </form>
         </div>
 
@@ -234,6 +179,9 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
+            $(document).ready(function () {
+      $('.contenido').load('Template/menu.html');
+    });
         </script>
         <!--===============================================================================================-->
 

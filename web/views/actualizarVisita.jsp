@@ -4,6 +4,7 @@
     Author     : HP
 --%>
 
+<%@page import="modelos.vo.UsuarioVO"%>
 <%@page import="modelos.dao.VisitasDAO"%>
 <%@page import="modelos.vo.VisitasVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,103 +32,42 @@
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
     </head>
-    <body class="editar">
-       <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>  <i class="fa fa-user"></i>  Usuario </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="views/RegistrarUsuario.jsp">Registrar Usuario</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-address-book"></i> Eventos
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
-
-                            </div>
-                        </li>
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-eye"></i> Visitas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="SolicitudVisita.jsp"> Registrar Visita</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Listar Visitas</a>
-                                <!--                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-sticky-note"></i> Reportes
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorCategorias?accion=listar">Categorias</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-
-                </div>
+    <body style="background-attachment: fixed ;background-image: url(assets/img/Fondo_4.png);"  >
+       <%
+        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        %>
+        <header class="menu">
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
+               <div class="contenido"></div>
+                
             </nav>
         </header>
         
      
         <div class="container">
-            <form action="ControladorVisita" action ="" class=" validate-form" method="POST" > 
-                <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
-                      
-      <%
+            <%
                 VisitasVO vo= new VisitasVO();
                 VisitasDAO dao=new VisitasDAO(vo);
                 vo.setCodigov(Integer.parseInt((String)request.getAttribute("codigov")));
                 VisitasVO visita = (VisitasVO)dao.consultar();
                 visita.getCodigoa();
       %>
-                <h1><b>Actualizar datos de Visita</b><hr>  <div>
-                            <button class="btn btn-danger" onclick="return eliminarregistroA()">
+      
+            <form action="ControladorVisita" action ="" class=" validate-form" method="POST" > 
+                <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
+                <h4>Actualizar datos de Visita<hr>  <div>
+                            <button class="btn btn-danger" onclick="event.preventDefault();eliminarVisita(<%=visita.getCodigov()%>)">
                                Eliminar Evento
-                            </button> <br>
-                        </div></h1><br><br>
-                <h3>Información sobre la empresa o institución: </h3><br>
-                <div class="form-row">
-                       <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Ingresa código de la visita">
-                           <label>Codigo de la Visita</label>
-                        <input class="form-control input100" type="number"value="<%=(String)request.getAttribute("codigov")%>" name ="txtcodigov"placeholder="Código de la Visita"readonly="readonly">
+                            </button> <br><br>
+                        </div></h4>      
+      
+                
+                <h4>Información sobre la empresa o institución: </h4><br>
+                        <input class="form-control input100" type="hidden"value="<%=(String)request.getAttribute("codigov")%>" name ="txtcodigov"placeholder="Código de la Visita"readonly="readonly">
                         <input class="form-control input100" type="hidden"value="<%=visita.getCodigoa()%>" name ="txtcodigoA"placeholder="Código de la Visita">
 
-                        <span class="focus-input100"></span>
-                        <br>
-                        <span class="symbol-input100">
-                           <i class="fas fa-sort-numeric-up"></i>
-                        </span>
-                    </div>
-                </div>
                     <div class="form-row">
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "NIT de la Empresa">
                         <label>NIT de la Empresa</label>
@@ -166,7 +106,7 @@
                         </span>
                     </div>
                 </div><br>
-                <h3>Persona que representará la empresa para realizar esta visita:</h3><br>
+                <h4>Persona que representará la empresa para realizar esta visita:</h4><br>
                 <div class="form-row">
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es el nombre de la persona encargada?">
                         <label>Nombre de la persona encargada</label>
@@ -206,22 +146,24 @@
                     </div>
                 
 
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" type="submit" name="accion"value="Actualizar" >
+                        
+                    <div class="container-login100-form-btn" href="ControladorVisita?accion=listar">
+                        <a class="peligro" style="right:28%;bottom: -41%;color: firebrick">Cancelar</a>
+                    </div>
+                        
+                </div>
+                        <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" style="right:15%;bottom: -43%;position: absolute" type="submit" name="accion"value="Actualizar" >
                             <b> Actualizar</b>
                         </button> 
                     </div>
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" type="submit">
-                            <b> Cancelar</b>
-                        </button>
-                    </div>
-                </div>
             </form>
+                        
         </div>
 
 
         <!--===============================================================================================-->	
+        <script src="assets/js/alertas.js" type="text/javascript"></script>
         <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
         <!--===============================================================================================-->
@@ -235,6 +177,9 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
+            $(document).ready(function () {
+      $('.contenido').load('Template/menu.html');
+    });
         </script>
         <!--===============================================================================================-->
 
