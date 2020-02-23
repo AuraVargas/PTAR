@@ -60,12 +60,19 @@
                     <div class="calendar">
     <div class="calendar__info">
         <div class="calendar__prev" id="prev-month">&#9664;</div>
-        <div class="calendar__month" id="month">Enero</div>
-        <div class="calendar__year" id="year">2020</div>
+        <div class="calendar__month" id="month" onclick="meses()">Enero</div>
+        <div class="calendar__year" id="year" onclick="mostraraños()">2020</div>
         <div class="calendar__next" id="next-month">&#9654;</div>
     </div>
+                        <div class="form-family mr-md-3" id="years">
+                            <div class="calendar__prev meses"style="width: 50px;"></div>
+                            <div class="calendar__prev meses" onclick="restaraños()" style="width: 220px;">&#9664;</div>
+                            
+                                <div class="calendar__prev meses"onclick="sumaraños()" style="width: 220px;">&#9654;</div>
+                        </div>
+                        <div class="form-family mr-md-3" id="contenido"></div>
 
-    <div class="calendar__week">
+    <div class="calendar__week"id="dias">
         <div class="calendar__day calendar__item">Lunes</div>
         <div class="calendar__day calendar__item">Martes</div>
         <div class="calendar__day calendar__item">Miercoles</div>
@@ -76,7 +83,7 @@
         
     </div>
 
-    <div class="calendar__dates" id="dates" ></div>
+    <div class="calendar__dates" id="dates"></div>
 </div>
                 </div>
                 
@@ -168,7 +175,7 @@
             })
         </script>
         
-        <script src="assets/js/Calendario.js"></script>
+        
         
              <%
                  AgendaVO lo = new AgendaVO();
@@ -177,21 +184,22 @@
 
                         %>
                         <script type="text/javascript">
-            var ac =  new Array();
-            var eventos = new Array();
+            var vari =  new Array();
+            var ev = new Array();
             <%
                 for (AgendaVO obj2 : list) {
             %>
-            	ac.push('<%=obj2.getFecha()%>');
-                eventos.push(['<%=obj2.getFecha()%>','<%=obj2.getTipo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>']);
+            	vari.push('<%=obj2.getFecha()%>');
+                ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTipo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>']);
                 <%
                 }
                 %>
-            cal(ac,eventos);
+            
             $(document).ready(function () {
       $('.contenido').load('Template/menu.html');
     });
         </script>
+        <script src="assets/js/Calendario.js"></script>
         <script src="assets/js/acciones.js"></script>
         <!--===============================================================================================-->
 

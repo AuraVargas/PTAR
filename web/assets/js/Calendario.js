@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 var modal = document.getElementById('modal-events');
-function cal(vari,eventos) {
+
 var monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-ev = eventos; 
+
 var currentDate = new Date();
 var currentDay = currentDate.getDate();
 var monthNumber = currentDate.getMonth();
 var currentYear = currentDate.getFullYear();
-
+EscribirMeses(monthNames);
+EscribirAños(currentYear);
 
 var dates = document.getElementById('dates');
 var month = document.getElementById('month');
@@ -126,7 +127,7 @@ const setNewDate = () => {
 }
 
 writeMonth(monthNumber);
-}
+
 function fecha(mes, dia, año,num,fecha) {
     document.getElementById(num).className += " activate";
     document.getElementById("uno").innerHTML="Eventos del dia: "+dia + " de " + mes + " del " + año;
@@ -156,4 +157,83 @@ function lista(fecha){
 function anterior(){
    lastMonth();
 }
+function nuevoMes(mes,año){
+    monthNumber=mes;
+    var año = document.getElementById('year').innerHTML;
+    $('#contenido').toggle();
+     $('#dias').toggle();
+     $('#dates').toggle();
+    setNewDate();
+}
+function nuevoAño(año){
+    
+    currentYear=año;
+    $('#years').toggle();
+     $('#dias').toggle();
+     $('#dates').toggle();
+    setNewDate();
+}
 
+function EscribirAños(año){
+    for(i =0; i< 12; i++){
+    document.getElementById("years").innerHTML+= ` <div onclick="nuevoAño(${año+i})" id="a${i}" class="calendar__item años meses">
+            ${año+i}
+        </div>`;
+    };
+    $('#years').toggle();
+     };
+function EscribirMeses(monthNames){
+    
+    for(i =0; i< monthNames.length; i++){
+    document.getElementById("contenido").innerHTML+= ` <div onclick="nuevoMes(${i})" class="calendar__item meses">
+            ${monthNames[i]}
+        </div>`;
+    };
+     $('#contenido').toggle();
+     };
+
+function mostraraños(){
+    if ($('#contenido').is(":visible")) {
+        $('#contenido').toggle();
+        
+    }
+    else{
+        $('#dias').toggle();
+    $('#dates').toggle();
+    }
+    $('#years').toggle();
+    
+     
+};
+function meses(){
+    if ($('#years').is(":visible")) {
+        $('#years').toggle();
+        
+        
+    }else{
+    
+     $('#dias').toggle();
+     $('#dates').toggle();
+ }
+ $('#contenido').toggle();
+}
+function sumaraños(){
+    
+    var año = new Number(document.getElementById('a11').innerHTML);
+    $(".años").remove();
+    for(i =0; i< 12; i++){
+    document.getElementById("years").innerHTML+= ` <div onclick="nuevoAño(${año+i})" id="a${i}" class="calendar__item años meses">
+            ${año+i}
+        </div>`;
+    }
+    };
+    
+function restaraños(){
+    var año = new Number(document.getElementById('a0').innerHTML);
+    $(".años").remove();
+    for(i =11; i> -1; i--){
+    document.getElementById("years").innerHTML+= ` <div onclick="nuevoAño(${año-i})" id="a${11-i}" class="calendar__item años meses">
+            ${año-i}
+        </div>`;
+    }
+    };

@@ -283,3 +283,10 @@ tr:hover td{
         
         
 }
+.meses{
+    text-align: center;
+    padding-top: 10px;
+    width: 130px;
+    padding-bottom: 10px;
+    display: inline-block
+}
