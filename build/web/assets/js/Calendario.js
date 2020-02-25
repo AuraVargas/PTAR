@@ -146,7 +146,7 @@ function lista(fecha){
     for (i =0; i< ev.length; i++){
         
         if (ev[i][0]===fecha){
-            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}')"href="#ventana2" type="button" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
+            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}')"href="#ventana2" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
         
         }
     };

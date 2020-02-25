@@ -40,7 +40,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
