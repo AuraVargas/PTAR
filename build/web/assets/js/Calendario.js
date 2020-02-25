@@ -58,7 +58,7 @@ const writeMonth = (month) => {
     }else{
         var fecha = año+'-'+numerodemes+'-'+dia;
     }
-        dates.innerHTML += ` <div id="${i}" type="button" href="#ventana1" data-toggle="modal" onclick="fecha('${mes}',${i},${año},this.id,'${fecha}');lista('${fecha}');" class="calendar__date calendar__item">${i}</div>`;
+        dates.innerHTML += ` <div id="${i}"" href="#ventana1" data-toggle="modal" onclick="fecha('${mes}',${i},${año},this.id,'${fecha}');lista('${fecha}');" class="calendar__date calendar__item">${i}</div>`;
         if (i == currentDay && monthNumber == c.getMonth()) {
                 document.getElementById(i).className += " calendar__today";
             }

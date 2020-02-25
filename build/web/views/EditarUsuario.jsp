@@ -67,7 +67,7 @@
                         </span>
                     </div>
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
-                        <input type="text" class="form-control input100" name="txtnombre" value="<%=temp.getApellido()%>" placeholder="Nombres Y Apellidos" >
+                        <input type="text" class="form-control input100" name="txtapellido" value="<%=temp.getApellido()%>" placeholder="Nombres Y Apellidos" >
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fas fa-pencil-alt"></i>

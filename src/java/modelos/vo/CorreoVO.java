@@ -34,8 +34,8 @@ public class CorreoVO {
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         
-        String myAccountEmail = "santiagoneira2010@gmail.com";
-        String myAcountPassword = "Dragones30920";
+        String myAccountEmail = "ptarsalitre756@gmail.com";
+        String myAcountPassword = "ptarsalitrefase1";
         
         Session session = Session.getDefaultInstance(properties, new Authenticator(){
            @Override
@@ -57,7 +57,7 @@ public class CorreoVO {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             message.setSubject("Recover password");
             message.setText("Su contraseña ha sido cambiado por su Cedula de ciudadania, ingrese por favor al sistema"
-                    + "Y cambie la contraseña");
+                    + "y cambie la contraseña");
             return message;
             
         } catch (Exception ex) {

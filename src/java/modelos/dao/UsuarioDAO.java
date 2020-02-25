@@ -180,7 +180,9 @@ public class UsuarioDAO implements Crud {
         try {
 
             if (this.consultar() == null) {
-                String sentencia = "exec crearUsu " + "?,?,?,?,?,?,?";
+                String sentencia = "INSERT INTO Usuarios "
+                        + "(ID, Contrasena, Telefono, Nombre, Apellido, Email,rol)"
+                        + "VALUES(?,?,?,?,?,?,?)";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getID());
                 ps.setString(2, vo.getContrasena());
@@ -209,7 +211,7 @@ public class UsuarioDAO implements Crud {
         try {
             if (this.consultar() != null) {
                 String sentencia = "exec actulizarUsu "
-                        + "?,?,?,?,?,?,?";
+                        + " ?,?,?,?,?,?,?";
                 System.out.println(sentencia);
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setInt(1, vo.getID());
@@ -236,10 +238,9 @@ public class UsuarioDAO implements Crud {
         try {
             if (this.consultarContra() != null) {
                 String sentencia = "exec recoverPassword "
-                        +"?,?";
+                        +"?";
                 System.out.println(sentencia);
                 PreparedStatement ps1 = this.cn.prepareStatement(sentencia);
-                ps1.setString(2, vo.getContrasena());
                 ps1.setString(1, vo.getEmail());
                 ps1.execute();
 

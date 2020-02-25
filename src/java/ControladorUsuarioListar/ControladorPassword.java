@@ -22,45 +22,22 @@ import modelos.vo.UsuarioVO;
  * @author Santi
  */
 public class ControladorPassword extends HttpServlet {
-
     UsuarioVO vo = new UsuarioVO();
     UsuarioDAO dao = new UsuarioDAO(vo);
     UsuarioVO temp = (UsuarioVO)dao.consultarContra();
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControladorPassword</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControladorPassword at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);        String correo= null;
+        throws ServletException, IOException {
+        String correo= null;
         correo = request.getParameter("email");
         vo.setEmail(correo);
         int f = dao.validar2(correo);
         if(f > 0){
                 try {
-                    dao.olvidePassword();
                     CorreoVO.sendMail(correo);
                     vo.setContrasena(request.getParameter("txtpass"));
+                    dao.olvidePassword();
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -71,8 +48,7 @@ public class ControladorPassword extends HttpServlet {
         }else{
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
-    } 
-
+    }        
     @Override
     public String getServletInfo() {
         return "Short description";

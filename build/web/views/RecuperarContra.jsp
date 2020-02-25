@@ -41,7 +41,7 @@
                         <img src="../assets/img/emo.png" alt="IMG">
                     </div>
 
-                    <form class="login100-form validate-form">
+                    <form action="../ControladorPassword" class="login100-form validate-form" method ="POST">
                         <span class="login100-form-title">
                             <b> ¿Olvidaste tu contraseña? </b>
                         </span>
@@ -56,26 +56,10 @@
                             </span>
                         </div>
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
+                            <button class="login100-form-btn" type="submit">
                                 Aceptar <br>
                             </button>
                         </div>
-
-                        <!--					<div class="text-center p-t-12">
-                                                                        <span class="txt1">
-                                                                                Olvidé mi nombre
-                                                                        </span>
-                                                                        <a class="txt2" href="recordar.html" target="_blank">
-                                                                           de Usuario / Contraseña?
-                                                                        </a>
-                                                                </div>-->
-
-                        <!--					<div class="text-center p-t-136">
-                                                                        <a class="txt2" href="#">
-                                                                                Create your Account
-                                                                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                                                                        </a>
-                                                                </div>-->
                     </form>
                 </div>
             </div>
