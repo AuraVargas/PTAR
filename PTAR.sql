@@ -29,7 +29,9 @@ CodigoE int primary key not null,
 Fecha date,
 Descripcion varchar(300),
 Estado varchar(30) check(Estado in('Activo','Cancelado')) not null,
-TipoEvento varchar(50) not null,
+Titulo varchar(50) not null,
+horaInicio time,
+horaFin time,
 IdU int,
 constraint FK_Agenda_IdU foreign key (IdU) References Usuarios(ID)
 )
@@ -65,7 +67,10 @@ go
 create view visitasCom
 as
 select v.codigoV, v.numeropersonas,v.CodiA,e.NIT,e.Descripcion,r.IDRepresentante,
-r.Nombre,r.Correo,r.telefono,a.fecha as 'fecha'from 
+r.Nombre,r.Correo,r.telefono,a.fecha as 'fecha',
+convert(char(5), a.horaInicio, 108)as'horaInicio',
+convert(char(5), a.horaFin, 108)as'horaFin'
+from 
 visitas v inner join empresa e on v.IDempresa = e.NIT 
 inner join Representante r on e.IDEnc = r.IDRepresentante
 inner join agenda a on v.CodiA = a.codigoe
@@ -73,9 +78,9 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values('13','1234','317635253','Santiago','Neira','sn@gmail.com','Funcionario')
-go
 insert into Usuarios values(12,'1234',304522909,'Alexandra','Barriga','salitre@acueducto.com.co','Funcionario')
+insert into Usuarios values(13,'1234',45678,'Aura','Vargas','a@gmail.com','Ayudante')
+
 go
 create PROC Inicio
 @EMAIL varchar(30),
@@ -91,16 +96,17 @@ select * from Usuarios where Email = @EMAIL
 go
 --Volver al estado original la contraseña para ser cambiada
 create proc recoverPassword
-@Email varchar(30)
+@Email varchar(30),
+@Contrasena varchar(40)
 as
 update Usuarios
-set Contrasena = ID
+set Contrasena = @Contrasena
 where @Email = Email
 go
 
 create proc crearUsu
 @Id int,
-@Contrasena varchar(40),
+@Contrasena int,
 @Telefono int,
 @Nombre varchar(50),
 @Apellido varchar(50),
@@ -139,33 +145,40 @@ where ID = @ID
 go
 
 --agenda
-CREATE proc registraragenda
+create proc registraragenda
 @code int,
 @Fecha varchar(10),
 @Descripcion varchar(300),
 @Estado varchar(30),
-@TipoEvento varchar(50),
+@Titulo varchar(50),
+@horaInicio time,
+@horaFin time,
 @IdU int
 as
-insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@TipoEvento,@IdU)
+insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU)
 
-GO
-
+go
 create proc actualizaragenda
 @Fecha varchar(10),
 @Descripcion varchar(300),
 @Estado varchar(30),
-@TipoEvento varchar(50),
+@Titulo varchar(50),
+@horaInicio time,
+@horaFin time,
 @codigoa int
 as
-update agenda set Fecha=@Fecha, Descripcion = @Descripcion, Estado=@estado, tipoevento=@TipoEvento where CodigoE=@codigoa
+update agenda set Fecha=@Fecha, Descripcion = @Descripcion, Estado=@estado, Titulo=@Titulo,horaInicio = @horaInicio, horaFin=@horaFin where CodigoE=@codigoa
 
 GO
 
 create proc consultaragenda
 @codigoe int
 as
-select * from agenda where codigoe= @codigoe
+select codigoE, fecha, Descripcion, Estado, Titulo,
+convert(char(5), horaInicio, 108)as'horaInicio',
+convert(char(5),horaFin, 108)as'horaFin',
+idu
+from agenda where codigoe= @codigoe
 
 GO
 
@@ -175,6 +188,18 @@ as
 select * from agenda where Fecha= @fecha
 
 GO
+
+create proc consultaragendaHora
+@horaInicio time,
+@horaFin time,
+@fecha date,
+@codigoe int
+as
+select * from agenda where 
+horaInicio >= @horaInicio and horaInicio <= @horaFin and fecha = @fecha and codigoe != @codigoe
+or horaFin >= @horaInicio and horaFin <= @horaFin and fecha = @fecha and codigoe != @codigoe
+or horaInicio <= @horaInicio and horaFin >= @horaFin and fecha = @fecha and codigoe != @codigoe
+go
 
 create proc eliminaragenda
 @codigoe int
@@ -196,7 +221,7 @@ insert into visitas values
 
 GO
 
-create proc actualizarvisitas
+create proc actualizarvisitas 
 @NumeroPersonas int,
 @Encargado int,
 @CodiA int,
@@ -306,5 +331,5 @@ for delete
 as
 delete agenda where codigoe=(select codia from deleted)
 go
-select * from Usuarios
 
+delete from agenda

@@ -7,6 +7,7 @@ package ControladorUsuarioListar;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,10 +37,16 @@ public class ControladorAgenda extends HttpServlet {
     AgendaVO vo=new AgendaVO();
     AgendaDAO dao =new AgendaDAO(vo);
     int id;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out;
+        out = response.getWriter();
+       
         String acceso ="";
         String action=request.getParameter("accion");
+        response.setContentType("text/html");
+        
         
     if(action.equalsIgnoreCase("listar")){
         acceso=listar;
@@ -59,13 +66,20 @@ public class ControladorAgenda extends HttpServlet {
                 vo.setEstado("activo");
                 vo.setFecha(request.getParameter("txtfecha"));
                 vo.setFKUidentificacion(12);
-                vo.setTipo(request.getParameter("txttipo"));
+                vo.setTitulo(request.getParameter("txtTitulo"));
+                vo.setHoraInicio(request.getParameter("txtincio"));
+                vo.setHoraFin(request.getParameter("txtfin"));
+                ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
+                if(pru.isEmpty()){
                 dao.registrar();
                 String direccion=request.getParameter("desde");
                 if(direccion.equals("1")){
                     acceso="views/Menú.jsp";
                 }else{
                 acceso=listar;
+                }
+                }else{
+                    acceso="views/Error.html";
                 }
     }else if(action.equalsIgnoreCase("editar")){
         request.setAttribute("desde", request.getParameter("desde"));
@@ -78,12 +92,17 @@ public class ControladorAgenda extends HttpServlet {
                 vo.setDescripcion(request.getParameter("txtDescripcion"));
                 vo.setEstado(request.getParameter("txtestado"));
                 vo.setFecha(request.getParameter("txtfecha"));
-                vo.setTipo(request.getParameter("txttipo"));
+                vo.setTitulo(request.getParameter("txtTitulo"));
+                vo.setHoraInicio(request.getParameter("txtincio"));
+                vo.setHoraFin(request.getParameter("txtfin"));
+                ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
+                if(pru.isEmpty()){
                 dao.actualizar();
-                if(direccion.equals("1")){
-                    acceso="views/Menú.jsp";
-                }else{
+                
                 acceso=listar;
+                
+                }else{
+                    acceso="views/Error.html";
                 }
     }else if(action.equalsIgnoreCase("eliminar")){
         id = Integer.parseInt(request.getParameter("txtcodigo"));

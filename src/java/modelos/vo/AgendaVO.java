@@ -14,9 +14,29 @@ public class AgendaVO extends EmpresaVO {
     private String fecha;
     private String Descripcion;
     private String estado;
-    private String tipo;
+    private String titulo;
+    private String horaInicio;
+    private String horaFin;
     private int FKUidentificacion;
 
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public String getHoraFin() {
+        return horaFin;
+    }
+    
+    
+    
     public AgendaVO() {
     }
 
@@ -36,8 +56,8 @@ public class AgendaVO extends EmpresaVO {
         return estado;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTitulo() {
+        return titulo;
     }
 
     public int getFKUidentificacion() {
@@ -60,8 +80,8 @@ public class AgendaVO extends EmpresaVO {
         this.estado = estado;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public void setFKUidentificacion(int FKUidentificacion) {

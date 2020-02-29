@@ -58,6 +58,8 @@ public class VisitasDAO implements Crud {
                 temp.setCorreo(resultSet.getString("correo"));
                 temp.setTelefono(resultSet.getInt("telefono"));
                 temp.setFecha(resultSet.getString("fecha"));
+                temp.setHoraInicio(resultSet.getString("horaInicio"));
+                temp.setHoraFin(resultSet.getString("horaFin"));
             }
             if (temp.getNombre()!= null) {
                 return temp;
@@ -125,8 +127,6 @@ public class VisitasDAO implements Crud {
     @Override
     public boolean registrar() {
         try {
-
-            if (this.consultar() == null) {
                 String sentencia = "exec registrarVisitas "
                         + "?,?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
@@ -137,9 +137,7 @@ public class VisitasDAO implements Crud {
                 ps.execute();
                 ps.getGeneratedKeys();
                 return true;
-            } else {
-                return false;
-            }
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -210,25 +208,25 @@ public class VisitasDAO implements Crud {
         
         VisitasDAO dao = new VisitasDAO(vo);
         
-//        vo.setNumeroPersonas(600);
-//        vo.setEncargadoID(11);
-//        vo.setCodigoa(5720);
-//        vo.setEmpresa(12);
-//        dao.registrar();
+        vo.setNumeroPersonas(10);
+        vo.setEncargadoID(3456);
+        vo.setCodigoa(7627);
+        vo.setEmpresa(45678);
+        dao.registrar();
 //vo.setDescripcion("g");
-ArrayList<VisitasVO> pru =(ArrayList) dao.consultar2();
-for(VisitasVO obj : pru){
+//ArrayList<VisitasVO> pru =(ArrayList) dao.consultar2();
+//for(VisitasVO obj : pru){
 
 //vo.setCodigov(4);
 //VisitasVO obj =(VisitasVO) dao.consultar();
 //            
-            System.out.println(obj.getCodigov());
+//            System.out.println(obj.getCodigov());
 //            vo.setCodigo(1);
 //            vo.setNombreCat("esox3");
 //            dao.actualizar();
 //            dao.eliminar();
 //            
 
-    }
+//    }
 }
 }

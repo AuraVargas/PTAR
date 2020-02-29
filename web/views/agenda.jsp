@@ -41,7 +41,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -68,10 +68,11 @@
                         <thead>
                         <tr>
                         
-                            <th>Tipo de evento</th>
+                            <th>Titulo de evento</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
                             <th>Estado</th>
+                            <th>Hora</th>
                             <th>Acciones</th>
                         </tr>
                         
@@ -85,10 +86,11 @@
                         %>
                         
                         <tr >
-                            <td ><%=obj.getTipo()%></div></td>
+                            <td ><%=obj.getTitulo()%></div></td>
                             <td ><%=obj.getFecha()%></td>
                             <td ><div class="des"><%=obj.getDescripcion()%></div></td>
                             <td ><%=obj.getEstado()%></td>
+                            <td ><%=obj.getHoraInicio()%> a <%=obj.getHoraFin()%></td>
                             <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
                                 <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
                         </tr>
@@ -100,7 +102,6 @@
                         </div>
                 </center>
             </form>
-
         </div>
 
 

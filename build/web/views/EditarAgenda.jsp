@@ -42,7 +42,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -72,16 +72,8 @@
                     <input type="hidden" value="<%=desde%>" name ="desde">
                     <div class="col-md-6 mb-3">
                         <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                            <input type="text" class="form-control input100" required name="txtTitulo" value="<%=age.getTitulo()%>">
                             
-                            <select class="selectpicker input100" data-live-search="true" name="txttipo">
-                                <option data-tokens="selecciona"><%=age.getTipo()%></option>
-                                <option data-tokens="Evento Comunitario">Evento Comunitario</option>
-                                <option data-tokens="Reunion anual">Reunión Anual</option>
-                                <option data-tokens="Visita Escolar">Visita Escolar</option>
-                                <option data-tokens="Conferencia">Conferencia</option>
-                                <option data-tokens="Junta">Junta</option>
-                                <option data-tokens="Foro">Foro</option>
-                            </select>
                             <span class="focus-input100"></span>
                             
                             <span class="symbol-input100">
@@ -92,8 +84,8 @@
                     <div class="col-md-6 mb-3">
                         <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Estado del Evento?">
                             
-                            <select class="selectpicker input100" data-live-search="true" name="txtestado">
-                                <option data-tokens="selecciona"></option>
+                            <select class="selectpicker input100" data-live-search="true"  name="txtestado">
+                                <option data-tokens="<%=age.getEstado()%>"><%=age.getEstado()%></option>
                                 <option data-tokens="Activo"> Activo</option>
                                 <option data-tokens="Cancelado">Cancelado</option>
                             </select>
@@ -104,6 +96,18 @@
                             </span>
                         </div>
                     </div>
+                                <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                <input type="time" class="form-control input100" value="<%=age.getHoraInicio()%>" required name="txtincio" placeholder="hora de inicio">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                
+                                <input type="time" class="form-control input100" value="<%=age.getHoraFin()%>" required name="txtfin" placeholder="hora de finalizacion">
+                                
+                            </div>
+                        </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Escribe nombre de encargado, lugar, etc">
@@ -123,10 +127,10 @@
                     </div>
     
                     <div class="container-login100-form-btn">
-                        <a class="peligro"style="right:27%;bottom: 32%;color: firebrick" href="ControladorAgenda?accion=listar">Cancelar</a>
+                        <a class="peligro"style="right:25%;bottom: 17%;color: firebrick" href="ControladorAgenda?accion=listar">Cancelar</a>
                     </div>
                         <div class="container-login100-form-btn">
-                        <button class="login100-form-btn"style="right:15%;bottom: 30%;position: absolute" type="submit" name="accion" value="Actualizar">
+                        <button class="login100-form-btn"style="right:13%;bottom: 15%;position: absolute" type="submit" name="accion" value="Actualizar">
                             <b> Guardar</b>
                         </button> 
                     </div>

@@ -38,7 +38,7 @@
         
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -52,18 +52,10 @@
             <hr><br>
            <center>
                 <div class="container">
-                    <div class="form-family mr-md-3 ">
+                    <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
-                                <select class="selectpicker input100" data-live-search="true" name="txttipo">
-                                    <option data-tokens="selecciona">Elige el tipo de Evento</option>
-                                    <option data-tokens="Evento Comunitario">Evento Comunitario</option>
-                                    <option data-tokens="Reunion anual">Reunión Anual</option>
-                                    <option data-tokens="Visita Escolar">Visita Escolar</option>
-                                    <option data-tokens="Conferencia">Conferencia</option>
-                                    <option data-tokens="Junta">Junta</option>
-                                    <option data-tokens="Foro">Foro</option>
-                                </select>
+                                <input type="text" class="form-control input100" required name="txtTitulo" placeholder="Titulo del evento">
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fab fa-elementor"></i>
@@ -71,39 +63,51 @@
                             </div>
                             <br>
                         </div>
-                    </div>
                     <% 
             String fecha = ((String) request.getAttribute("fecha"));
+            
         %>
-                    <div class="form-family mr-md-3 ">
+        
                         <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha del evento">
-                            <input type="date" class="form-control input100" name="txtfecha" value='<%=fecha%>' placeholder="Fecha del evento">
-                            <span class="focus-input100"></span>
+                            <input type="date" class="form-control input100" required name="txtfecha" value='<%=fecha%>' placeholder="Fecha del evento">
                             <span class="symbol-input100">
                                 <i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
-                    </div>
+                            </div>
+                            <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                <input type="time" class="form-control input100" required name="txtincio" placeholder="hora de inicio">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                
+                                <input type="time" class="form-control input100" required name="txtfin" placeholder="hora de finalizacion">
+                                
+                            </div>
+                        </div>
+                            
+                            <br>
                     <% 
             String desde = ((String) request.getAttribute("desde"));
         %>
         
 <input type='hidden' name='desde' value='<%=desde%>'>
-                    <div class="form-family mr-md-3 ">
                         <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Escribe nombre de encargado, lugar, etc">
-                            <input class="form-control input1 input100" type="text" name="txtDescripcion" placeholder="Descripción del evento ">
+                            <input class="form-control input1 input100" type="text" required name="txtDescripcion" placeholder="Descripción del evento ">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fas fa-envelope-open-text"></i>
                             </span>
-                        </div> 
-                    </div>
-
+                        </div>
+</div>
                     <div class="form-family mr-md-3">
                             <div class="container-login100-form-btn">
-                                <a class="peligro"style="right:45%;bottom: 24%;color: firebrick" onclick="return cancelarregistroA()">Cancelar</a>
+                                <a class="peligro"style="right:23%;bottom: 24%;color: firebrick" onclick="return cancelarregistroA()">Cancelar</a>
                             </div>
-                        <div style="right:33%;bottom: 22%;position:absolute;" >
+                        <div style="right:11%;bottom: 22%;position:absolute;" >
                             <button class="login100-form-btn" type="submit" name="accion" value="Registrar">
                                 <b> Registrar</b>
                             </button> 

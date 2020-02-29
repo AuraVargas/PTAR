@@ -36,7 +36,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -49,8 +49,8 @@
             <form action="ControladorVisita" action ="" class=" validate-form"method="POST"> 
                 <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
 
-                <h4><b>Registro de Visita</b></h4><hr>
-                <h4>Información sobre la empresa o institución: </h4><br>
+                <h5>Registro de Visita</h5><br>
+                <h6>Información sobre la empresa o institución: </h6><br>
                 <div class="form-row">
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "NIT de la Empresa">
                         <input class="form-control input100" type="number" name ="txtnit" placeholder="NIT">
@@ -92,8 +92,20 @@
                             <i class="far fa-calendar-alt"></i>
                         </span>
                     </div>
+                         <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                <input type="time" class="form-control input100" required name="txtincio" placeholder="hora de inicio">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                
+                                <input type="time" class="form-control input100" required name="txtfin" placeholder="hora de finalizacion">
+                                
+                            </div>
+                        </div>
                 </div>
-                <h4>Pesona que representará la empresa para realizar esta visita:</h4><br>
+                <h6>Pesona que representará la empresa para realizar esta visita:</h6><br>
                 <div class="form-row">
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es el nombre de la persona encargada?">
                         <input type="text" class="form-control input100" name="txtnombrerepresentante"  placeholder="Nombre Completo" >
@@ -128,11 +140,11 @@
 
                     
                     <div class="container-login100-form-btn">
-                        <a class="peligro" onclick="return cancelarregistroV()"style="right:27%;bottom: 7%;color: firebrick"> Cancelar
+                        <a class="peligro" onclick="return cancelarregistroV()"style="right:27%;bottom: 3%;color: firebrick"> Cancelar
                         </a>
                     </div>
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" style="right:15%;bottom: 5%;position: absolute" type="submit" name="accion" value="Registrar">
+                        <button class="login100-form-btn" style="right:15%;bottom: 1%;position: absolute" type="submit" name="accion" value="Registrar">
                             <b> Registrar</b>
                         </button> 
                     </div>

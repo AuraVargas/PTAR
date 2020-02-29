@@ -38,7 +38,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -105,6 +105,20 @@
                             <i class="far fa-calendar-alt"></i>
                         </span>
                     </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Hora de inicio</label>
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                <input type="time" class="form-control input100" value="<%=visita.getHoraInicio()%>" required name="txtincio" placeholder="hora de inicio">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Hora de fin</label>
+                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                
+                                <input type="time" class="form-control input100" value="<%=visita.getHoraFin()%>" required name="txtfin" placeholder="hora de finalizacion">
+                                
+                            </div>
+                        </div>
                 </div><br>
                 <h4>Persona que representará la empresa para realizar esta visita:</h4><br>
                 <div class="form-row">
@@ -148,12 +162,12 @@
 
                         
                     <div class="container-login100-form-btn" href="ControladorVisita?accion=listar">
-                        <a class="peligro" style="right:28%;bottom: -41%;color: firebrick">Cancelar</a>
+                        <a class="peligro" style="right:28%;bottom: -51%;color: firebrick">Cancelar</a>
                     </div>
                         
                 </div>
                         <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" style="right:15%;bottom: -43%;position: absolute" type="submit" name="accion"value="Actualizar" >
+                        <button class="login100-form-btn" style="right:15%;bottom: -53%;position: absolute" type="submit" name="accion"value="Actualizar" >
                             <b> Actualizar</b>
                         </button> 
                     </div>

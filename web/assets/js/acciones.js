@@ -1,10 +1,10 @@
 
-function consultar(Titulo,Descripcion,estado,fecha,id){
+function consultar(Titulo,Descripcion,estado,fecha,id,inicio,fin){
     ide = id;
         document.getElementById("Titulo").innerHTML =Titulo;
         $("#ventana1").modal("hide");
         document.getElementById('descripcion').innerHTML=Descripcion;
-        document.getElementById('fecha').innerHTML="Fecha: "+fecha;
+        document.getElementById('fecha').innerHTML="Fecha: "+fecha+" hora: "+inicio+" - "+fin;
         document.getElementById('estado').innerHTML="Estado: "+estado;
         document.getElementById('editar').href="ControladorAgenda?accion=editar&codigo="+id+"&desde=1";
       };

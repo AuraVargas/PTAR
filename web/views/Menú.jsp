@@ -47,7 +47,7 @@
         %>
         <header class="menu">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
                 <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
                <div class="contenido"></div>
                 
@@ -89,12 +89,8 @@
                 
                 <div class="col-4">
                     <hr>
-                    <a href="ControladorVisita?accion=listar">
-                    <button  class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button>
-                    </a>
-                    <a  href="ControladorUsuario?accion=listar">
+                    <button href="ControladorVisita?accion=listar" class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button>
                     <button href="ControladorUsuario?accion=listar" class="btn btn-outline-success h-25 w-100">Gestionar usuarios <i class="fas fa-user"></i></button>
-                    </a>
                 </div>
             </div>
         </div>
@@ -122,7 +118,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
       <div class="modal-header">
-          <div aria-hidden="true" href="#ventana1" style="cursor: default" data-toggle="modal" onclick="$('#ventana2').modal('hide');">&#9664;</div>
+          <div aria-hidden="true" href="#ventana1" style="cursor: default" type="button" data-toggle="modal" onclick="$('#ventana2').modal('hide');">&#9664;</div>
         <h5 id="Titulo" class="modal-title"></h5>
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
@@ -131,6 +127,7 @@
       <div class="modal-body" style="background-color: #a3d5d1">
         <div class="form-group">
     <label id="descripcion">Informacion de los eventos</label><br>
+    
     <label id="fecha">Informacion de los eventos</label><br>
     <label id="estado">Informacion de los eventos</label><br>
     <a class="peligro" style="color: firebrick" onclick="elim()">Eliminar</a>
@@ -194,7 +191,7 @@
                 for (AgendaVO obj2 : list) {
             %>
             	vari.push('<%=obj2.getFecha()%>');
-                ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTipo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>']);
+                ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTitulo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>','<%=obj2.getHoraInicio()%>','<%=obj2.getHoraFin()%>']);
                 <%
                 }
                 %>

@@ -95,22 +95,28 @@ public class ControladorVisita extends HttpServlet {
                 jaja =(int)(Math.random() * 10000) + 1;
                 }
                 avo.setCodigoa(jaja);
+                avo.setHoraInicio(request.getParameter("txtincio"));
+                avo.setHoraFin(request.getParameter("txtfin"));
                 avo.setDescripcion(Evo.getDescripcion());
                 avo.setEstado("activo");
                 avo.setFecha(request.getParameter("txtfecha"));
                 avo.setFKUidentificacion(12);
-                avo.setTipo("Visita");
+                avo.setTitulo("Visita");
                 
                 Vvo.setCodigoa(avo.getCodigoa());
                 Vvo.setEmpresa(Evo.getNit());
                 Vvo.setEncargadoID(Rvo.getIDrepresentante());
                 Vvo.setNumeroPersonas(numeroP);
-                
+                ArrayList<AgendaVO> pru =(ArrayList) adao.consultaragendahora();
+                if(pru.isEmpty()){
                 Rdao.registrar();
                 Edao.registrar();
                 adao.registrar();
                 Vdao.registrar();
                 acceso=listar;
+                }else{
+                    acceso="views/Error.html";
+                }
                 
         }else if(action.equalsIgnoreCase("editar")){
                 request.setAttribute("codigov", request.getParameter("codigo"));
@@ -129,11 +135,13 @@ public class ControladorVisita extends HttpServlet {
                 
                 
                 avo.setCodigoa(Integer.parseInt(request.getParameter("txtcodigoA")));
+                avo.setHoraInicio(request.getParameter("txtincio"));
+                avo.setHoraFin(request.getParameter("txtfin"));
                 AgendaVO consulta = (AgendaVO) adao.consultar();
                 avo.setDescripcion(consulta.getDescripcion());
                 avo.setEstado(consulta.getEstado());
                 avo.setFecha(request.getParameter("txtfecha"));
-                avo.setTipo("Visita");
+                avo.setTitulo("Visita");
                 
                 Vvo.setCodigoa(avo.getCodigoa());
                 Vvo.setEmpresa(Evo.getNit());

@@ -66,10 +66,12 @@ public class AgendaDAO implements Crud{
             AgendaVO temp = new AgendaVO();
             while (resultSet.next()) {
                 temp.setCodigoa(resultSet.getInt("codigoe"));
+                temp.setFecha(resultSet.getString("Fecha"));
+                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setTitulo(resultSet.getString("titulo"));
                 temp.setEstado(resultSet.getString("estado"));
-                temp.setFecha(resultSet.getString("fecha"));
-                temp.setDescripcion(resultSet.getString("descripcion"));
-                temp.setTipo(resultSet.getString("tipoevento"));
+                temp.setHoraInicio(resultSet.getString("horaInicio"));
+                temp.setHoraFin(resultSet.getString("horafin"));
 
             }
             if (temp.getEstado()!= null) {
@@ -98,7 +100,34 @@ public class AgendaDAO implements Crud{
                 temp.setCodigoa(resultSet.getInt("codigoe"));
                 temp.setFecha(resultSet.getString("Fecha"));
                 temp.setDescripcion(resultSet.getString("Descripcion"));
-                temp.setTipo(resultSet.getString("tipoevento"));
+                temp.setTitulo(resultSet.getString("tituloevento"));
+                temp.setEstado(resultSet.getString("estado"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+    public ArrayList<Object> consultaragendahora() {
+        try {
+            String consulta = "exec consultaragendaHora ?,?,?,?";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ps.setString(1, vo.getHoraInicio());
+            ps.setString(2, vo.getHoraFin());
+            ps.setString(3, vo.getFecha());
+            ps.setInt(4, vo.getCodigoa());
+            ResultSet resultSet = ps.executeQuery();
+
+            ArrayList<AgendaVO> list = new ArrayList<AgendaVO>();
+
+            while (resultSet.next()) {
+                AgendaVO temp = new AgendaVO();
+                temp.setCodigoa(resultSet.getInt("codigoe"));
+                temp.setFecha(resultSet.getString("Fecha"));
+                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setTitulo(resultSet.getString("titulo"));
                 temp.setEstado(resultSet.getString("estado"));
                 list.add(temp);
             }
@@ -133,14 +162,16 @@ public class AgendaDAO implements Crud{
     public boolean registrar() {
         try {
                 String sentencia = "exec registrarAgenda "
-                        + "?,?,?,?,?,?";
+                        + "?,?,?,?,?,?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getCodigoa());
                 ps.setString(2, vo.getFecha());
                 ps.setString(3, vo.getDescripcion());
                 ps.setString(4, vo.getEstado());
-                ps.setString(5, vo.getTipo());
-                ps.setInt(6, vo.getFKUidentificacion());
+                ps.setString(5, vo.getTitulo());
+                ps.setString(6, vo.getHoraInicio());
+                ps.setString(7, vo.getHoraFin());
+                ps.setInt(8, vo.getFKUidentificacion());
                 ps.execute();
 
                 ps.getGeneratedKeys();
@@ -158,16 +189,17 @@ public class AgendaDAO implements Crud{
         try {
             if (this.consultar() != null) {
                 String sentencia = "exec actualizarAgenda "
-                        + "?,?,?,?,?";
+                        + "?,?,?,?,?,?,?";
                 System.out.println(sentencia);
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setString(1, vo.getFecha());
                 ps.setString(2, vo.getDescripcion());
                 ps.setString(3, vo.getEstado());
-                ps.setString(4, vo.getTipo());
-                ps.setInt(5, vo.getCodigoa());
+                ps.setString(4, vo.getTitulo());
+                ps.setString(5, vo.getHoraInicio());
+                ps.setString(6, vo.getHoraFin());
+                ps.setInt(7, vo.getCodigoa());
                 ps.execute();
-
                 return true;
             } else {
                 return false;
@@ -183,7 +215,7 @@ public class AgendaDAO implements Crud{
     @Override
     public ArrayList<Object> listar() {
         try {
-            String consulta = "SELECT * FROM agenda";
+            String consulta = "select codigoE, fecha, Descripcion, Estado, Titulo,convert(char(5), horaInicio, 108)as'horaInicio',convert(char(5), horaFin, 108)as'horaFin', idu from agenda";
             PreparedStatement ps = this.cn.prepareStatement(consulta);
             ResultSet resultSet = ps.executeQuery();
 
@@ -194,8 +226,10 @@ public class AgendaDAO implements Crud{
                 temp.setCodigoa(resultSet.getInt("codigoe"));
                 temp.setFecha(resultSet.getString("Fecha"));
                 temp.setDescripcion(resultSet.getString("Descripcion"));
-                temp.setTipo(resultSet.getString("tipoevento"));
+                temp.setTitulo(resultSet.getString("titulo"));
                 temp.setEstado(resultSet.getString("estado"));
+                temp.setHoraInicio(resultSet.getString("horaInicio"));
+                temp.setHoraFin(resultSet.getString("horafin"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;
@@ -209,23 +243,30 @@ public class AgendaDAO implements Crud{
         AgendaVO vo = new AgendaVO();
         
         AgendaDAO dao = new AgendaDAO(vo);
-//        vo.setCodigoa(1909);
-        vo.setFecha("2020-02-13");
+//        vo.setCodigoa(4900);
+//        vo.setFecha("2020-02-13");
 //        vo.setDescripcion("pos fue cancelado we");
-//        vo.setEstado("desactivo");
-//        vo.setTipo("prueba 2");
+//        vo.setEstado("Activo");
+//        vo.setTitulo("prueba 2");
+//        vo.setHoraInicio("20:00:00");
+//        vo.setHoraFin("10:00:00");
+        
+        
 //        vo.setFKUidentificacion(12);
 //        dao.registrar();
-ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendaFecha();
-for(AgendaVO obj : pru){
-    System.out.println(obj.getDescripcion());
-}
-//vo.setCodigoa(5);
+//        
+//ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
+//for(AgendaVO obj : pru){
+//    System.out.println(obj.getDescripcion());
+//}
+//vo.setCodigoa(3001);
 //            AgendaVO pru = (AgendaVO)dao.consultar();
+//            System.out.println(pru.getFecha());
 //            vo.setCodigo(1);
 //            vo.setNombreCat("esox3");
+
 //            dao.actualizar();
-//            dao.eliminar();
+            dao.eliminar();
 //            
 //            
     }

@@ -58,7 +58,7 @@ const writeMonth = (month) => {
     }else{
         var fecha = año+'-'+numerodemes+'-'+dia;
     }
-        dates.innerHTML += ` <div id="${i}"" href="#ventana1" data-toggle="modal" onclick="fecha('${mes}',${i},${año},this.id,'${fecha}');lista('${fecha}');" class="calendar__date calendar__item">${i}</div>`;
+        dates.innerHTML += ` <div id="${i}" href="#ventana1" data-toggle="modal" onclick="fecha('${mes}',${i},${año},this.id,'${fecha}');lista('${fecha}');" class="calendar__date calendar__item">${i}</div>`;
         if (i == currentDay && monthNumber == c.getMonth()) {
                 document.getElementById(i).className += " calendar__today";
             }
@@ -146,7 +146,7 @@ function lista(fecha){
     for (i =0; i< ev.length; i++){
         
         if (ev[i][0]===fecha){
-            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}')"href="#ventana2" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
+            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}','${ev[i][5]}','${ev[i][6]}')"href="#ventana2" type="button" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
         
         }
     };

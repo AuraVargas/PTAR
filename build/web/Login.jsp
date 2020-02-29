@@ -102,7 +102,7 @@
         <script src="assets/vendor/select2/select2.min.js" type="text/javascript"></script>
         <!--===============================================================================================-->
         <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
-        <script >
+        <script>
             $('.js-tilt').tilt({
                 scale: 1.1
             })

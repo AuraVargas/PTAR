@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/EditarUsuario.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/Usuario.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/assets/js/Calendario.js</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/RegistrarUsuario.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/actualizarVisita.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/agenda.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/listarVisitas.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/RegistrarAgenda.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/web/views/EditarAgenda.jsp</file>
-            <file>file:/C:/Users/Santi/Documents/NetBeansProjects/PTAR/src/java/Conexion/Conexion.java</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PROYECTO%2020NOV1/src/java/modelos/dao/AgendaDAO.java</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PROYECTO%2020NOV1/web/Login.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PROYECTO%2020NOV1/src/java/ControladorUsuarioListar/ControladorAgenda.java</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PROYECTO%2020NOV1/web/views/EditarAgenda.jsp</file>
         </group>
     </open-files>
 </project-private>
