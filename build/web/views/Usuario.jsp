@@ -53,12 +53,10 @@
 
             <h4><b> Lista de usuarios</b></h4><hr>
             <nav class="navbar navbar-light">
-                <form class="form-inline"accion="ControladorAgenda">
-<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-success" type="submit" >Consultar Registros</button> -->
-                    <!--                    <input type="button" class="btn btn-danger" onclick="window.location.href = ('actualizarVisita.jsp');" value="Editar Visita"/> <br>
-                                        <button class="btn btn-success" type="submit" onclick="return eliminarVisita()">Eliminar Visita</button>-->
+                <form class="form-inline" >
+                    <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
                 </form>
+            </nav>
             </nav>
             <form class="text-center" action="ControladorUsuario">
                 <br>
@@ -67,7 +65,6 @@
         UsuarioVO vo= new UsuarioVO();
         UsuarioDAO dao=new UsuarioDAO(vo);
         pru =(ArrayList) dao.listar();
-        String nombuscar = request.getParameter("txtBuscar");
         
         
         %>
@@ -86,32 +83,11 @@
                 </tr>
             </thead>
 
-            <%
-            if(nombuscar != null){
-                vo.setID(Integer.parseInt((String)request.getAttribute(nombuscar)));
-                UsuarioVO temp = (UsuarioVO)dao.consultar();
-                pru.get(temp.getID());
-                for(UsuarioVO oj : pru){
-        
-           %>
-             <tbody>
-                <tr>
-                    <td><%=oj.getID()%></td>
-                    <td><%=oj.getNombre()%></td>
-                    <td><%=oj.getApellido()%></td>
-                    <td><%=oj.getRol()%></td>
-                    <td><%=oj.getTelefono()%></td>
-                    <td><%=oj.getEmail()%></td>
-                    <td><a href="ControladorUsuario?accion=editar&ID=<%=oj.getID()%>">Actualizar</a>
-                        <a href="ControladorUsuario?accion=eliminar&ID=<%=oj.getID()%>">Eliminar</a></td>
-                    
-                </tr>
             
-           <%   }
-             }else{
+             <tbody id="resultado">
+                 <%
             for(UsuarioVO obj : pru){
             %>
-             <tbody>
                 <tr>
                     <td><%=obj.getID()%></td>
                     <td><%=obj.getNombre()%></td>
@@ -119,10 +95,17 @@
                     <td><%=obj.getRol()%></td>
                     <td><%=obj.getTelefono()%></td>
                     <td><%=obj.getEmail()%></td>
-                    <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a>
+                    <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a><br>
                         <a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
                     
-                    <div class="modal fade" id="ventana1" >
+                    
+                </tr>
+                <%
+               }
+                %>
+            </tbody>
+        </table>
+            <div class="modal fade" id="ventana1" >
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -145,13 +128,6 @@
                                     </div>
                                 </div>
                             </div>
-                </tr>
-                <%
-                }
-               }
-                %>
-            </tbody>
-        </table>
             </div>
             </form>
         </div>
@@ -176,6 +152,56 @@
                             ;
         </script>
         <script >
+            
+           
+            const eventos = [
+                 <%
+
+                            for(UsuarioVO obj : pru){
+                        %>
+                {id: '<%=obj.getID()%>',nombre: '<%=obj.getNombre()%>',apellido: '<%=obj.getApellido()%>',rol: '<%=obj.getRol()%>'
+                    ,telefono: '<%=obj.getTelefono()%>',correo: '<%=obj.getEmail()%>'},
+                <%
+                            }
+                        %>
+            ]
+            
+            const resultado = document.querySelector('#resultado');
+const formulario = document.querySelector('#formulario');
+const filtrar = () =>{
+            resultado.innerHTML = '';
+            const texto = formulario.value.toLowerCase();
+            for(let evento of eventos){
+                let id = evento.id.toLowerCase();
+                let nombre = evento.nombre.toLowerCase();
+                let apellido = evento.apellido.toLowerCase();
+                let rol = evento.rol.toLowerCase();
+                let telefono = evento.telefono.toLowerCase();
+                let correo = evento.correo.toLowerCase();
+                
+                if(id.indexOf(texto) !== -1 || nombre.indexOf(texto) !== -1 
+                || apellido.indexOf(texto) !== -1 || rol.indexOf(texto) !== -1 
+                || telefono.indexOf(texto) !== -1 || correo.indexOf(texto) !== -1){
+                    resultado.innerHTML += '<td>'+id+'</td><td>'
+                            +nombre+'</td><td>'+apellido+
+                            '</td><td>'+rol+'</td><td>'+
+                    telefono+'</td><td>'+
+                    correo+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
+        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+                }
+            }
+            if (resultado.innerHTML == ''){
+                resultado.innerHTML += '<td > Evento no encontrado </td>'
+            }
+        }
+                            formulario.addEventListener('keyup',filtrar);
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+            $(document).ready(function () {
+      $('.contenido').load('Template/menu.html');
+    });
+            
             $('.js-tilt').tilt({
                 scale: 1.1
             })

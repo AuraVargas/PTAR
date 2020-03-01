@@ -53,11 +53,7 @@
             <h4><b>Visitas</b></h4><hr>
             <nav class="navbar navbar-light">
                 <form class="form-inline"accion="ControladorAgenda">
-<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-success" type="submit" >Consultar Registros</button> -->
-                    <!--                    <input type="button" class="btn btn-danger" onclick="window.location.href = ('actualizarVisita.jsp');" value="Editar Visita"/> <br>
-                                        <button class="btn btn-success" type="submit" onclick="return eliminarVisita()">Eliminar Visita</button>-->
-                </form>
+                    <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
             </nav>
             <form class="text-center" action="ControladorVisita">
                 <br>
@@ -72,20 +68,13 @@
                         <th> Acciones</th>
                     </tr>
                     </thead>
+                    <tbody id="resultado">
                     <%
 
                         ArrayList<VisitasVO> pru = new ArrayList<VisitasVO>();
                         VisitasVO vo = new VisitasVO();
                         VisitasDAO dao = new VisitasDAO(vo);
                         pru = (ArrayList) dao.listar();
-
-                        String buscar = request.getParameter("txtbusqueda");
-                        if (buscar != null) {
-                            vo.setDescripcion(buscar);
-                            pru = (ArrayList) dao.consultar2();
-                        } else {
-                            System.out.println("error");
-                        }
                         for (VisitasVO obj : pru) {
                     %>
                     <tr>
@@ -100,7 +89,7 @@
                     <%
                         }
                     %>
-
+</tbody>
                 </table>
                     </div>
             </form>
@@ -121,6 +110,51 @@
         <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
         
         <script >
+            $("form").submit(function(e){
+
+     e.preventDefault();
+
+     //resto código   
+
+ });
+           
+            const eventos = [
+                 <%
+
+                            for (VisitasVO obj : pru) {
+                        %>
+                {descripcion: '<%=obj.getDescripcion()%>',personas: '<%=obj.getNumeroPersonas()%>',nombre: '<%=obj.getNombre()%>',correo: '<%=obj.getCorreo()%>'
+                    ,codigo: '<%=obj.getCodigov()%>'},
+                <%
+                            }
+                        %>
+            ]
+            
+            const resultado = document.querySelector('#resultado');
+const formulario = document.querySelector('#formulario');
+const filtrar = () =>{
+            resultado.innerHTML = '';
+            const texto = formulario.value.toLowerCase();
+            for(let evento of eventos){
+                let descripcion = evento.descripcion.toLowerCase();
+                let personas = evento.personas.toLowerCase();
+                let nombre = evento.nombre.toLowerCase();
+                let correo = evento.correo.toLowerCase();
+                let codigo = evento.codigo.toLowerCase();
+                
+                if(descripcion.indexOf(texto) !== -1 || personas.indexOf(texto) !== -1 
+                || nombre.indexOf(texto) !== -1 || correo.indexOf(texto) !== -1 
+                || codigo.indexOf(texto) !== -1){
+                    resultado.innerHTML += '<td ><div class="des">'+descripcion+'</div></td><td >'+personas+
+                            '</td><td>'+nombre+'</td><td>'+correo+
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"value="'+codigo+'"href="ControladorVisita?accion=editar&codigo='+codigo+'">Editar</a><a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita('+codigo+')">Eliminar</a></td>';
+                }
+            }
+            if (resultado.innerHTML == ''){
+                resultado.innerHTML += '<td > Evento no encontrado </td>'
+            }
+        }
+                            formulario.addEventListener('keyup',filtrar);
             $('.js-tilt').tilt({
                 scale: 1.1
             })

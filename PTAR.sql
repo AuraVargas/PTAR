@@ -155,11 +155,13 @@ create proc registraragenda
 @Titulo varchar(50),
 @horaInicio time,
 @horaFin time,
-@IdU int
+@IdU int,
+@color in
 as
-insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU,1)
+insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU,@color)
 
 go
+
 create proc actualizaragenda
 @Fecha varchar(10),
 @Descripcion varchar(300),

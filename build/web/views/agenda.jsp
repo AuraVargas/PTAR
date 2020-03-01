@@ -54,10 +54,9 @@
             <a href="ControladorAgenda?accion=add">Registrar</a><br>
 
             <nav class="navbar navbar-light bg-">
-<!--                <form class="form-inline" >
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit"href="ListaVisita.jsp">Consultar</button>
-                </form><br><br><br>-->
+                <form class="form-inline" >
+                    <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
+                </form>
             </nav>
 
             <form class="form-inline" action ="ControladorAgenda">
@@ -77,6 +76,7 @@
                         </tr>
                         
                         </thead>
+                        <tbody id="resultado">
                         <%
                             AgendaVO vo = new AgendaVO();
                             AgendaDAO dao = new AgendaDAO(vo);
@@ -97,7 +97,7 @@
                         <%
                             }
                         %>
-                        
+                        </tbody>
                     </table>
                         </div>
                 </center>
@@ -122,8 +122,62 @@
                                     document.getElementById('txtcodigo').value = codigoa;
                                 }
                                 ;
+                                
+                            
+                            
+                                
         </script>
         <script >
+            $("form").submit(function(e){
+
+     e.preventDefault();
+
+     //resto código   
+
+ });
+           
+            const eventos = [
+                 <%
+
+                            for (AgendaVO obj : list) {
+                        %>
+                {titulo: '<%=obj.getTitulo()%>',fecha: '<%=obj.getFecha()%>',descripcion: '<%=obj.getDescripcion()%>'
+                    ,estado: '<%=obj.getEstado()%>',horainicio: '<%=obj.getHoraInicio()%>'
+                ,horafin: '<%=obj.getHoraFin()%>',codigo: '<%=obj.getCodigoa()%>'},
+                <%
+                            }
+                        %>
+            ]
+            
+            const resultado = document.querySelector('#resultado');
+const formulario = document.querySelector('#formulario');
+const filtrar = () =>{
+            resultado.innerHTML = '';
+            const texto = formulario.value.toLowerCase();
+            for(let evento of eventos){
+                let titulo = evento.titulo.toLowerCase();
+                let fecha = evento.fecha.toLowerCase();
+                let descripcion = evento.descripcion.toLowerCase();
+                let estado = evento.estado.toLowerCase();
+                let horainicio = evento.horainicio.toLowerCase();
+                let horafin = evento.horafin.toLowerCase();
+                let codigo = evento.codigo.toLowerCase();
+                
+                if(titulo.indexOf(texto) !== -1 || fecha.indexOf(texto) !== -1 
+                || descripcion.indexOf(texto) !== -1 || estado.indexOf(texto) !== -1 
+                || horainicio.indexOf(texto) !== -1 || horafin.indexOf(texto) !== -1){
+                    resultado.innerHTML += '<td >'+titulo+'</div></td>\n\
+                    <td >'+fecha+'</td><td ><div class="des">'+descripcion+'</div></td>\n\
+                    <td >'+estado+'</td><td >'+horainicio+' a '+horafin+'</td>\n\
+                    <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo='+codigo+'">Editar</a>\n\
+                    <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar('+codigo+');">Eliminar</a> </td>';
+                }
+            }
+            if (resultado.innerHTML == ''){
+                resultado.innerHTML += '<td > Evento no encontrado </td>'
+            }
+        }
+                            formulario.addEventListener('keyup',filtrar);
             $('.js-tilt').tilt({
                 scale: 1.1
             })
