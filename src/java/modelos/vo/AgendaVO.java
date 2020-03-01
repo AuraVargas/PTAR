@@ -11,6 +11,7 @@ package modelos.vo;
  */
 public class AgendaVO extends EmpresaVO {
     private int codigoa;
+    private int color;
     private String fecha;
     private String Descripcion;
     private String estado;
@@ -18,6 +19,14 @@ public class AgendaVO extends EmpresaVO {
     private String horaInicio;
     private String horaFin;
     private int FKUidentificacion;
+    
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
+    }
 
     public void setHoraInicio(String horaInicio) {
         this.horaInicio = horaInicio;

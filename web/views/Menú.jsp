@@ -103,7 +103,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+                    
       <div class="modal-body" style="background-color: #a3d5d1">
+          <label >Cambiar color:</label><br>
+          <div style="background-color: #FEDCD2" onclick="cambiar(1)" class="calendar__item colores">
+          </div>
+          <div  style="background-color: #baffc9" onclick="cambiar(2)" class="calendar__item colores">
+          </div>
+          <div  style="background-color: #ffbdbd" onclick="cambiar(3)" class="calendar__item colores">
+          </div>
+          <div  style="background-color: #bae1ff" onclick="cambiar(4)" class="calendar__item colores">
+          </div>
+          <div  style="background-color: #f1cbff" onclick="cambiar(5)" class="calendar__item colores">
+          </div>
+          <div  style="background-color: #ffffba" onclick="cambiar(6)" class="calendar__item colores">
+          </div>
+          <hr>
         <div class="form-group" id="modal-events">
             
             <a id='sii' class="abajo-derecha"href="">Registrar un evento</a>
@@ -174,6 +189,7 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
+            
         </script>
         
         
@@ -191,7 +207,7 @@
                 for (AgendaVO obj2 : list) {
             %>
             	vari.push('<%=obj2.getFecha()%>');
-                ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTitulo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>','<%=obj2.getHoraInicio()%>','<%=obj2.getHoraFin()%>']);
+                ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTitulo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>','<%=obj2.getHoraInicio()%>','<%=obj2.getHoraFin()%>','<%=obj2.getColor()%>']);
                 <%
                 }
                 %>

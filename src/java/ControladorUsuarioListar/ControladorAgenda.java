@@ -54,6 +54,11 @@ public class ControladorAgenda extends HttpServlet {
         request.setAttribute("fecha", request.getParameter("fecha"));
         request.setAttribute("desde", request.getParameter("desde"));
         acceso=add;
+    }else if(action.equalsIgnoreCase("actcolor")){
+        vo.setColor(Integer.parseInt(request.getParameter("color")));
+        vo.setFecha(request.getParameter("fecha"));
+        dao.actualizarcolor();
+        acceso="views/Menú.jsp";
     }else if(action.equalsIgnoreCase("Registrar")){
         
         int jaja =(int)(Math.random() * 10000) + 1;
@@ -69,15 +74,28 @@ public class ControladorAgenda extends HttpServlet {
                 vo.setTitulo(request.getParameter("txtTitulo"));
                 vo.setHoraInicio(request.getParameter("txtincio"));
                 vo.setHoraFin(request.getParameter("txtfin"));
+                
+                ArrayList<AgendaVO> color =(ArrayList) dao.consultaragendaFecha();
+                
+                if(color.isEmpty()){
+                    vo.setColor(1);
+                }else{
+                    for (AgendaVO obj2 : color) {
+                    vo.setColor(obj2.getColor());
+                    break;
+                    }
+                }
+                
+                
                 ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
                 if(pru.isEmpty()){
                 dao.registrar();
                 String direccion=request.getParameter("desde");
-                if(direccion.equals("1")){
-                    acceso="views/Menú.jsp";
-                }else{
+//                if(direccion.equals("1")){
+//                    acceso="views/Menú.jsp";
+//                }else{
                 acceso=listar;
-                }
+//                }
                 }else{
                     acceso="views/Error.html";
                 }

@@ -100,8 +100,9 @@ public class AgendaDAO implements Crud{
                 temp.setCodigoa(resultSet.getInt("codigoe"));
                 temp.setFecha(resultSet.getString("Fecha"));
                 temp.setDescripcion(resultSet.getString("Descripcion"));
-                temp.setTitulo(resultSet.getString("tituloevento"));
+                temp.setTitulo(resultSet.getString("titulo"));
                 temp.setEstado(resultSet.getString("estado"));
+                temp.setColor(resultSet.getInt("color"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;
@@ -162,7 +163,7 @@ public class AgendaDAO implements Crud{
     public boolean registrar() {
         try {
                 String sentencia = "exec registrarAgenda "
-                        + "?,?,?,?,?,?,?,?";
+                        + "?,?,?,?,?,?,?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getCodigoa());
                 ps.setString(2, vo.getFecha());
@@ -172,6 +173,7 @@ public class AgendaDAO implements Crud{
                 ps.setString(6, vo.getHoraInicio());
                 ps.setString(7, vo.getHoraFin());
                 ps.setInt(8, vo.getFKUidentificacion());
+                ps.setInt(9, vo.getColor());
                 ps.execute();
 
                 ps.getGeneratedKeys();
@@ -211,11 +213,29 @@ public class AgendaDAO implements Crud{
 
         return false;
     }
+    public boolean actualizarcolor() {
+        try {
+                String sentencia = "exec actualizarcolor "
+                        + "?,?";
+                System.out.println(sentencia);
+                PreparedStatement ps = this.cn.prepareStatement(sentencia);
+                ps.setInt(1, vo.getColor());
+                ps.setString(2, vo.getFecha());
+                ps.execute();
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return false;
+    }
 
     @Override
     public ArrayList<Object> listar() {
         try {
-            String consulta = "select codigoE, fecha, Descripcion, Estado, Titulo,convert(char(5), horaInicio, 108)as'horaInicio',convert(char(5), horaFin, 108)as'horaFin', idu from agenda";
+            String consulta = "select codigoE, fecha, Descripcion, Estado, Titulo,convert(char(5), horaInicio, 108)as'horaInicio',convert(char(5), horaFin, 108)as'horaFin', idu, color from agenda";
             PreparedStatement ps = this.cn.prepareStatement(consulta);
             ResultSet resultSet = ps.executeQuery();
 
@@ -230,6 +250,7 @@ public class AgendaDAO implements Crud{
                 temp.setEstado(resultSet.getString("estado"));
                 temp.setHoraInicio(resultSet.getString("horaInicio"));
                 temp.setHoraFin(resultSet.getString("horafin"));
+                temp.setColor(resultSet.getInt("color"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;
@@ -240,24 +261,24 @@ public class AgendaDAO implements Crud{
     }
 
     public static void main(String[] args) throws SQLException {
-        AgendaVO vo = new AgendaVO();
-        
-        AgendaDAO dao = new AgendaDAO(vo);
-//        vo.setCodigoa(4900);
-//        vo.setFecha("2020-02-13");
+//        AgendaVO vo = new AgendaVO();
+//        
+//        AgendaDAO dao = new AgendaDAO(vo);
+//        vo.setCodigoa(3330);
+//        vo.setFecha("2020-03-15");
 //        vo.setDescripcion("pos fue cancelado we");
 //        vo.setEstado("Activo");
 //        vo.setTitulo("prueba 2");
 //        vo.setHoraInicio("20:00:00");
 //        vo.setHoraFin("10:00:00");
-        
-        
+//        vo.setColor(1);
+//        
 //        vo.setFKUidentificacion(12);
 //        dao.registrar();
 //        
-//ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
+//ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendaFecha();
 //for(AgendaVO obj : pru){
-//    System.out.println(obj.getDescripcion());
+//    System.out.println(obj.getColor());
 //}
 //vo.setCodigoa(3001);
 //            AgendaVO pru = (AgendaVO)dao.consultar();
@@ -266,7 +287,7 @@ public class AgendaDAO implements Crud{
 //            vo.setNombreCat("esox3");
 
 //            dao.actualizar();
-            dao.eliminar();
+//            dao.eliminar();
 //            
 //            
     }

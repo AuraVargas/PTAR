@@ -33,9 +33,11 @@ Titulo varchar(50) not null,
 horaInicio time,
 horaFin time,
 IdU int,
+color int
 constraint FK_Agenda_IdU foreign key (IdU) References Usuarios(ID)
 )
 go
+
 
 --Crear tabla Representante
 create table Representante
@@ -155,7 +157,7 @@ create proc registraragenda
 @horaFin time,
 @IdU int
 as
-insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU)
+insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU,1)
 
 go
 create proc actualizaragenda
@@ -170,7 +172,14 @@ as
 update agenda set Fecha=@Fecha, Descripcion = @Descripcion, Estado=@estado, Titulo=@Titulo,horaInicio = @horaInicio, horaFin=@horaFin where CodigoE=@codigoa
 
 GO
+alter proc actualizarcolor
+@color int,
+@fecha date
+as
+update agenda set color=@color where Fecha= @fecha
 
+GO
+select * from agenda
 create proc consultaragenda
 @codigoe int
 as

@@ -62,8 +62,21 @@ const writeMonth = (month) => {
         if (i == currentDay && monthNumber == c.getMonth()) {
                 document.getElementById(i).className += " calendar__today";
             }
-        if (vari.indexOf(fecha) > -1){
-            document.getElementById(i).className += " calendar_event1";
+            var prueba = vari.indexOf(fecha);
+        if (prueba > -1){
+            if(ev[prueba][7]==2){
+                document.getElementById(i).className += " calendar_event2";
+            }else if(ev[prueba][7]==3){
+                document.getElementById(i).className += " calendar_event3";
+            }else if(ev[prueba][7]==4){
+                document.getElementById(i).className += " calendar_event4";
+            }else if(ev[prueba][7]==5){
+                document.getElementById(i).className += " calendar_event5";
+            }else if(ev[prueba][7]==6){
+                document.getElementById(i).className += " calendar_event6";
+            }else{
+                document.getElementById(i).className += " calendar_event1";
+            }
         }
     }
 }
@@ -132,6 +145,7 @@ function fecha(mes, dia, año,num,fecha) {
     document.getElementById(num).className += " activate";
     document.getElementById("uno").innerHTML="Eventos del dia: "+dia + " de " + mes + " del " + año;
     document.getElementById("sii").href = 'ControladorAgenda?accion=add&desde=1&fecha='+fecha;
+    fecha2 = fecha;
     n = document.getElementsByClassName("activate");
     for (i =0; i< n.length; i++){
         if(n[i].id !=num){
@@ -141,12 +155,13 @@ function fecha(mes, dia, año,num,fecha) {
     
     
 }
+
 function lista(fecha){
     $(".eventolis").remove();
     for (i =0; i< ev.length; i++){
         
         if (ev[i][0]===fecha){
-            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}','${ev[i][5]}','${ev[i][6]}')"href="#ventana2" type="button" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
+            modal.innerHTML += `<label class='eventolis' onclick="consultar('${ev[i][1]}','${ev[i][2]}','${ev[i][3]}','${ev[i][0]}','${ev[i][4]}','${ev[i][5]}','${ev[i][6]}','${ev[i][7]}')"href="#ventana2" type="button" data-toggle="modal">${ev[i][1]}</label><br class="eventolis">`;
         
         }
     };
@@ -237,3 +252,11 @@ function restaraños(){
         </div>`;
     }
     };
+
+function cambiar(opcion){
+//    alert(opcion);
+var con =confirm('¿Cambiar el color del evento en el calendario?');
+          if(con){
+    location.href = 'ControladorAgenda?accion=actcolor&color='+opcion+'&fecha='+fecha2;
+          }
+}
