@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
             }else{
             System.out.println("<h2>Binvenido encargado"+user+"al sistema");
             System.out.println("<br><br>");
-            HttpSession sesion = request.getSession();
+            HttpSession sesion = request.getSession(true);
             sesion.setAttribute("Id", u);
             request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
                }

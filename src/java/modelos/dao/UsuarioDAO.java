@@ -73,7 +73,6 @@ public class UsuarioDAO implements Crud {
                 u.setApellido(rs.getString(5));
                 u.setEmail(rs.getString(6));
                 u.setRol(rs.getString(7));
-                cn.close();
             }
          } catch (Exception e) {
             System.err.println(e.getMessage());
