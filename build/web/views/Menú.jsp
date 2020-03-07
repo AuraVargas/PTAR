@@ -209,12 +209,24 @@
             	vari.push('<%=obj2.getFecha()%>');
                 ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTitulo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>','<%=obj2.getHoraInicio()%>','<%=obj2.getHoraFin()%>','<%=obj2.getColor()%>']);
                 <%
-                }
-                %>
-            
+            }
+         switch(u.getRol()){
+            case "Funcionario":
+            %>
             $(document).ready(function () {
-      $('.contenido').load('Template/menu.html');
-    });
+            $('.contenido').load('Template/menu.html');
+       });
+      <%
+          break;
+          case "Ayudante":
+      %>
+            $(document).ready(function () {
+      $('.contenido').load('Template/ayudante.html');
+      });
+      <%
+          break;
+         } 
+      %>
         </script>
         <script src="assets/js/Calendario.js"></script>
         <script src="assets/js/acciones.js"></script>

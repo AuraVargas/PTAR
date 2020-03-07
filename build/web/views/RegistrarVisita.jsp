@@ -170,9 +170,24 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
+         <%
+         switch(u.getRol()){
+            case "Funcionario":
+            %>
             $(document).ready(function () {
             $('.contenido').load('Template/menu.html');
-            });
+       });
+      <%
+          break;
+          case "Ayudante":
+      %>
+            $(document).ready(function () {
+      $('.contenido').load('Template/ayudante.html');
+      });
+      <%
+          break;
+         } 
+      %>
         </script>
         <!--===============================================================================================-->
 
