@@ -89,8 +89,8 @@
                 
                 <div class="col-4">
                     <hr>
-                    <button href="ControladorVisita?accion=listar" class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button>
-                    <button href="ControladorUsuario?accion=listar" class="btn btn-outline-success h-25 w-100">Gestionar usuarios <i class="fas fa-user"></i></button>
+                    <a href="ControladorVisita?accion=listar"> <button class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button></a>
+                    <a href="ControladorUsuario?accion=listar"><button class="btn btn-outline-success h-25 w-100">Gestionar usuarios <i class="fas fa-user"></i></button></a>
                 </div>
             </div>
         </div>
@@ -156,23 +156,7 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<a style="display: none" id="roll"><%=u.getRol()%></a>
 
 
         <!--===============================================================================================-->	
@@ -209,24 +193,24 @@
             	vari.push('<%=obj2.getFecha()%>');
                 ev.push(['<%=obj2.getFecha()%>','<%=obj2.getTitulo()%>','<%=obj2.getDescripcion()%>','<%=obj2.getEstado()%>','<%=obj2.getCodigoa()%>','<%=obj2.getHoraInicio()%>','<%=obj2.getHoraFin()%>','<%=obj2.getColor()%>']);
                 <%
-            }
-         switch(u.getRol()){
+            }%>
+         switch($("#roll").html()){
             case "Funcionario":
-            %>
+            
             $(document).ready(function () {
             $('.contenido').load('Template/menu.html');
        });
-      <%
+      
           break;
           case "Ayudante":
-      %>
+      
             $(document).ready(function () {
       $('.contenido').load('Template/ayudante.html');
       });
-      <%
+      
           break;
          } 
-      %>
+      
         </script>
         <script src="assets/js/Calendario.js"></script>
         <script src="assets/js/acciones.js"></script>
