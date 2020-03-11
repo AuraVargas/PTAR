@@ -182,7 +182,7 @@
           case "Ayudante":
       %>
             $(document).ready(function () {
-      $('.contenido').load('Template/ayudante.html');
+      $('.contenido').load('Template/ayudante.jsp');
       });
       <%
           break;
