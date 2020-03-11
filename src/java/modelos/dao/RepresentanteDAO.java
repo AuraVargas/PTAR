@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.vo.RepresentanteVO;
+import modelos.vo.UsuarioVO;
 
 /**
  *
@@ -34,8 +35,9 @@ public class RepresentanteDAO implements Crud{
     }
     //Fijate en este AURA!!
     @Override
-        public int validar (String Representante, String Contrasena){
-        return 0;
+        public UsuarioVO validar (String Representante, String Contrasena){
+            UsuarioVO u = null;
+        return u;
         }
         
     @Override

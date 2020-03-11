@@ -34,8 +34,9 @@ public class VisitasDAO implements Crud {
     }
     //Fijate en este AURA!!
     @Override
-        public int validar (String Visitas, String Contrasena){
-        return 0;
+        public UsuarioVO validar (String Visitas, String Contrasena){
+            UsuarioVO u = null;
+        return u;
         }
         
     @Override

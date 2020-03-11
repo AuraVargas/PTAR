@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.vo.EmpresaVO;
+import modelos.vo.UsuarioVO;
 
 /**
  *
@@ -34,8 +35,9 @@ public class EmpresaDAO implements Crud{
     }
     //Fijate en este AURA!!
     @Override
-        public int validar (String Empresa, String Contrasena){
-        return 0;
+        public UsuarioVO validar (String Empresa, String Contrasena){
+        UsuarioVO u = null;
+        return u;
         }
         public int validar2 (int nit){
         int r=0;

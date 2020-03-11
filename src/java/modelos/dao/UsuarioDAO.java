@@ -34,29 +34,9 @@ public class UsuarioDAO implements Crud {
         this.vo = vo;
     }
 
-    //Fijate en este AURA!!
     @Override
-     public int validar(String Usuario, String Contrasena) {
-        int r = 0;
-        try {
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            ps = cn.prepareStatement("exec Inicio ?,?");
-            ps.setString(1, Usuario);
-            ps.setString(2, Contrasena);
-            rs = ps.executeQuery();
-            if (rs.next() == true) {
-                r = 1;
-                cn.close();
-            }
-            
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-        return r;
-     }
-     public UsuarioVO getUsuario (String Usuario, String Contrasena){
-         UsuarioVO u = null;
+     public UsuarioVO validar(String Usuario, String Contrasena) {
+        UsuarioVO u = null;
         try {
             PreparedStatement ps = null;
             ResultSet rs = null;
@@ -74,10 +54,11 @@ public class UsuarioDAO implements Crud {
                 u.setEmail(rs.getString(6));
                 u.setRol(rs.getString(7));
             }
-         } catch (Exception e) {
+            
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return u;   
+        return u;
      }
      
      public int validar2 (String Correo){
@@ -90,7 +71,6 @@ public class UsuarioDAO implements Crud {
             rs=ps.executeQuery();
             if(rs.next()==true){
                 r=1;
-                cn.close();
             }
             
         } catch (Exception e) {
@@ -235,13 +215,33 @@ public class UsuarioDAO implements Crud {
         try {
             if (this.consultarContra() != null) {
                 String sentencia = "exec recoverPassword "
-                        +"?,?";
+                        +"?";
                 System.out.println(sentencia);
                 PreparedStatement ps1 = this.cn.prepareStatement(sentencia);
-                ps1.setString(2, vo.getContrasena());
                 ps1.setString(1, vo.getEmail());
                 ps1.execute();
 
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return false;
+    }
+    public boolean contrasena(){
+        try {
+            if (this.consultar() != null) {
+                String sentencia = "exec upPassword "
+                        + "?,?";
+                System.out.println(sentencia);
+                PreparedStatement ps = this.cn.prepareStatement(sentencia);
+                ps.setInt(1, vo.getID());
+                ps.setString(2, vo.getContrasena());
+                ps.execute();
                 return true;
             } else {
                 return false;

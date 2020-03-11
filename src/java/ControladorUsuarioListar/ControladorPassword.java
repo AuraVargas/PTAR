@@ -64,8 +64,6 @@ public class ControladorPassword extends HttpServlet {
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
                 }
-//                m.enviarEmail("Recuperacion de contraseña PTAR", vo.getContrasena(), vo.getEmail());
-//                System.out.println("Se ha enviado");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);   
                 
         }else{

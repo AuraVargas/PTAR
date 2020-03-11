@@ -7,12 +7,16 @@ package ControladorUsuarioListar;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import modelos.dao.UsuarioDAO;
+import modelos.vo.CorreoVO;
 import modelos.vo.UsuarioVO;
 
 /**
@@ -32,6 +36,7 @@ public class ControladorUsuario extends HttpServlet {
      */
     String listar="views/Usuario.jsp";
     String add="views/RegistrarUsuario.jsp";
+    String passwordUP ="views/EditarPassword.jsp";
     String edit="views/EditarUsuario.jsp";
     String menu="views/Menú.jsp";
     UsuarioVO vo = new UsuarioVO();
@@ -59,7 +64,18 @@ public class ControladorUsuario extends HttpServlet {
         vo.setEmail(request.getParameter("email"));
         vo.setContrasena(request.getParameter("ID"));
         dao.registrar();
+        
+        String correo= null;
+        correo = request.getParameter("email");
+        vo.setEmail(correo);
+        try {
+            dao.olvidePassword();
+            CorreoVO.sendMail(correo);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
         acceso=listar;
+       
                 
     }else if(action.equalsIgnoreCase("editar")){
         String ID= request.getParameter("ID");
@@ -77,6 +93,18 @@ public class ControladorUsuario extends HttpServlet {
                 vo.setRol(request.getParameter("txtrol"));
                 dao.actualizar();
                 acceso=listar;
+                
+    }else if(action.equalsIgnoreCase("editarpassword")){
+        String ID= request.getParameter("Id");
+        request.setAttribute("Id", ID);
+        acceso=passwordUP;
+        
+    }else if(action.equalsIgnoreCase("actualizarpassword")){
+        id = Integer.parseInt(request.getParameter("txtID"));
+        vo.setID(id);
+                vo.setContrasena(request.getParameter("txtpassword"));
+                dao.contrasena();
+                acceso=menu;
                 
     }else if(action.equalsIgnoreCase("eliminar")){
         id = Integer.parseInt(request.getParameter("ccc"));

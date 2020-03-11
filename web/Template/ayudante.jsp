@@ -1,9 +1,13 @@
+<%@page import="modelos.vo.UsuarioVO"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<%
+    UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+%>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
@@ -19,7 +23,7 @@ and open the template in the editor.
                                 <i class="fas fa-users"></i> Usuarios
                             </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorUsuario?accion=passw">Actualizar contraseÃ±a</a>
+                            <a class="dropdown-item" id="yy" href="ControladorUsuario?accion=editarpassword&Id=<%=u.getID()%>" >Actualizar contraseña</a>
                             </div>
                         </li>
                         
@@ -44,8 +48,9 @@ and open the template in the editor.
                         </li>
                         
                         <li class="nav-item active">
-                            <a class="nav-link" href="CerrarSesion"> <i class="fas fa-power-off"></i> Cerrar SesiÃ³n <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="CerrarSesion"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
                 </div>
+

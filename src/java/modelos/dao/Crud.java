@@ -14,7 +14,7 @@ import modelos.vo.UsuarioVO;
  */
 public interface Crud {
     
-    public int validar(String Usuario, String Contrasena);
+    public UsuarioVO validar(String Usuario, String Contrasena);
     public Object consultar();
     public boolean eliminar();
     public boolean  registrar();

@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
             //            vo.setEmail(user);
 //            vo.setContrasena(pass);
 //            int ca=dao.validar(user, pass);
-            UsuarioVO u = dao.getUsuario(user ,pass);
+            UsuarioVO u = dao.validar(user ,pass);
             if(u == null){
 //            if (ca > 0) {
             request.getRequestDispatcher("Login.jsp").forward(request, response);
