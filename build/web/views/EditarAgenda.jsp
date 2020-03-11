@@ -140,7 +140,7 @@
 
         </div>
 
-
+<a style="display: none" id="roll"><%=u.getRol()%></a>
 
 
         <!--===============================================================================================-->	
@@ -158,24 +158,22 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             })
-         <%
-         switch(u.getRol()){
+         switch($("#roll").html()){
             case "Funcionario":
-            %>
+            
             $(document).ready(function () {
             $('.contenido').load('Template/menu.html');
        });
-      <%
+      
           break;
           case "Ayudante":
-      %>
+      
             $(document).ready(function () {
       $('.contenido').load('Template/ayudante.jsp');
       });
-      <%
+      
           break;
          } 
-      %>
         </script>
         <!--===============================================================================================-->
 
