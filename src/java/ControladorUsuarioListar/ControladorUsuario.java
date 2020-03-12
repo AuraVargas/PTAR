@@ -104,6 +104,13 @@ public class ControladorUsuario extends HttpServlet {
         vo.setID(id);
                 vo.setContrasena(request.getParameter("txtpassword"));
                 dao.contrasena();
+                acceso="Login.jsp";
+                
+    }else if(action.equalsIgnoreCase("actualizarpassword2")){
+        id = Integer.parseInt(request.getParameter("txtID"));
+        vo.setID(id);
+                vo.setContrasena(request.getParameter("txtpassword"));
+                dao.contrasena();
                 acceso=menu;
                 
     }else if(action.equalsIgnoreCase("eliminar")){

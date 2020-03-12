@@ -82,7 +82,7 @@
                     </div>
                         <div class="container-login100-form-btn">
                             
-                            <button class="login100-form-btn" onclick="comprobarClave(event)" style="right:15%;bottom: 20%;position: absolute" type="submit" name="accion" value="actualizarpassword">
+                            <button class="login100-form-btn" onclick="comprobarClave(event)" style="right:15%;bottom: 20%;position: absolute" type="submit" name="accion" value="actualizarpassword2">
                             <b> Guardar</b>
                         </button>
                     </div>
