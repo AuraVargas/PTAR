@@ -264,7 +264,7 @@
 <!--===============================================================================================-->	
 <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
-<<<<<<< HEAD
+
         <!--===============================================================================================-->
         <script src="assets/vendor/bootstrap/js/popper.js" type="text/javascript"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -318,60 +318,6 @@
         <script src="assets/js/Calendario.js"></script>
         <script src="assets/js/acciones.js"></script>
         <!--===============================================================================================-->
-=======
-<!--===============================================================================================-->
-<script src="assets/vendor/bootstrap/js/popper.js" type="text/javascript"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<!--===============================================================================================-->
-<script src="assets/vendor/select2/select2.min.js" type="text/javascript"></script>
-<!--===============================================================================================-->
-<script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
-<script >
-$('.js-tilt').tilt({
-    scale: 1.1
-})
-
-</script>
-
-
-
-<%
-    AgendaVO lo = new AgendaVO();
-    AgendaDAO dao = new AgendaDAO(lo);
-    ArrayList<AgendaVO> list = (ArrayList) dao.listar();
-
-%>
-<script type="text/javascript">
-    var vari = new Array();
-    var ev = new Array();
-    <%                for (AgendaVO obj2 : list) {
-    %>
-    vari.push('<%=obj2.getFecha()%>');
-    ev.push(['<%=obj2.getFecha()%>', '<%=obj2.getTitulo()%>', '<%=obj2.getDescripcion()%>', '<%=obj2.getEstado()%>', '<%=obj2.getCodigoa()%>', '<%=obj2.getHoraInicio()%>', '<%=obj2.getHoraFin()%>', '<%=obj2.getColor()%>']);
-    <%
-}
-switch (u.getRol()) {
-case "Funcionario":
-    %>
-    $(document).ready(function () {
-        $('.contenido').load('Template/menu.html');
-    });
-    <%
-break;
-case "Ayudante":
-    %>
-    $(document).ready(function () {
-        $('.contenido').load('Template/ayudante.jsp');
-    });
-    <%
-break;
-}
-    %>
-</script>
-<script src="assets/js/Calendario.js"></script>
-<script src="assets/js/acciones.js"></script>
-<!--===============================================================================================-->
->>>>>>> prueba
 
 <script src="assets/js/main.js" type="text/javascript"></script>
 <%}%>
