@@ -105,7 +105,15 @@ update Usuarios
 set Contrasena = @Contrasena
 where @Email = Email
 go
-
+--Cambiar la contraseña 
+create proc upPassword
+@Id int,
+@Contrasena varchar(40)
+as
+update Usuarios
+set Contrasena = @Contrasena
+where ID = @Id
+go
 create proc crearUsu
 @Id int,
 @Contrasena int,
@@ -156,7 +164,7 @@ create proc registraragenda
 @horaInicio time,
 @horaFin time,
 @IdU int,
-@color in
+@color int
 as
 insert into agenda values(@code,@Fecha,@Descripcion,@Estado,@Titulo,@horaInicio,@horaFin,@IdU,@color)
 
@@ -174,7 +182,7 @@ as
 update agenda set Fecha=@Fecha, Descripcion = @Descripcion, Estado=@estado, Titulo=@Titulo,horaInicio = @horaInicio, horaFin=@horaFin where CodigoE=@codigoa
 
 GO
-alter proc actualizarcolor
+create proc actualizarcolor
 @color int,
 @fecha date
 as
@@ -182,6 +190,7 @@ update agenda set color=@color where Fecha= @fecha
 
 GO
 select * from agenda
+go
 create proc consultaragenda
 @codigoe int
 as

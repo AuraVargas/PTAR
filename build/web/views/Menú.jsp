@@ -92,16 +92,11 @@
                     </div>
                 <br><br><br>
                 
-<<<<<<< HEAD
-                <div class="col-4">
-                    <hr>
-                    <a href="ControladorVisita?accion=listar"> <button class="btn btn-outline-success h-25 w-100">Gestionar visitas  <i class="fas fa-male"></i></button></a>
-                    <a href="ControladorUsuario?accion=listar"><button class="btn btn-outline-success h-25 w-100">Gestionar usuarios <i class="fas fa-user"></i></button></a>
-=======
+
 
                 <div class="container-login100-form-btn">
                     <a class="peligro" style="right:27%;bottom: 22%;color: firebrick" href="CerrarSesion">Cancelar</a>
->>>>>>> prueba
+
                 </div>
                 <div class="container-login100-form-btn">
 
