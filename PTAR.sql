@@ -51,7 +51,7 @@ create table Empresa
 (
 NIT int primary key not null,
 IDEnc int not null,
-Descripcion varchar(100),
+Nombre varchar(100),
 constraint FK_Empresa_Representante foreign key (IDEnc) references Representante(IDRepresentante)
 )
 --Crear tabla visitas
@@ -68,7 +68,7 @@ constraint FK_Visitas_empresa foreign key (IDempresa) References empresa(NIT)
 go
 create view visitasCom
 as
-select v.codigoV, v.numeropersonas,v.CodiA,e.NIT,e.Descripcion,r.IDRepresentante,
+select v.codigoV, v.numeropersonas,v.CodiA,e.NIT,a.Estado,e.nombre as 'nombreEmp',r.IDRepresentante,
 r.Nombre,r.Correo,r.telefono,a.fecha as 'fecha',
 convert(char(5), a.horaInicio, 108)as'horaInicio',
 convert(char(5), a.horaFin, 108)as'horaFin'
@@ -80,7 +80,7 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values(12,'1234',304522909,'Alexandra','Barriga','salitre@acueducto.com.co','Funcionario')
+insert into Usuarios values(12345,'1234',304522909,'Alexandra','Barriga','aurayorleny@gmail.com','Funcionario')
 insert into Usuarios values(13,'1234',45678,'Aura','Vargas','a@gmail.com','Ayudante')
 
 go
@@ -315,19 +315,19 @@ GO
 create proc registrarempresa
 @NIT int,
 @IDEnc int,
-@Descripcion varchar(100)
+@nombre varchar(100)
 as
 insert into Empresa values
-(@nit,@IDEnc,@Descripcion)
+(@nit,@IDEnc,@nombre)
 
 GO
 
 create proc actualizarempresa
 @NIT int,
-@Descripcion varchar(100)
+@nombre varchar(100)
 as
 update empresa set 
-Descripcion=@Descripcion where NIT=@NIT
+nombre=@nombre where NIT=@NIT
 
 GO
 

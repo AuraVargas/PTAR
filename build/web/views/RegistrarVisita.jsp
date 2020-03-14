@@ -61,13 +61,14 @@
                     </div>
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Escribe el Número de personas que asistirán a la visita">
                         <input class="form-control input100" type="number"name="txtNumeroPersonas" placeholder="Número de personas que asistirán a la visita">
+                        <input type="hidden" name="txtIdUs" value="<%=u.getID()%>">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fas fa-users"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Dirección, nombre de la empresa etc">
-                        <input class="input1 input100" type="text" name="txtDescripcion" placeholder="Descripción de la Empresa ">
+                        <input class="form-control input100" type="text" name="txtNombre" placeholder="Nombre de la empresa ">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fas fa-envelope-open-text"></i>

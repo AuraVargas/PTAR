@@ -86,7 +86,7 @@ public class ControladorVisita extends HttpServlet {
                 }else{
                 Evo.setNit(Integer.parseInt(request.getParameter("txtnit")));
                 Evo.setRepresentante(Integer.parseInt(IDrepresentante));
-                Evo.setDescripcion(request.getParameter("txtDescripcion"));
+                Evo.setNombreE(request.getParameter("txtNombre"));
             }
             
                 int jaja =(int)(Math.random() * 10000) + 1;
@@ -97,10 +97,10 @@ public class ControladorVisita extends HttpServlet {
                 avo.setCodigoa(jaja);
                 avo.setHoraInicio(request.getParameter("txtincio"));
                 avo.setHoraFin(request.getParameter("txtfin"));
-                avo.setDescripcion(Evo.getDescripcion());
-                avo.setEstado("activo");
+                avo.setDescripcion(Evo.getNombreE());
+                avo.setEstado("Activo");
                 avo.setFecha(request.getParameter("txtfecha"));
-                avo.setFKUidentificacion(12);
+                avo.setFKUidentificacion(Integer.parseInt(request.getParameter("txtIdUs")));
                 avo.setTitulo("Visita");
                 
                 Vvo.setCodigoa(avo.getCodigoa());
@@ -131,7 +131,7 @@ public class ControladorVisita extends HttpServlet {
             
                 Evo.setNit(Integer.parseInt(request.getParameter("txtnit")));
                 Evo.setRepresentante(Rvo.getIDrepresentante());
-                Evo.setDescripcion(request.getParameter("txtDescripcion"));
+                Evo.setNombreE(request.getParameter("txtNombre"));
                 
                 
                 avo.setCodigoa(Integer.parseInt(request.getParameter("txtcodigoA")));

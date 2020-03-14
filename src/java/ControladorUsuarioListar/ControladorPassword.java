@@ -59,7 +59,8 @@ public class ControladorPassword extends HttpServlet {
         if(f > 0){
                 try {
                     dao.olvidePassword();
-                    CorreoVO.sendMail(correo);
+                    String mensaje="Su contraseña ha sido cambiado por el numero de su documento de identidad, por favor ingrese al sistema y cambie su contraseña por una más segura.";
+                    CorreoVO.sendMail(correo,mensaje,"Recuperar contraseña");
                     vo.setContrasena(request.getParameter("txtpass"));
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);

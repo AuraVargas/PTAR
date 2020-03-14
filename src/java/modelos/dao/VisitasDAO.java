@@ -53,7 +53,7 @@ public class VisitasDAO implements Crud {
                 temp.setNumeroPersonas(resultSet.getInt("NumeroPersonas"));
                 temp.setCodigoa(resultSet.getInt("codia"));
                 temp.setNit(resultSet.getInt("Nit"));
-                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setNombreE(resultSet.getString("nombreEmp"));
                 temp.setEncargadoID(resultSet.getInt("idrepresentante"));
                 temp.setNombre(resultSet.getString("nombre"));
                 temp.setCorreo(resultSet.getString("correo"));
@@ -79,7 +79,7 @@ public class VisitasDAO implements Crud {
         try {
             String consulta = "exec consultarvisitas ?";
             PreparedStatement ps = this.cn.prepareStatement(consulta);
-            ps.setString(1, "%"+vo.getDescripcion()+"%");
+            ps.setString(1, "%"+vo.getNombreE()+"%");
             ResultSet resultSet = ps.executeQuery();
 
             ArrayList<VisitasVO> list = new ArrayList<VisitasVO>();
@@ -90,7 +90,7 @@ public class VisitasDAO implements Crud {
                 temp.setNumeroPersonas(resultSet.getInt("NumeroPersonas"));
                 temp.setCodigoa(resultSet.getInt("codia"));
                 temp.setNit(resultSet.getInt("Nit"));
-                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setNombreE(resultSet.getString("nombreEmp"));
                 temp.setEncargadoID(resultSet.getInt("idrepresentante"));
                 temp.setNombre(resultSet.getString("nombre"));
                 temp.setCorreo(resultSet.getString("correo"));
@@ -189,11 +189,12 @@ public class VisitasDAO implements Crud {
                 temp.setNumeroPersonas(resultSet.getInt("NumeroPersonas"));
                 temp.setCodigoa(resultSet.getInt("codia"));
                 temp.setNit(resultSet.getInt("Nit"));
-                temp.setDescripcion(resultSet.getString("Descripcion"));
+                temp.setNombreE(resultSet.getString("nombreEmp"));
                 temp.setEncargadoID(resultSet.getInt("idrepresentante"));
                 temp.setNombre(resultSet.getString("nombre"));
                 temp.setCorreo(resultSet.getString("correo"));
                 temp.setFecha(resultSet.getString("fecha"));
+                temp.setEstado(resultSet.getString("estado"));
                 temp.setTelefono(resultSet.getInt("telefono"));
                 
                 list.add(temp);

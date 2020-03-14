@@ -288,9 +288,9 @@ public class UsuarioDAO implements Crud {
         vo.setID(23456);
         UsuarioDAO dao = new UsuarioDAO(vo);
 
-        ArrayList<UsuarioVO> pru =(ArrayList) dao.listar();
+        ArrayList<UsuarioVO> pru =(ArrayList) dao.listarFuncionario();
 for(UsuarioVO obj : pru){
-//    System.out.println(obj.getNombre());
+    System.out.println(obj.getEmail());
 //        vo.setUsuario("Juan25");
 //        vo.setContrasena("12334");
 //        vo.setNombre("Pepito");
@@ -306,8 +306,6 @@ for(UsuarioVO obj : pru){
 //        UsuarioVO temp = (UsuarioVO)dao.consultar();
 //        dao.consultar();
 //        
-        System.out.println(obj.getEmail());
-        System.out.println(obj.getContrasena());
 }
     }
     public Object autenticar() {
@@ -336,6 +334,24 @@ for(UsuarioVO obj : pru){
             System.out.println(ex.getMessage());
         }
 
+        return null;
+    }public ArrayList<Object> listarFuncionario() {
+        try {
+            String consulta = "SELECT * FROM Usuarios where rol = 'Funcionario'";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ResultSet resultSet = ps.executeQuery();
+
+            ArrayList<UsuarioVO> list = new ArrayList<UsuarioVO>();
+
+            while (resultSet.next()) {
+                UsuarioVO temp = new UsuarioVO();
+                temp.setEmail(resultSet.getString("Email"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         return null;
     }
 

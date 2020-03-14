@@ -68,10 +68,10 @@ public class EmpresaDAO implements Crud{
             EmpresaVO temp = new EmpresaVO();
             while (resultSet.next()) {
                 temp.setNit(resultSet.getInt("nit"));
-                temp.setDescripcion(resultSet.getString("descripcion"));
+                temp.setNombreE(resultSet.getString("nombre"));
 
             }
-            if (temp.getDescripcion()!= null) {
+            if (temp.getNombreE()!= null) {
                 return temp;
             } else {
                 return null;
@@ -113,7 +113,7 @@ public class EmpresaDAO implements Crud{
                         + "?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getNit());
-                ps.setString(3, vo.getDescripcion());
+                ps.setString(3, vo.getNombreE());
                 ps.setInt(2, vo.getRepresentante());
                 ps.execute();
 
@@ -139,7 +139,7 @@ public class EmpresaDAO implements Crud{
                 System.out.println(sentencia);
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setInt(1, vo.getNit());
-                ps.setString(2, vo.getDescripcion());
+                ps.setString(2, vo.getNombreE());
                 ps.execute();
 
                 return true;
@@ -166,7 +166,7 @@ public class EmpresaDAO implements Crud{
             while (resultSet.next()) {
                 EmpresaVO temp = new EmpresaVO();
                 temp.setNit(resultSet.getInt("nit"));
-                temp.setDescripcion(resultSet.getString("descripcion"));
+                temp.setNombreE(resultSet.getString("nombre"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;
@@ -181,7 +181,7 @@ public class EmpresaDAO implements Crud{
         
         EmpresaDAO dao = new EmpresaDAO(vo);
         vo.setNit(99999);
-        vo.setDescripcion("nnnnnnnn");
+        vo.setNombreE("nnnnnnnn");
         vo.setRepresentante(9876);
         if (dao.registrar()) {
             System.out.println("registrado exitosamente");
@@ -189,9 +189,9 @@ public class EmpresaDAO implements Crud{
             System.out.println("error en el registro");
         }
             EmpresaVO pru = (EmpresaVO)dao.consultar();
-            System.out.println(pru.getDescripcion());
+            System.out.println(pru.getNombreE());
 
-//            vo.setDescripcion("ppppppp");
+//            vo.setNombreE("ppppppp");
 //            dao.actualizar();
 //            dao.eliminar();
 //            

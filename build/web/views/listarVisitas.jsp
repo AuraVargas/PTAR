@@ -61,10 +61,11 @@
                 <table>
                     <thead>
                     <tr>
-                        <th> Descripción </th>
+                        <th> Nombre de empresa </th>
                         <th> Numero de personas que asisten </th>
                         <th> Nombre del Representante </th>
                         <th> Correo Electrónico </th>
+                        <th> Estado </th>
                         <th> Acciones</th>
                     </tr>
                     </thead>
@@ -78,10 +79,12 @@
                         for (VisitasVO obj : pru) {
                     %>
                     <tr>
-                        <td ><div class="des"><%=obj.getDescripcion()%></div></td>
+                        <td ><div class="des"><%=obj.getNombreE()%></div></td>
                         <td ><%=obj.getNumeroPersonas()%></td>
                         <td><%=obj.getNombre()%></td>
                         <td> <%=obj.getCorreo()%></td>
+                        <td> <%=obj.getEstado()%></td>
+                        
                         <td><a name ="codigov "class="btn tbn-primary btn-1g"value="<%=obj.getCodigov()%>"href="ControladorVisita?accion=editar&codigo=<%=obj.getCodigov()%>">Editar</a>
                             <a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita(<%=obj.getCodigov()%>)">Eliminar</a></td>
                     </tr>
@@ -123,7 +126,7 @@
 
                             for (VisitasVO obj : pru) {
                         %>
-                {descripcion: '<%=obj.getDescripcion()%>',personas: '<%=obj.getNumeroPersonas()%>',nombre: '<%=obj.getNombre()%>',correo: '<%=obj.getCorreo()%>'
+                {descripcion: '<%=obj.getNombre()%>',personas: '<%=obj.getNumeroPersonas()%>',nombre: '<%=obj.getNombre()%>',correo: '<%=obj.getCorreo()%>'
                     ,codigo: '<%=obj.getCodigov()%>'},
                 <%
                             }

@@ -56,6 +56,7 @@
                         <div class="col-md-6 mb-3">
                             <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
                                 <input type="text" class="form-control input100" required name="txtTitulo" placeholder="Titulo del evento">
+                                <input type="hidden" name="txtIdUs" value="<%=u.getID()%>">
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fab fa-elementor"></i>

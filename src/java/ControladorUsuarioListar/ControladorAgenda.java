@@ -8,13 +8,18 @@ package ControladorUsuarioListar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelos.dao.AgendaDAO;
+import modelos.dao.UsuarioDAO;
 import modelos.vo.AgendaVO;
+import modelos.vo.CorreoVO;
+import modelos.vo.UsuarioVO;
 
 /**
  *
@@ -68,9 +73,9 @@ public class ControladorAgenda extends HttpServlet {
                 }
                 vo.setCodigoa(jaja);
                 vo.setDescripcion(request.getParameter("txtDescripcion"));
-                vo.setEstado("activo");
+                vo.setEstado("Activo");
                 vo.setFecha(request.getParameter("txtfecha"));
-                vo.setFKUidentificacion(12);
+                vo.setFKUidentificacion(Integer.parseInt(request.getParameter("txtIdUs")));
                 vo.setTitulo(request.getParameter("txtTitulo"));
                 vo.setHoraInicio(request.getParameter("txtincio"));
                 vo.setHoraFin(request.getParameter("txtfin"));
@@ -90,6 +95,19 @@ public class ControladorAgenda extends HttpServlet {
                 ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
                 if(pru.isEmpty()){
                 dao.registrar();
+                UsuarioVO vo2 = new UsuarioVO();
+        vo2.setID(23456);
+        UsuarioDAO dao2 = new UsuarioDAO(vo2);
+
+        ArrayList<UsuarioVO> lista =(ArrayList) dao2.listarFuncionario();
+for(UsuarioVO obj2 : lista){
+        try {
+            String mensaje="Se ha registrado un nuevo evento : '"+request.getParameter("txtTitulo")+"' en el sistema.";
+            CorreoVO.sendMail(obj2.getEmail(),mensaje,"Nuevo evento");
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
                 String direccion=request.getParameter("desde");
 //                if(direccion.equals("1")){
 //                    acceso="views/Menú.jsp";

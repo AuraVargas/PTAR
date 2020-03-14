@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 public class EmpresaVO extends RepresentanteVO {
     private int Nit;
     private int representante;
-    private String descripcion;
+    private String nombre;
 
     public EmpresaVO() {
     }
@@ -26,8 +26,8 @@ public class EmpresaVO extends RepresentanteVO {
         return representante;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombreE() {
+        return nombre;
     }
 
     public void setNit(int Nit) {
@@ -38,8 +38,8 @@ public class EmpresaVO extends RepresentanteVO {
         this.representante = representante;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombreE(String nombre) {
+        this.nombre = nombre;
     }
     public static void main(String[] args) {
         Calendar c1 = Calendar.getInstance();

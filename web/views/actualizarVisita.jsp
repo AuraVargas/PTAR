@@ -89,8 +89,8 @@
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Dirección, nombre de la empresa etc">
-                        <label>Descripción de la Visita</label>
-                        <input class="input1 input100" type="text" value="<%=visita.getDescripcion()%>" name="txtDescripcion" placeholder="Descripción de la Empresa ">
+                        <label>Nombre de la Visita</label>
+                        <input class="input1 input100" type="text" value="<%=visita.getNombreE()%>" name="txtNombre" placeholder="Descripción de la Empresa ">
                         <span class="focus-input100"></span>
                         <br>
                         <span class="symbol-input100">

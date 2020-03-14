@@ -25,7 +25,7 @@ public class CorreoVO {
             UsuarioVO vo = new UsuarioVO();
         UsuarioDAO dao = new UsuarioDAO(vo);
         
-    public static void sendMail(String recipient)throws Exception{
+    public static void sendMail(String recipient, String mensaje, String asunto)throws Exception{
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
         
@@ -37,27 +37,26 @@ public class CorreoVO {
         String myAccountEmail = "lromero89989@gmail.com";
         String myAcountPassword = "auratienestecorreo888";
         
-        Session session = Session.getDefaultInstance(properties, new Authenticator(){
+        Session session = Session.getInstance(properties, new Authenticator(){
            @Override
             protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(myAccountEmail, myAcountPassword);
                 
             }
         });
-        Message message = prepareMessage(session, myAccountEmail, recipient);
+        Message message = prepareMessage(session, myAccountEmail, recipient, mensaje, asunto);
         Transport.send(message);
         System.out.println("Message set succesfully");
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String recipient) {
+    private static Message prepareMessage(Session session, String myAccountEmail, String recipient, String mensaje, String asunto) {
 
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-            message.setSubject("Recover password");
-            message.setText("Su contraseña ha sido cambiado por su Cedula de ciudadania, ingrese por favor al sistema"
-                    + "Y cambie la contraseña");
+            message.setSubject(asunto);
+            message.setText(mensaje);
             return message;
             
         } catch (Exception ex) {

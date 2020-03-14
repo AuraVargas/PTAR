@@ -89,8 +89,8 @@
                             <td ><%=obj.getTitulo()%></div></td>
                             <td ><%=obj.getFecha()%></td>
                             <td ><div class="des"><%=obj.getDescripcion()%></div></td>
+                            <td ><%=obj.getHoraInicio()%> - <%=obj.getHoraFin()%></td>
                             <td ><%=obj.getEstado()%></td>
-                            <td ><%=obj.getHoraInicio()%> a <%=obj.getHoraFin()%></td>
                             <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
                                 <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
                         </tr>
