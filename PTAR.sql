@@ -98,11 +98,10 @@ select * from Usuarios where Email = @EMAIL
 go
 --Volver al estado original la contraseña para ser cambiada
 create proc recoverPassword
-@Email varchar(30),
-@Contrasena varchar(40)
+@Email varchar(30)
 as
 update Usuarios
-set Contrasena = @Contrasena
+set Contrasena = ID
 where @Email = Email
 go
 --Cambiar la contraseña 
@@ -352,4 +351,4 @@ as
 delete agenda where codigoe=(select codia from deleted)
 go
 
-delete from agenda
+select * from Usuarios

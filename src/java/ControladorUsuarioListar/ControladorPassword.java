@@ -28,18 +28,6 @@ public class ControladorPassword extends HttpServlet {
     UsuarioVO temp = (UsuarioVO)dao.consultarContra();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControladorPassword</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControladorPassword at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
 
@@ -52,7 +40,8 @@ public class ControladorPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);        String correo= null;
+        processRequest(request, response);        
+        String correo= null;
         correo = request.getParameter("email");
         vo.setEmail(correo);
         int f = dao.validar2(correo);
@@ -61,7 +50,6 @@ public class ControladorPassword extends HttpServlet {
                     dao.olvidePassword();
                     String mensaje="Su contraseña ha sido cambiado por el numero de su documento de identidad, por favor ingrese al sistema y cambie su contraseña por una más segura.";
                     CorreoVO.sendMail(correo,mensaje,"Recuperar contraseña");
-                    vo.setContrasena(request.getParameter("txtpass"));
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
                 }

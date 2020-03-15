@@ -41,7 +41,7 @@
                         <img src="../assets/img/emo.png" alt="IMG">
                     </div>
 
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" action="../ControladorPassword" method="post">
                         <span class="login100-form-title">
                             <b> ¿Olvidaste tu contraseña? </b>
                         </span>
@@ -60,22 +60,6 @@
                                 Aceptar <br>
                             </button>
                         </div>
-
-                        <!--					<div class="text-center p-t-12">
-                                                                        <span class="txt1">
-                                                                                Olvidé mi nombre
-                                                                        </span>
-                                                                        <a class="txt2" href="recordar.html" target="_blank">
-                                                                           de Usuario / Contraseña?
-                                                                        </a>
-                                                                </div>-->
-
-                        <!--					<div class="text-center p-t-136">
-                                                                        <a class="txt2" href="#">
-                                                                                Create your Account
-                                                                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                                                                        </a>
-                                                                </div>-->
                     </form>
                 </div>
             </div>

@@ -10,6 +10,15 @@
 <%@page import="modelos.vo.VisitasVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+
+    response.setHeader("Pragma", "no-cache");
+    response.addHeader("Cache-control", "must-revalidate");
+    response.addHeader("Cache-control", "no-cache");
+    response.addHeader("Cache-control", "no-store");
+    response.setDateHeader("Expires", 0);
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
