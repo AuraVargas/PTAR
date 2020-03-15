@@ -194,7 +194,7 @@ const filtrar = () =>{
             case "Funcionario":
             
             $(document).ready(function () {
-            $('.contenido').load('Template/menu.html');
+            $('.contenido').load('Template/menu.jsp');
        });
       
           break;

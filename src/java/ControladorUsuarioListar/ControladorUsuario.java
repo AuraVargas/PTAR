@@ -84,12 +84,11 @@ public class ControladorUsuario extends HttpServlet {
     }else if(action.equalsIgnoreCase("Actualizar")){
         id = Integer.parseInt(request.getParameter("txtID"));
         vo.setID(id);
-                vo.setContrasena(request.getParameter("txtpass"));
                 vo.setTelefono(Integer.parseInt(request.getParameter("txttelefono")));
                 vo.setNombre(request.getParameter("txtnombre"));
                 vo.setApellido(request.getParameter("txtapellido"));
                 vo.setEmail(request.getParameter("txtemail"));
-                vo.setRol(request.getParameter("txtrol"));
+                vo.setEstado(request.getParameter("txtestado"));
                 dao.actualizar();
                 acceso=listar;
                 

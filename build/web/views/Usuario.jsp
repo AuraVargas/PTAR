@@ -87,6 +87,7 @@
                     <th>Rol</th>
                     <th>Numero de telefono</th>
                     <th>Correo</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                     
                 </tr>
@@ -104,6 +105,7 @@
                     <td><%=obj.getRol()%></td>
                     <td><%=obj.getTelefono()%></td>
                     <td><%=obj.getEmail()%></td>
+                    <td><%=obj.getEstado()%></td>
                     <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a><br>
                         <a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
                     
@@ -211,7 +213,7 @@ const filtrar = () =>{
             case "Funcionario":
             
             $(document).ready(function () {
-            $('.contenido').load('Template/menu.html');
+            $('.contenido').load('Template/menu.jsp');
        });
       
           break;

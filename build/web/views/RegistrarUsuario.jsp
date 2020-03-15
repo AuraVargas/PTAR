@@ -87,16 +87,6 @@
                                 <i class="fa fa-address-card"></i>
                             </span>
                         </div>
-                         <div class="wrap-input100 validate-input" data-validate = "Valid Rol is required">
-                        <select class="selectpicker input100 " data-live-search="true" name="rol"> 
-                            <option data-tokens="ketchup mustard"> Selecciona tu rol</option>
-                            <option data-tokens="mustard">Funcionario</option>
-                            <option data-tokens="frosting">Ayudante</option>
-                        </select>
-                              <span class="symbol-input100">
-                             <i class="fas fa-user-tag"></i>
-                            </span>
-                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                             <input class="input100" type="email" name="email" placeholder="Email ">
@@ -150,7 +140,7 @@
             case "Funcionario":
             
             $(document).ready(function () {
-            $('.contenido').load('Template/menu.html');
+            $('.contenido').load('Template/menu.jsp');
        });
       
           break;

@@ -19,7 +19,8 @@ Telefono int unique not null,
 Nombre varchar(50) not null,
 Apellido varchar(50) not null,
 Email varchar(50) unique not null,
-Rol varchar(20)check(rol in('Funcionario','Ayudante')) not null
+Rol varchar(20)check(rol in('Funcionario','Ayudante')) not null,
+Estado varchar(20)check(estado in('Activo','Inactivo')) not null
 )
 go
 -- Crear tabla de agenda
@@ -46,6 +47,7 @@ IDRepresentante int primary key not null,
 Correo varchar(50) not null,
 Nombre varchar(50) not null,
 telefono int not null)
+go
 --Crear tabla Empresa
 create table Empresa
 (
@@ -54,6 +56,7 @@ IDEnc int not null,
 Nombre varchar(100),
 constraint FK_Empresa_Representante foreign key (IDEnc) references Representante(IDRepresentante)
 )
+go
 --Crear tabla visitas
 create table Visitas
 (
@@ -80,8 +83,8 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values(12345,'1234',304522909,'Alexandra','Barriga','aurayorleny@gmail.com','Funcionario')
-insert into Usuarios values(13,'1234',45678,'Aura','Vargas','a@gmail.com','Ayudante')
+insert into Usuarios values(12345,'1234',304522909,'Alexandra','Barriga','aurayorleny@gmail.com','Funcionario','Activo')
+insert into Usuarios values(13,'1234',45678,'Aura','Vargas','a@gmail.com','Ayudante','Activo')
 
 go
 create PROC Inicio
@@ -120,22 +123,23 @@ create proc crearUsu
 @Nombre varchar(50),
 @Apellido varchar(50),
 @Email varchar(50),
-@Rol varchar(20)
+@Rol varchar(20),
+@Estado varchar(20)
 as
-insert into Usuarios values(@Id,@Contrasena,@Telefono, @Nombre,@Apellido, @Email, @Rol)
+insert into Usuarios 
+values(@Id,@Contrasena,@Telefono, @Nombre,@Apellido, @Email, @Rol, @Estado)
 go
 
 create proc actulizarUsu
 @ID int,
-@Contrasena varchar(40),
 @Telefono int,
 @Nombre varchar(50),
 @Apellido varchar(50),
 @Email varchar(50),
-@Rol varchar(20)
+@Estado varchar(20)
 as
 update Usuarios
-set Contrasena = @Contrasena, Telefono = @Telefono, Nombre = @Nombre,Apellido = @Apellido, Email = @Email, Rol = @Rol
+set Telefono = @Telefono, Nombre = @Nombre,Apellido = @Apellido, Email = @Email, Estado = @Estado
 where ID = @ID
 go
 

@@ -1,5 +1,14 @@
+<%-- 
+    Document   : menu
+    Created on : 15/03/2020, 11:40:13 AM
+    Author     : Santi
+--%>
 
 
+<%@page import="modelos.vo.UsuarioVO"%>
+<%
+    UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+%>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
                 </button>
@@ -19,6 +28,9 @@
                                 <a class="dropdown-item" href="ControladorUsuario?accion=add">Registrar Usuario</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" id="yy" href="ControladorUsuario?accion=editarpassword&Id=<%=u.getID()%>" >Actualizar contraseña</a>
+                                
                             </div>
                         </li>
                         <li class="nav-item active">
@@ -46,7 +58,7 @@
                             </div>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="CerrarSesion"> <i class="fas fa-power-off"></i> Cerrar SesiÃ³n <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="CerrarSesion"> <i class="fas fa-power-off"></i> Cerrar Sesión <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 

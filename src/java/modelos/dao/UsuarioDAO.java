@@ -168,6 +168,7 @@ public class UsuarioDAO implements Crud {
                 ps.setString(5, vo.getApellido());
                 ps.setString(6, vo.getEmail());
                 ps.setString(7, "Ayudante");
+                ps.setString(8, "Activo");
                 ps.execute();
 
                 ps.getGeneratedKeys();
@@ -188,16 +189,15 @@ public class UsuarioDAO implements Crud {
         try {
             if (this.consultar() != null) {
                 String sentencia = "exec actulizarUsu "
-                        + "?,?,?,?,?,?,?";
+                        + "?,?,?,?,?,?";
                 System.out.println(sentencia);
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setInt(1, vo.getID());
-                ps.setString(2, vo.getContrasena());
-                ps.setInt(3, vo.getTelefono());
-                ps.setString(4, vo.getNombre());
-                ps.setString(5, vo.getApellido());
-                ps.setString(6, vo.getEmail());
-                ps.setString(7, "Ayudante");
+                ps.setInt(2, vo.getTelefono());
+                ps.setString(3, vo.getNombre());
+                ps.setString(4, vo.getApellido());
+                ps.setString(5, vo.getEmail());
+                ps.setString(6, vo.getEstado());
                 ps.execute();
 
                 return true;
@@ -272,6 +272,7 @@ public class UsuarioDAO implements Crud {
                 temp.setEmail(resultSet.getString("Email"));
                 temp.setTelefono((int) resultSet.getLong("telefono"));
                 temp.setRol(resultSet.getString("Rol"));
+                temp.setEstado(resultSet.getString("Estado"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;

@@ -111,15 +111,15 @@
                             <i class="fa fa-phone-alt"></i>
                         </span>
                         </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Contraseña Obligatoria">
-                        <input class="input100" type="password" name="txtpass" value="<%=temp.getContrasena()%>"placeholder="Contraseña">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                        <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Contraseña Obligatoria">
-                        
+                    <div class="wrap-input100 validate-input" data-validate = "Valid esto is required">
+                        <select class="selectpicker input100 " data-live-search="true" name="txtestado" value="<%=temp.getEstado()%>" placeholder="Estado"> 
+                            <option data-tokens="ketchup mustard"> Selecciona estado</option>
+                            <option data-tokens="mustard">Activo</option>
+                            <option data-tokens="frosting">Inactivo</option>
+                        </select>
+                              <span class="symbol-input100">
+                             <i class="fas fa-user-tag"></i>
+                            </span>
                     </div>
                         <br><br><br>
                      
@@ -159,7 +159,7 @@
             case "Funcionario":
             
             $(document).ready(function () {
-            $('.contenido').load('Template/menu.html');
+            $('.contenido').load('Template/menu.jsp');
        });
       
           break;

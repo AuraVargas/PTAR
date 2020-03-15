@@ -18,6 +18,15 @@ public class UsuarioVO {
     private String Apellido;
     private String Email;
     private String Rol;
+    private String Estado;
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
 
     public void setRol(String Rol) {
         this.Rol = Rol;
