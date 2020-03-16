@@ -107,6 +107,13 @@ update Usuarios
 set Contrasena = ID
 where @Email = Email
 go
+--Consultar actividades
+create proc estadosUsuarios
+@Estado varchar(20)
+as
+select * from Usuarios
+where Estado = @Estado
+go
 --Cambiar la contraseña 
 create proc upPassword
 @Id int,
@@ -150,12 +157,6 @@ select * from Usuarios
 where ID = @ID
 go
 
-create proc borrarUsu
-@ID int
-as
-delete from Usuarios
-where ID = @ID
-go
 
 --agenda
 create proc registraragenda

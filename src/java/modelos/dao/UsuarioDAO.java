@@ -136,21 +136,6 @@ public class UsuarioDAO implements Crud {
 
     @Override
     public boolean eliminar() {
-        try {
-            if (this.consultar() != null) {
-                String sentencia = "exec borrarUsu ? ";
-                PreparedStatement ps = this.cn.prepareStatement(sentencia);
-                ps.setLong(1, vo.getID());
-                ps.execute();
-
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
         return false;
     }
 

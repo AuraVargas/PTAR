@@ -111,12 +111,6 @@ public class ControladorUsuario extends HttpServlet {
                 dao.contrasena();
                 acceso=menu;
                 
-    }else if(action.equalsIgnoreCase("eliminar")){
-        id = Integer.parseInt(request.getParameter("ccc"));
-        vo.setID(id);
-        dao.eliminar();
-        acceso=listar;
-        
     }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

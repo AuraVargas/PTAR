@@ -62,11 +62,12 @@
 
             <h4><b> Lista de usuarios</b></h4><hr>
             <nav class="navbar navbar-light">
-                <form class="form-inline" >
+                <form class="form-inline" > 
                     <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
                 </form>
             </nav>
-            </nav>
+            <button class="login100-form-btn" style="right:55%; bottom: 80%;position: absolute" type="submit" name="Activo" value="Activo"> Activo </button>
+            <button class="login100-form-btn" style="right:45%; bottom: 80%; position: absolute" type="submit" name="Inactivo" value="Inactivo"> Inactivo </button>
             <form class="text-center" action="ControladorUsuario">
                 <br>
 <% 
@@ -74,7 +75,6 @@
         UsuarioVO vo= new UsuarioVO();
         UsuarioDAO dao=new UsuarioDAO(vo);
         pru =(ArrayList) dao.listar();
-        
         
         %>
         <div class="scr">
@@ -107,7 +107,6 @@
                     <td><%=obj.getEmail()%></td>
                     <td><%=obj.getEstado()%></td>
                     <td><a href="ControladorUsuario?accion=editar&ID=<%=obj.getID()%>">Actualizar</a><br>
-                        <a href="#ventana1" data-toggle="modal"onclick="set(<%=obj.getID()%>);">Eliminar</a></td>
                     
                     
                 </tr>
@@ -132,9 +131,6 @@
                                             </div>
 
 
-                                        </div>
-                                        <div class="modal-footer" >
-                                            <Button class="btn btn-success" id="vvv" type="submit" name="accion" value="eliminar" >Eliminar</Button>
                                         </div>
                                     </div>
                                 </div>
