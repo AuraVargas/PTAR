@@ -64,6 +64,7 @@
 
             </nav>
         </header>
+                <br><br>
         <h3>Su usario se encuentra inactivo por el momento, por favor comuniquese con el funcionario para poder ingresar al sistema</h3>
         <div class="container-login100-form-btn">
             <a class="peligro" style="right:27%;bottom: 22%;color: firebrick" href="CerrarSesion">Volver</a>
