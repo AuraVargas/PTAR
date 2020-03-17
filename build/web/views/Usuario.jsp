@@ -63,12 +63,10 @@
             <h4><b> Lista de usuarios</b></h4><hr>
             <nav class="navbar navbar-light">
                 <form class="form-inline" > 
-                    <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
+                    <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar en usuarios" aria-label="Search"><button type="button" onclick="activos()" class="btn btn-success form-control mr-sm-2">Activos</button><button type="button" onclick="inactivos()" class="btn btn-success form-control mr-sm-2">Inactivos</button>
                 </form>
             </nav>
-            <button class="login100-form-btn" style="right:55%; bottom: 80%;position: absolute" type="submit" name="Activo" value="Activo"> Activo </button>
-            <button class="login100-form-btn" style="right:45%; bottom: 80%; position: absolute" type="submit" name="Inactivo" value="Inactivo"> Inactivo </button>
-            <form class="text-center" action="ControladorUsuario">
+            
                 <br>
 <% 
         ArrayList<UsuarioVO> pru = new ArrayList<UsuarioVO>();
@@ -136,7 +134,6 @@
                                 </div>
                             </div>
             </div>
-            </form>
         </div>
 
 <a style="display: none" id="roll"><%=u.getRol()%></a>
@@ -167,7 +164,7 @@
                             for(UsuarioVO obj : pru){
                         %>
                 {id: '<%=obj.getID()%>',nombre: '<%=obj.getNombre()%>',apellido: '<%=obj.getApellido()%>',rol: '<%=obj.getRol()%>'
-                    ,telefono: '<%=obj.getTelefono()%>',correo: '<%=obj.getEmail()%>'},
+                    ,telefono: '<%=obj.getTelefono()%>',correo: '<%=obj.getEmail()%>',estado: '<%=obj.getEstado()%>'},
                 <%
                             }
                         %>
@@ -185,6 +182,7 @@ const filtrar = () =>{
                 let rol = evento.rol.toLowerCase();
                 let telefono = evento.telefono.toLowerCase();
                 let correo = evento.correo.toLowerCase();
+                let estado = evento.estado.toLowerCase();
                 
                 if(id.indexOf(texto) !== -1 || nombre.indexOf(texto) !== -1 
                 || apellido.indexOf(texto) !== -1 || rol.indexOf(texto) !== -1 
@@ -193,13 +191,60 @@ const filtrar = () =>{
                             +nombre+'</td><td>'+apellido+
                             '</td><td>'+rol+'</td><td>'+
                     telefono+'</td><td>'+
-                    correo+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
+                    correo+'</td><td>'+
+                    estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
         '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
                 }
             }
             if (resultado.innerHTML == ''){
-                resultado.innerHTML += '<td > Evento no encontrado </td>'
+                resultado.innerHTML += '<td > Usuario no encontrado </td>'
             }
+        };
+        const activos = () =>{
+            resultado.innerHTML = '';
+            for(let evento of eventos){
+                let id = evento.id.toLowerCase();
+                let nombre = evento.nombre.toLowerCase();
+                let apellido = evento.apellido.toLowerCase();
+                let rol = evento.rol.toLowerCase();
+                let telefono = evento.telefono.toLowerCase();
+                let correo = evento.correo.toLowerCase();
+                let estado = evento.estado.toLowerCase();
+                
+                if(estado==="activo"){
+                    resultado.innerHTML += '<td>'+id+'</td><td>'
+                            +nombre+'</td><td>'+apellido+
+                            '</td><td>'+rol+'</td><td>'+
+                    telefono+'</td><td>'+
+                    correo+'</td><td>'+
+                    estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
+        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+                }
+            }
+
+        }
+        const inactivos = () =>{
+            resultado.innerHTML = '';
+            for(let evento of eventos){
+                let id = evento.id.toLowerCase();
+                let nombre = evento.nombre.toLowerCase();
+                let apellido = evento.apellido.toLowerCase();
+                let rol = evento.rol.toLowerCase();
+                let telefono = evento.telefono.toLowerCase();
+                let correo = evento.correo.toLowerCase();
+                let estado = evento.estado.toLowerCase();
+                
+                if(estado==="inactivo"){
+                    resultado.innerHTML += '<td>'+id+'</td><td>'
+                            +nombre+'</td><td>'+apellido+
+                            '</td><td>'+rol+'</td><td>'+
+                    telefono+'</td><td>'+
+                    correo+'</td><td>'+
+                    estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
+        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+                }
+            }
+
         }
                             formulario.addEventListener('keyup',filtrar);
             $('.js-tilt').tilt({
