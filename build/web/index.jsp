@@ -4,6 +4,9 @@
     Author     : HP
 --%>
  
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelos.dao.AgendaDAO"%>
+<%@page import="modelos.vo.AgendaVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 
@@ -37,6 +40,7 @@
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/icomoon.css">
     <link rel="stylesheet" href="assets/css/style2.css">
+    <link rel="stylesheet" href="assets/css/calendar.css">
   </head>
   <body><nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container d-flex align-items-center">
@@ -126,40 +130,36 @@
 					<div class="col-md-7 wrap-about ftco-animate align-items-stretch d-flex">
 						<div class="bg-white p-5">
 							<h2 class="mb-4">AGENDA DE EVENTOS</h2>
-							<!--<div class="row">
-								<div class="col-lg-6">
-									<div class="services">
-										<div class="icon mt-2 d-flex align-items-center"><span class="flaticon-collaboration"></span></div>
-										<div class="text media-body">
-											<h3>Business Solution</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-										</div>
-									</div>
-									<div class="services">
-										<div class="icon mt-2"><span class="flaticon-analysis"></span></div>
-										<div class="text media-body">
-											<h3>Financial Analysis</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="services">
-										<div class="icon mt-2"><span class="flaticon-search-engine"></span></div>
-										<div class="text media-body">
-											<h3>Marketing Strategy</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-										</div>
-									</div>
-									<div class="services">
-										<div class="icon mt-2"><span class="flaticon-handshake"></span></div>
-										<div class="text media-body">
-											<h3>Investment Planning</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-										</div>
-									</div>
-								</div>
-							</div>-->
+                                                        <label>Los dias que se encuentran coloreados estan ocupados total o parcialmente</label>
+							<div class="calendar" style='color: black'>
+                                                            
+                    <div class="calendar__info">
+                        <div class="calendar__prev" id="prev-month">&#9664;</div>
+                        <div class="calendar__month" id="month" onclick="meses()">Enero</div>
+                        <div class="calendar__year" id="year" onclick="mostraraños()">2020</div>
+                        <div class="calendar__next" id="next-month">&#9654;</div>
+                    </div>
+                    <div class="form-family mr-md-3" id="years">
+                        <div class="calendar__prev meses"style="width: 50px;"></div>
+                        <div class="calendar__prev meses" onclick="restaraños()" style="width: 220px;">&#9664;</div>
+
+                        <div class="calendar__prev meses"onclick="sumaraños()" style="width: 220px;">&#9654;</div>
+                    </div>
+                    <div class="form-family mr-md-3" id="contenido"></div>
+
+                    <div class="calendar__week"id="dias">
+                        <div class="calendar__day calendar__item">Lunes</div>
+                        <div class="calendar__day calendar__item">Martes</div>
+                        <div class="calendar__day calendar__item">Miercoles</div>
+                        <div class="calendar__day calendar__item">Jueves</div>
+                        <div class="calendar__day calendar__item">viernes</div>
+                        <div class="calendar__day calendar__item">Sabado</div>
+                        <div class="calendar__day calendar__item">Domingo</div>
+
+                    </div>
+
+                    <div class="calendar__dates" id="dates"></div>
+                </div>
 						</div>
 					</div>
 				</div>
@@ -647,8 +647,21 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <%
+        AgendaVO lo = new AgendaVO();
+        AgendaDAO dao = new AgendaDAO(lo);
+        ArrayList<AgendaVO> list = (ArrayList) dao.listar();
 
-
+    %>
+    <script type="text/javascript">
+        var vari = new Array();
+        <%                for (AgendaVO obj2 : list) {
+        %>
+        vari.push('<%=obj2.getFecha()%>');
+        
+        <%
+            }%>
+</script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
@@ -664,6 +677,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main2.js"></script>
+  <script src="assets/js/CalendarioIndex.js"></script>
+  <script src="assets/js/acciones.js"></script>
     
   </body>
 </html>

@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-mar-2020, 12:32:05
+    Author     : HP
+*/
+
+.calendar {
+  background: #82CACD;
+  width: 100%;
+  max-width: 600px;
+  margin: 1em auto;
+  padding: .5em 0; 
+  font-family: cursive;
+  border-radius: 10px 10px 10px 10px;
+  cursor: default
+}
+  .calendar__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 2em;
+    font-size: 1.3em;
+    text-transform: uppercase;}
+  .calendar__prev, .calendar__next {
+    color: #205D76;
+    cursor: pointer;
+    font-size: 1.3em; }
+  .calendar__prev {
+    margin-right: auto;
+  }
+  .calendar__next {
+    margin-left: auto; }
+  .calendar__week, .calendar__dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px; }
+  .calendar__month, .calendar__year {
+    padding: .5em 1em; }
+  .calendar__item {
+    
+    text-align: center;
+    line-height: 2;
+    }
+  .calendar__today {
+    background: #EB6E80;
+    color: white;
+    width: 50%;
+    border-radius: 50%;
+    margin: auto;
+  }
+  .calendar__last-days {
+    opacity: .3; }
+  .calendar_event1 {
+    border-style: solid;
+    width: 50%;
+    border-radius: 10%;
+    margin: auto;
+    border-color: #baffc9;
+    background-color: #baffc9
+  }
