@@ -96,7 +96,7 @@
                     %>
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha de la visita">
                         <label>Fecha de la Visita</label>
-                        <input type="date" class="form-control input100" name="txtfecha"  value="<%=c1.getWeekYear()+"/"+mes+"/"+dia%>"placeholder="Fecha de la visita">
+                        <input type="date" class="form-control input100" name="txtfecha" id="txtfecha" value="<%=c1.getWeekYear()+"/"+mes+"/"+dia%>"placeholder="Fecha de la visita">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="far fa-calendar-alt"></i>
@@ -154,9 +154,9 @@
                         </a>
                     </div>
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" style="right:15%;bottom: 1%;position: absolute" type="submit" name="accion" value="Registrar">
+                        <button onclick="validacion()" class="login100-form-btn"  style="right:15%;bottom: 1%;position: absolute" type="submit" name="accion" value="Registrar">
                             <b> Registrar</b>
-                        </button> 
+                        </button>
                     </div>
                 </div>
 
@@ -185,6 +185,10 @@
             
             $(document).ready(function () {
             $('.contenido').load('Template/menu.jsp');
+            var error = <%=session.getAttribute("Error")%>;
+            if(error == 1){
+            alert('ya existe un evento con esta hora.');
+            }
        });
       
           break;
@@ -192,10 +196,35 @@
       
             $(document).ready(function () {
       $('.contenido').load('Template/ayudante.jsp');
+      var error = <%=session.getAttribute("Error")%>;
+            if(error == 1){
+            alert('ya existe un evento con esta hora.');
+            }
       });
       
           break;
          } 
+         function validacion(){
+                   let dayInMillis=24*3600000;
+                   var f = new Date(document.getElementById("txtfecha").value);
+                   f.setDate(f.getDate() + 1);
+                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   
+                   var hoy = new Date();
+                   let days2=Math.floor(hoy.getTime()/dayInMillis);
+                   if(days1 < days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else if(days1 === days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else{
+                   }
+            }
+            <%
+                session.setAttribute("Error", 0);
+            %>
+
         </script>
         <!--===============================================================================================-->
 

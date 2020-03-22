@@ -108,7 +108,7 @@
                     </div> 
                     <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha de la visita">
                         <label>Fecha de la Visita</label>
-                        <input type="date" class="form-control input100" value="<%=visita.getFecha()%>" name ="txtfecha"  placeholder="Fecha de la visita">
+                        <input type="date" class="form-control input100" value="<%=visita.getFecha()%>" id ="txtfecha"  name ="txtfecha"  placeholder="Fecha de la visita">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="far fa-calendar-alt"></i>
@@ -176,7 +176,7 @@
                         
                 </div>
                         <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" style="right:15%;bottom: -53%;position: absolute" type="submit" name="accion"value="Actualizar" >
+                        <button onclick="validacion()" class="login100-form-btn" style="right:15%;bottom: -53%;position: absolute" type="submit" name="accion"value="Actualizar" >
                             <b> Actualizar</b>
                         </button> 
                     </div>
@@ -216,6 +216,23 @@
       
           break;
          } 
+         function validacion(){
+                   let dayInMillis=24*3600000;
+                   var f = new Date(document.getElementById("txtfecha").value);
+                   f.setDate(f.getDate() + 1);
+                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   
+                   var hoy = new Date();
+                   let days2=Math.floor(hoy.getTime()/dayInMillis);
+                   if(days1 < days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else if(days1 === days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else{
+                   }
+            }
         </script>
         <!--===============================================================================================-->
 

@@ -194,6 +194,7 @@ public class VisitasDAO implements Crud {
                 temp.setNombre(resultSet.getString("nombre"));
                 temp.setCorreo(resultSet.getString("correo"));
                 temp.setFecha(resultSet.getString("fecha"));
+                temp.setTitulo(resultSet.getString("titulo"));
                 temp.setEstado(resultSet.getString("estado"));
                 temp.setTelefono(resultSet.getInt("telefono"));
                 

@@ -1,7 +1,8 @@
 
 
 body{
-    font-family: cursive;
+    font-family: Antipasto;
+    font-size:larger;
     background-position:bottom;
     background-size: 100%;
     height: 100%;
@@ -9,13 +10,21 @@ body{
     background-attachment: fixed ;
 }
 nav{
-    font-family: cursive;
+    font-family: Antipasto;
     height: 60px;
 }
 .editar {
     
     
     /*    background-color: #5FA7B7;*/
+}
+a{
+   font-family: Antipasto;
+   font-size:large;
+}
+@font-face {
+font-family: Antipasto;
+src: url(../fonts/Antipasto_regular.otf);
 }
 .uno::after {
     content: "";
@@ -61,7 +70,8 @@ nav{
   max-width: 600px;
   margin: 1em auto;
   padding: .5em 0; 
-  font-family: cursive;
+  font-family: Antipasto;
+  font-size: medium;
   border-radius: 10px 10px 10px 10px;
   cursor: default
 }

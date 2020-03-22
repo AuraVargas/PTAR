@@ -193,7 +193,7 @@ const filtrar = () =>{
                     telefono+'</td><td>'+
                     correo+'</td><td>'+
                     estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
-        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+        '">Actualizar</a></td>';
                 }
             }
             if (resultado.innerHTML == ''){
@@ -218,7 +218,7 @@ const filtrar = () =>{
                     telefono+'</td><td>'+
                     correo+'</td><td>'+
                     estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
-        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+        '">Actualizar</a></td>';
                 }
             }
 
@@ -241,7 +241,7 @@ const filtrar = () =>{
                     telefono+'</td><td>'+
                     correo+'</td><td>'+
                     estado+'</td><td><a href="ControladorUsuario?accion=editar&ID='+id+
-        '">Actualizar</a><br><a href="#ventana1" data-toggle="modal"onclick="set('+id+');">Eliminar</a></td>';
+        '">Actualizar</a></td>';
                 }
             }
 

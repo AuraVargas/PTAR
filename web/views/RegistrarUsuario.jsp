@@ -141,6 +141,14 @@
             
             $(document).ready(function () {
             $('.contenido').load('Template/menu.jsp');
+            var error = <%=session.getAttribute("Error")%>;
+            if(error == 1){
+            alert('Ya se encuentra una persona registrada con este numero de identificación.');
+            }else if(error == 3){
+            alert('Ya se encuentra una persona registrada con este correo electronico.');
+            }else if(error == 2){
+            alert('Ya se encuentra una persona registrada con este telefono.');
+            }
        });
       
           break;
@@ -152,6 +160,9 @@
       
           break;
          } 
+         <%
+                session.setAttribute("Error", 0);
+            %>
         </script>
         <!--===============================================================================================-->
 

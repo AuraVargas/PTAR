@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
             System.out.println("<br><br>");
             HttpSession sesion = request.getSession(true);
             sesion.setAttribute("Id", u);
+            sesion.setAttribute("Error", 0);
             request.getRequestDispatcher("views/Menú.jsp").forward(request, response);
                }
          

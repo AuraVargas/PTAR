@@ -14,7 +14,7 @@
                 </button>
                 
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div  class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul id="items" class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>

@@ -314,10 +314,13 @@
         var vari = new Array();
         var ev = new Array();
         <%                for (AgendaVO obj2 : list) {
+                                if(obj2.getEstado().equalsIgnoreCase("Solicitado")){
+                            }else{
         %>
         vari.push('<%=obj2.getFecha()%>');
         ev.push(['<%=obj2.getFecha()%>', '<%=obj2.getTitulo()%>', '<%=obj2.getDescripcion()%>', '<%=obj2.getEstado()%>', '<%=obj2.getCodigoa()%>', '<%=obj2.getHoraInicio()%>', '<%=obj2.getHoraFin()%>', '<%=obj2.getColor()%>']);
         <%
+            }
             }%>
         switch ($("#roll").html()) {
             case "Funcionario":

@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/index.jsp</file>
-            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/assets/js/CalendarioIndex.js</file>
-            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/assets/css/Style.css</file>
-            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/assets/css/calendar.css</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/src/java/modelos/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/Error.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/RegistrarVisita.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/EditarPassword.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/src/java/ControladorUsuarioListar/ControladorAgenda.java</file>
         </group>
     </open-files>
 </project-private>

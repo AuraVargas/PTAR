@@ -43,11 +43,10 @@
     <link rel="stylesheet" href="assets/css/calendar.css">
   </head>
   <body><nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+          <img class="logo" src="assets/img/ICONOx2.png" style="position: absolute; left: 1%">
 	    <div class="container d-flex align-items-center">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-		  <img class="logo" src="assets/img/ICONOx2.png">
+				
+                
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="index.jsp" class="nav-link">INICIO</a></li>
@@ -93,36 +92,30 @@
 					<div class="col-md-5 wrap-about align-items-stretch d-flex">
 						<div class="ftco-animate bg-primary align-self-stretch px-4 py-5 w-100">
 							<h2 class="heading-white mb-4">APARTA TU VISITA</h2>
-							<form action="#" class="appointment-form ftco-animate">
+							<form action="ControladorVisita" class="appointment-form ftco-animate">
 		    				<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="Nombre Completo">
+		    					<input type="text" name="txtnombrerepresentante" class="form-control" placeholder="Nombre Completo del prepresentante" required>
 		    				</div>
 		    				<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="Correo Electronico">
+		    					<input type="email" name="txtcorreo" class="form-control" placeholder="Correo Electronico" required>
+                                                        <input type="number" name="txttelefono" class="form-control" placeholder="Numero de telefono o celular" required>
+                                                        <input type="number" name="txtidrepresentante" class="form-control" placeholder="Numero de identificación" required>
 		    				</div>
 	    					<div class="form-group">
 		    					<div class="form-field">
 	        					<div class="select-wrap">
-	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control">
-	                    	<option value="">Seleccione el tipo de entidad</option>
-	                      <option value="">Colegio</option>
-	                      <option value="">Empresa</option>
-	                      <option value="">Universidad</option>
-	                      <option value="">Jardin</option>
-	                      <option value="">Grupo variado</option>
-	                    </select>
+                          
+	                    <input type="text" class="form-control" name="txtNombre" placeholder="Nombre de la entidad que solicita la visita" required>
+                            <input type="number" class="form-control" name="txtnit" placeholder="NIT de la entidad" required>
 	                  </div>
 		              </div>
 		    				</div>
 	    					<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="Celular">
-		    				</div>
-	    					<div class="form-group">
-		              <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Asunto: Escriba departe de que empresa nos desea visitar"></textarea>
+		              <input type="number" class="form-control" name="txtNumeroPersonas" placeholder="Numero de personas que asistiran a la visita"required>
+                              <input type="date" class="form-control"name="txtfecha" id="txtfecha" placeholder="Fecha en la que desea solicitar la visita"required>
 		            </div>
 		            <div class="form-group">
-		              <input type="submit" value="Solicitar Visita" class="btn btn-secondary py-3 px-4">
+                                <button type="submit" onclick="validacion()" name="accion" value="Solicitud" class="btn btn-secondary py-3 px-4">Solicitar Visita</button>
 		            </div>
 		    			</form>
 						</div>
@@ -656,11 +649,37 @@
     <script type="text/javascript">
         var vari = new Array();
         <%                for (AgendaVO obj2 : list) {
+                                if(obj2.getEstado().equalsIgnoreCase("Solicitado")){
+                            }else{
         %>
         vari.push('<%=obj2.getFecha()%>');
         
         <%
+            }
             }%>
+               function validacion(){ 
+                   let dayInMillis=24*3600000;
+                   var f = new Date(document.getElementById("txtfecha").value);
+                   f.setDate(f.getDate() + 1);
+                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   
+                   var hoy = new Date();
+                   let days2=Math.floor(hoy.getTime()/dayInMillis);
+                   if(days1 < days2){
+                       alert("La fecha es anterior");
+                       event.preventDefault();
+                   }else if(days1 === days2){
+                       alert("La fecha es anterior");
+                       event.preventDefault();
+                   }else{
+                       var a= confirm("Al solicitar la visita se le enviara al funcionario a cargo de la gestión social de la planta para que revise la solicitud y se contacte con la persona que sea registrada");
+                       if (a){
+                           
+                       }else{
+                           event.preventDefault();
+                       }
+                   }
+            }
 </script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>

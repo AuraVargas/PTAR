@@ -96,7 +96,7 @@
                             <select class="selectpicker input100" data-live-search="true"  name="txtestado">
                                 <option data-tokens="<%=age.getEstado()%>"><%=age.getEstado()%></option>
                                 <option data-tokens="Activo"> Activo</option>
-                                <option data-tokens="Cancelado">Cancelado</option>
+                                <option data-tokens="Inactivo">Inactivo</option>
                             </select>
                             <span class="focus-input100"></span>
                             
@@ -128,7 +128,7 @@
                         </span>
                     </div>
                     <div class="wrap-input3 validate-input col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha de la visita">
-                        <input type="date" class="form-control input100"  value="<%=age.getFecha()%>" name ="txtfecha"   placeholder="Fecha de la visita">
+                        <input type="date" class="form-control input100"  value="<%=age.getFecha()%>" name ="txtfecha" id ="txtfecha"   placeholder="Fecha de la visita">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="far fa-calendar-alt"></i>
@@ -139,7 +139,7 @@
                         <a class="peligro"style="right:25%;bottom: 17%;color: firebrick" href="ControladorAgenda?accion=listar">Cancelar</a>
                     </div>
                         <div class="container-login100-form-btn">
-                        <button class="login100-form-btn"style="right:13%;bottom: 15%;position: absolute" type="submit" name="accion" value="Actualizar">
+                        <button class="login100-form-btn" onclick="validacion()" style="right:13%;bottom: 15%;position: absolute" type="submit" name="accion" value="Actualizar">
                             <b> Guardar</b>
                         </button> 
                     </div>
@@ -183,6 +183,23 @@
       
           break;
          } 
+         function validacion(){
+                   let dayInMillis=24*3600000;
+                   var f = new Date(document.getElementById("txtfecha").value);
+                   f.setDate(f.getDate() + 1);
+                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   
+                   var hoy = new Date();
+                   let days2=Math.floor(hoy.getTime()/dayInMillis);
+                   if(days1 < days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else if(days1 === days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else{
+                   }
+            }
         </script>
         <!--===============================================================================================-->
 
