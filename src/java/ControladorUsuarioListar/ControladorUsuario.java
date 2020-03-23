@@ -68,7 +68,7 @@ public class ControladorUsuario extends HttpServlet {
         String correo= null;
         correo = request.getParameter("email");
         try {
-            String mensaje="Bienvenido "+request.getParameter("nombre")+" "+request.getParameter("apellido")+", Usted ha sido registrado en el sitio web de la PTAR(Planta de tratamiento de aguas residuales) fase I, podra inciar sesion por medio de su correo electronico: "+correo+" y su contraseña la cual es su numero de identificación.";
+            String mensaje="¡Bienvenido! "+request.getParameter("nombre")+" "+request.getParameter("apellido")+", Haz sido registrado en el sitio web de la PTAR(Planta de tratamiento de aguas residuales) fase I, podrás inciar sesión por medio de tu correo electrónico: "+correo+" y contraseña la cual es tu número de identificación.";
             CorreoVO.sendMail(correo,mensaje,"Bienvenido a PTAR fase I");
         } catch (Exception ex) {
             Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);

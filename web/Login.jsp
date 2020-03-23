@@ -38,14 +38,20 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
+                    <span class="login100-form-title">
+                        <b> INICIA SESIÓN</b>
+                    </span>
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="assets/img/acueducto.png" alt=""/>
+                        <div>
+                            <img class="rana" src="assets/img/acueducto.png" alt=""/>
+                        </div>
+                        <div>
+                            <img class="P" src="assets/img/Captura233.png" alt=""/>
+                        </div>
                     </div>
 
                     <form action ="Login" class="login100-form validate-form" method="POST">
-                        <span class="login100-form-title">
-                            <b> INICIA SESIÓN</b>
-                        </span>
+
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid Usuario is required">
                             <input class="input100" type="text" name="User" placeholder="Usuario ">
@@ -62,22 +68,23 @@
                                 <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
                         </div>
+                        <div class="text-center p-t-12">
+                            <span class="txt1">
+                                 <b>Olvidé mi </b>
+                            </span>
+                            <a class="txt2" href="views/RecuperarContra.jsp" target="_blank">
+                                <b> Usuario / Contraseña?</b>
+                            </a>
+                        </div>
 
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
-                                Aceptar
+                                <b>
+                                    Aceptar </b>
                             </button>
 
                         </div>
                         <br>
-                        <div class="text-center p-t-12">
-                            <span class="txt1">
-                                Olvidé mi nombre
-                            </span>
-                            <a class="txt2" href="views/RecuperarContra.jsp" target="_blank">
-                                de Usuario / Contraseña?
-                            </a>
-                        </div>
 
                         <!--					<div class="text-center p-t-136">
                                                                         <a class="txt2" href="#">
