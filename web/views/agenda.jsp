@@ -79,8 +79,8 @@
                             <th>Titulo de evento</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
-                            <th>Estado</th>
                             <th>Hora</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                         
@@ -92,6 +92,8 @@
                             ArrayList<AgendaVO> list = (ArrayList) dao.listar();
 
                             for (AgendaVO obj : list) {
+                                if(obj.getEstado().equalsIgnoreCase("Solicitado")){
+                            }else{
                         %>
                         
                         <tr >
@@ -104,6 +106,7 @@
                                 <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
                         </tr>
                         <%
+                            }
                             }
                         %>
                         </tbody>
@@ -175,12 +178,15 @@ const filtrar = () =>{
                 if(titulo.indexOf(texto) !== -1 || fecha.indexOf(texto) !== -1 
                 || descripcion.indexOf(texto) !== -1 || estado.indexOf(texto) !== -1 
                 || horainicio.indexOf(texto) !== -1 || horafin.indexOf(texto) !== -1){
+            if(estado === "solicitado"){
+                }else{
                     resultado.innerHTML += '<td >'+titulo+'</div></td>\n\
                     <td >'+fecha+'</td><td ><div class="des">'+descripcion+'</div></td>\n\
-                    <td >'+estado+'</td><td >'+horainicio+' a '+horafin+'</td>\n\
+                    <td >'+horainicio+' a '+horafin+'</td><td >'+estado+'</td>\n\
                     <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo='+codigo+'">Editar</a>\n\
                     <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar('+codigo+');">Eliminar</a> </td>';
-                }
+                }    
+            }
             }
             if (resultado.innerHTML == ''){
                 resultado.innerHTML += '<td > Evento no encontrado </td>'

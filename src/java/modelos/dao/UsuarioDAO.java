@@ -145,7 +145,7 @@ public class UsuarioDAO implements Crud {
         try {
 
             if (this.consultar() == null) {
-                String sentencia = "exec crearUsu " + "?,?,?,?,?,?,?";
+                String sentencia = "exec crearUsu " + "?,?,?,?,?,?,?,?";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, vo.getID());
                 ps.setString(2, vo.getContrasena());
@@ -267,33 +267,96 @@ public class UsuarioDAO implements Crud {
         }
         return null;
     }
+    public ArrayList<Object> conscorreo() {
+        try {
+            String consulta = "SELECT * FROM Usuarios where email = ? and id != ?";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ps.setString(1, vo.getEmail());
+            ps.setInt(2, vo.getID());
+            ResultSet resultSet = ps.executeQuery();
 
+            ArrayList<UsuarioVO> list = new ArrayList<UsuarioVO>();
+
+            while (resultSet.next()) {
+                UsuarioVO temp = new UsuarioVO();
+                temp.setEmail(resultSet.getString("Email"));
+                temp.setTelefono((int) resultSet.getLong("telefono"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+    public ArrayList<Object> consid() {
+        try {
+            String consulta = "SELECT * FROM Usuarios where id = ?";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ps.setInt(1, vo.getID());
+            ResultSet resultSet = ps.executeQuery();
+
+            ArrayList<UsuarioVO> list = new ArrayList<UsuarioVO>();
+
+            while (resultSet.next()) {
+                UsuarioVO temp = new UsuarioVO();
+                temp.setID(resultSet.getInt("id"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+    public ArrayList<Object> constelefono() {
+        try {
+            String consulta = "SELECT * FROM Usuarios where telefono = ? and id != ?";
+            PreparedStatement ps = this.cn.prepareStatement(consulta);
+            ps.setInt(1, vo.getTelefono());
+            ps.setInt(2, vo.getID());
+            ResultSet resultSet = ps.executeQuery();
+
+            ArrayList<UsuarioVO> list = new ArrayList<UsuarioVO>();
+
+            while (resultSet.next()) {
+                UsuarioVO temp = new UsuarioVO();
+                temp.setTelefono((int) resultSet.getLong("telefono"));
+                list.add(temp);
+            }
+            return (ArrayList<Object>) (Object) list;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
 
     public static void main(String[] args) throws SQLException {
 
         UsuarioVO vo = new UsuarioVO();
-        vo.setID(23456);
+        vo.setID(13);
+//        vo.setTelefono(45678);
         UsuarioDAO dao = new UsuarioDAO(vo);
-
-        ArrayList<UsuarioVO> pru =(ArrayList) dao.listarFuncionario();
-for(UsuarioVO obj : pru){
-    System.out.println(obj.getEmail());
-//        vo.setUsuario("Juan25");
-//        vo.setContrasena("12334");
+//vo.setEmail("aurayorleny@gmail.com");
+//        ArrayList<UsuarioVO> pru =(ArrayList) dao.conscorreo();
+//for(UsuarioVO obj : pru){
+//    System.out.println(obj.getEmail());
+        vo.setContrasena("12334");
 //        vo.setNombre("Pepito");
 //        vo.setTelefono(300300300);
-//        vo.setEmail("dm@dm.co");
-//        vo.setRol("funcionario");
+        
+//        vo.setRol("ayudante");
+//        vo.setApellido("ayudante");
 //        if (dao.actualizar()) {
-//            System.out.println("actualizacion exitosa");
+//            System.out.println(obj.getTelefono());
 //        } else {
 //            System.out.println("error en la actualizacion");
 //        }
 //        vo.setID(123456);
 //        UsuarioVO temp = (UsuarioVO)dao.consultar();
-//        dao.consultar();
+        dao.contrasena();
 //        
-}
+//}
     }
     public Object autenticar() {
         try {
@@ -333,6 +396,7 @@ for(UsuarioVO obj : pru){
             while (resultSet.next()) {
                 UsuarioVO temp = new UsuarioVO();
                 temp.setEmail(resultSet.getString("Email"));
+                temp.setID(resultSet.getInt("id"));
                 list.add(temp);
             }
             return (ArrayList<Object>) (Object) list;

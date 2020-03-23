@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/views/Usuario.jsp</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/src/java/Conexion/Conexion.java</file>
+=======
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/src/java/modelos/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/Error.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/RegistrarVisita.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/web/views/EditarPassword.jsp</file>
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/src/java/ControladorUsuarioListar/ControladorAgenda.java</file>
+>>>>>>> c49b989d09fdc6a4297ceba7b1b5139c83caef26
         </group>
     </open-files>
 </project-private>

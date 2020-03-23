@@ -8,20 +8,25 @@ package ControladorUsuarioListar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelos.dao.AgendaDAO;
 import modelos.dao.EmpresaDAO;
 import modelos.dao.RepresentanteDAO;
+import modelos.dao.UsuarioDAO;
 import modelos.dao.VisitasDAO;
 import modelos.vo.AgendaVO;
 import modelos.vo.EmpresaVO;
 import modelos.vo.RepresentanteVO;
+import modelos.vo.UsuarioVO;
 import modelos.vo.VisitasVO;
-
+import modelos.vo.CorreoVO;
 /**
  *
  * @author HP
@@ -113,9 +118,22 @@ public class ControladorVisita extends HttpServlet {
                 Edao.registrar();
                 adao.registrar();
                 Vdao.registrar();
+                UsuarioVO vo2 = new UsuarioVO();
+        UsuarioDAO dao2 = new UsuarioDAO(vo2);
+
+        ArrayList<UsuarioVO> lista =(ArrayList) dao2.listarFuncionario();
+for(UsuarioVO obj2 : lista){
+        try {
+            String mensaje="Se ha registrado una nueva visita: "+avo.getTitulo()+" en el sistema, para el día "+avo.getFecha()+" de "+avo.getHoraInicio()+" a "+avo.getHoraFin()+".";
+            CorreoVO.sendMail(obj2.getEmail(),mensaje,"Nueva visita");
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
                 acceso=listar;
                 }else{
-                    acceso="views/Error.html";
+                    request.setAttribute("Error", 1);
+                    acceso="views/Error.jsp";
                 }
                 
         }else if(action.equalsIgnoreCase("editar")){
@@ -157,6 +175,68 @@ public class ControladorVisita extends HttpServlet {
         Vvo.setCodigov(Integer.parseInt(request.getParameter("ccc")));
         Vdao.eliminar();
         acceso=listar;
+        }else if(action.equalsIgnoreCase("Solicitud")){
+                
+                String IDrepresentante,Telefono, correo, nombre;
+            IDrepresentante = request.getParameter("txtidrepresentante");
+            Telefono = request.getParameter("txttelefono");
+            correo = request.getParameter("txtcorreo");
+            nombre = request.getParameter("txtnombrerepresentante");
+            numeroP =Integer.parseInt(request.getParameter("txtNumeroPersonas"));
+            
+            int re=adao.validar2(Integer.parseInt(IDrepresentante));
+            if (re > 0) {
+                
+                }else{
+                Rvo.setIDrepresentante(Integer.parseInt(IDrepresentante));
+                Rvo.setNombre(nombre);
+                Rvo.setTelefono(Integer.parseInt(Telefono));
+                Rvo.setCorreo(correo);
+            }
+                
+               int em=adao.validar2(Integer.parseInt(request.getParameter("txtnit")));
+            if (em > 0) {
+                
+                }else{
+                Evo.setNit(Integer.parseInt(request.getParameter("txtnit")));
+                Evo.setRepresentante(Integer.parseInt(IDrepresentante));
+                Evo.setNombreE(request.getParameter("txtNombre"));
+            }
+                int jaja =(int)(Math.random() * 10000) + 1;
+                int ca=adao.validar2(jaja);
+                while (ca > 0) {
+                jaja =(int)(Math.random() * 10000) + 1;
+                }
+                avo.setCodigoa(jaja);
+                avo.setDescripcion(Evo.getNombreE());
+                avo.setEstado("Solicitado");
+                avo.setFecha(request.getParameter("txtfecha"));
+                UsuarioVO vo2 = new UsuarioVO();
+        UsuarioDAO dao2 = new UsuarioDAO(vo2);
+        ArrayList<UsuarioVO> lista2 =(ArrayList) dao2.listarFuncionario();
+for(UsuarioVO obj2 : lista2){
+                avo.setFKUidentificacion(obj2.getID());
+                try {
+            String mensaje="Se ha solicitado una visita con la siguiente entidad: ''"+Evo.getNombreE()+"'' identificada con el siguiente NIT: "+Evo.getNit()+" para "+request.getParameter("txtNumeroPersonas")+" personas, representados por "+Rvo.getNombre()+", correo "+Rvo.getCorreo()+" y teléfono "+Rvo.getTelefono()+" para la fecha "+avo.getFecha()+", por favor contacte con la persona representante y acepte o elimine la solicitud en el sistema.";
+            CorreoVO.sendMail(obj2.getEmail(),mensaje,"Solicitud de visita");
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+                avo.setTitulo("Visita");
+                Vvo.setCodigoa(avo.getCodigoa());
+                Vvo.setEmpresa(Evo.getNit());
+                Vvo.setEncargadoID(Rvo.getIDrepresentante());
+                Vvo.setNumeroPersonas(numeroP);
+                
+                Rdao.registrar();
+                Edao.registrar();
+                adao.registrar();
+                Vdao.registrar();
+//                
+                acceso="views/red.html";
+//                
+                
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

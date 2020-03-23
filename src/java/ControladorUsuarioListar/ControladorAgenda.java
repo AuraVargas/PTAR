@@ -96,13 +96,12 @@ public class ControladorAgenda extends HttpServlet {
                 if(pru.isEmpty()){
                 dao.registrar();
                 UsuarioVO vo2 = new UsuarioVO();
-        vo2.setID(23456);
         UsuarioDAO dao2 = new UsuarioDAO(vo2);
 
         ArrayList<UsuarioVO> lista =(ArrayList) dao2.listarFuncionario();
 for(UsuarioVO obj2 : lista){
         try {
-            String mensaje="Se ha registrado un nuevo evento : '"+request.getParameter("txtTitulo")+"' en el sistema.";
+            String mensaje="Se ha registrado un nuevo evento: "+vo.getTitulo()+" en el sistema, para el día "+vo.getFecha()+" de "+vo.getHoraInicio()+" a "+vo.getHoraFin()+", con la siguiente descripción: "+vo.getDescripcion()+".";
             CorreoVO.sendMail(obj2.getEmail(),mensaje,"Nuevo evento");
         } catch (Exception ex) {
             Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,7 +114,8 @@ for(UsuarioVO obj2 : lista){
                 acceso=listar;
 //                }
                 }else{
-                    acceso="views/Error.html";
+                    request.setAttribute("Error", 1);
+                    acceso="views/Error.jsp";
                 }
     }else if(action.equalsIgnoreCase("editar")){
         request.setAttribute("desde", request.getParameter("desde"));
@@ -138,7 +138,24 @@ for(UsuarioVO obj2 : lista){
                 acceso=listar;
                 
                 }else{
-                    acceso="views/Error.html";
+                    request.setAttribute("Error", 1);
+                    acceso="views/Error.jsp";
+                }
+    }else if(action.equalsIgnoreCase("Aceptar")){
+        id = Integer.parseInt(request.getParameter("txtcodigo"));
+        vo.setCodigoa(id);
+                vo.setEstado("Activo");
+                vo.setHoraInicio(request.getParameter("txtincio"));
+                vo.setHoraFin(request.getParameter("txtfin"));
+                ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendahora();
+                if(pru.isEmpty()){
+                dao.aceptarSolicitud();
+                
+                acceso="views/listarVisitas.jsp";
+                
+                }else{
+                    request.setAttribute("Error", 1);
+                    acceso="views/Error.jsp";
                 }
     }else if(action.equalsIgnoreCase("eliminar")){
         id = Integer.parseInt(request.getParameter("txtcodigo"));

@@ -14,22 +14,23 @@ go
 create table Usuarios
 (
 ID int primary key not null,
-Contrasena varchar(40)not null,
+Contrasena varbinary(50) not null,
 Telefono int unique not null,
 Nombre varchar(50) not null,
 Apellido varchar(50) not null,
 Email varchar(50) unique not null,
 Rol varchar(20)check(rol in('Funcionario','Ayudante')) not null,
-Estado varchar(20)check(estado in('Activo','Inactivo')) not null
+Estado varchar(30) check(Estado in('Activo','Inactivo')) not null
 )
 go
+
 -- Crear tabla de agenda
 create table agenda
 (
 CodigoE int primary key not null,
 Fecha date,
 Descripcion varchar(300),
-Estado varchar(30) check(Estado in('Activo','Cancelado')) not null,
+Estado varchar(20)check(estado in('Activo','Solicitado','Inactivo')),
 Titulo varchar(50) not null,
 horaInicio time,
 horaFin time,
@@ -71,7 +72,7 @@ constraint FK_Visitas_empresa foreign key (IDempresa) References empresa(NIT)
 go
 create view visitasCom
 as
-select v.codigoV, v.numeropersonas,v.CodiA,e.NIT,a.Estado,e.nombre as 'nombreEmp',r.IDRepresentante,
+select v.codigoV,a.Titulo, v.numeropersonas,v.CodiA,e.NIT,a.Estado,e.nombre as 'nombreEmp',r.IDRepresentante,
 r.Nombre,r.Correo,r.telefono,a.fecha as 'fecha',
 convert(char(5), a.horaInicio, 108)as'horaInicio',
 convert(char(5), a.horaFin, 108)as'horaFin'
@@ -83,15 +84,15 @@ inner join agenda a on v.CodiA = a.codigoe
 GO
 
 --Creacion de procesos almacenados
-insert into Usuarios values(12345,'1234',304522909,'Alexandra','Barriga','aurayorleny@gmail.com','Funcionario','Activo')
-insert into Usuarios values(13,'1234',45678,'Aura','Vargas','a@gmail.com','Ayudante','Activo')
+insert into Usuarios values(12345,ENCRYPTBYPASSPHRASE('PalabraImportante',convert(varchar(40), '1234')),304522909,'Alexandra','Barriga','aurayorleny@gmail.com','Funcionario','Activo')
+insert into Usuarios values(13,ENCRYPTBYPASSPHRASE('PalabraImportante',convert(varchar(40), '1234')),45678,'Aura','Vargas','a@gmail.com','Ayudante','Activo')
 
 go
 create PROC Inicio
 @EMAIL varchar(30),
 @PASS varchar(40)
 as
-select * from Usuarios where Email=@EMAIL AND Contrasena = @PASS
+select * from Usuarios where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
 go
 --Consultar contraseña con correo
 create proc adviseWith
@@ -104,7 +105,7 @@ create proc recoverPassword
 @Email varchar(30)
 as
 update Usuarios
-set Contrasena = ID
+set Contrasena = ENCRYPTBYPASSPHRASE('PalabraImportante',ID)
 where @Email = Email
 go
 --Consultar actividades
@@ -120,12 +121,15 @@ create proc upPassword
 @Contrasena varchar(40)
 as
 update Usuarios
-set Contrasena = @Contrasena
+set Contrasena = ENCRYPTBYPASSPHRASE('PalabraImportante',@Contrasena)
 where ID = @Id
 go
+
+
+select * from usuarios
 create proc crearUsu
 @Id int,
-@Contrasena int,
+@Contrasena varchar(40),
 @Telefono int,
 @Nombre varchar(50),
 @Apellido varchar(50),
@@ -134,7 +138,7 @@ create proc crearUsu
 @Estado varchar(20)
 as
 insert into Usuarios 
-values(@Id,@Contrasena,@Telefono, @Nombre,@Apellido, @Email, @Rol, @Estado)
+values(@Id,ENCRYPTBYPASSPHRASE('PalabraImportante',@Contrasena),@Telefono, @Nombre,@Apellido, @Email, @Rol, @Estado)
 go
 
 create proc actulizarUsu
@@ -186,6 +190,16 @@ as
 update agenda set Fecha=@Fecha, Descripcion = @Descripcion, Estado=@estado, Titulo=@Titulo,horaInicio = @horaInicio, horaFin=@horaFin where CodigoE=@codigoa
 
 GO
+create proc AceptarSolicitud
+@Estado varchar(30),
+@horaInicio time,
+@horaFin time,
+@codigoa int
+as
+update agenda set Estado=@estado,horaInicio = @horaInicio, horaFin=@horaFin where CodigoE=@codigoa
+
+GO
+
 create proc actualizarcolor
 @color int,
 @fecha date
@@ -356,4 +370,4 @@ as
 delete agenda where codigoe=(select codia from deleted)
 go
 
-select * from Usuarios
+select * from agenda

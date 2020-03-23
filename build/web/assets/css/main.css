@@ -183,9 +183,9 @@ iframe {
     background-attachment: fixed ;
     background-image: url(../img/degrade_2_formularios.png);
 }
-
-.container-login102 {
-    font-family:Antipasto;
+   
+   .container-login102 {
+       font-family: Antipasto;
     background-position:bottom;
     background-size: 1800px;
     background-repeat: no-repeat ;
@@ -359,17 +359,17 @@ iframe {
 
 
 
-
-.login100-form-title1 {
-    font-family: Antipasto;
-    font-size: 20px;
+.login100-form-title {
+    font-family:Antipasto;
+    font-size: large;
+      font-size: 52px;
     color: #333333;
     line-height: 1.2;
     text-align: center;
     width: 100%;
     display: block;
     padding-bottom: 54px;
-    margin-bottom: -20px;
+    margin-left: 40px;
 }
 
 
@@ -407,8 +407,10 @@ iframe {
     height: 50px;
     border-radius: 25px;
     padding: 0 30px 0 68px;
+
 }
-.input1 {
+
+   .input1 {
     font-family: Antipasto;
     font-size: 15px;
     line-height: 1.5;

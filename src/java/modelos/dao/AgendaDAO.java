@@ -215,6 +215,29 @@ public class AgendaDAO implements Crud{
 
         return false;
     }
+    public boolean aceptarSolicitud() {
+        try {
+            if (this.consultar() != null) {
+                String sentencia = "exec AceptarSolicitud "
+                        + "?,?,?,?";
+                System.out.println(sentencia);
+                PreparedStatement ps = this.cn.prepareStatement(sentencia);
+                ps.setString(1, vo.getEstado());
+                ps.setString(2, vo.getHoraInicio());
+                ps.setString(3, vo.getHoraFin());
+                ps.setInt(4, vo.getCodigoa());
+                ps.execute();
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return false;
+    }
     public boolean actualizarcolor() {
         try {
                 String sentencia = "exec actualizarcolor "
@@ -263,20 +286,20 @@ public class AgendaDAO implements Crud{
     }
 
     public static void main(String[] args) throws SQLException {
-//        AgendaVO vo = new AgendaVO();
-//        
-//        AgendaDAO dao = new AgendaDAO(vo);
-//        vo.setCodigoa(3330);
+        AgendaVO vo = new AgendaVO();
+        
+        AgendaDAO dao = new AgendaDAO(vo);
+        vo.setCodigoa(4808);
 //        vo.setFecha("2020-03-15");
 //        vo.setDescripcion("pos fue cancelado we");
 //        vo.setEstado("Activo");
+//        vo.setHoraInicio("08:10");
+//        vo.setHoraFin("10:10");
 //        vo.setTitulo("prueba 2");
-//        vo.setHoraInicio("20:00:00");
-//        vo.setHoraFin("10:00:00");
 //        vo.setColor(1);
 //        
-//        vo.setFKUidentificacion(12);
-//        dao.registrar();
+//        vo.setFKUidentificacion(13);
+//        dao.aceptarSolicitud();
 //        
 //ArrayList<AgendaVO> pru =(ArrayList) dao.consultaragendaFecha();
 //for(AgendaVO obj : pru){

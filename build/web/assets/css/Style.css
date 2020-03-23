@@ -2,6 +2,7 @@
 
 body{
     font-family: Antipasto;
+    font-size:larger;
     background-position:bottom;
     background-size: 100%;
     height: 100%;
@@ -16,6 +17,14 @@ nav{
 
 
     /*    background-color: #5FA7B7;*/
+}
+a{
+   font-family: Antipasto;
+   font-size:large;
+}
+@font-face {
+font-family: Antipasto;
+src: url(../fonts/Antipasto_regular.otf);
 }
 .uno::after {
     content: "";
@@ -72,7 +81,7 @@ nav{
 
 }
 .calendar__info {
-    display: -webkit-box;
+   display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;

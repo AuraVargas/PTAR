@@ -7,6 +7,7 @@ package ControladorUsuarioListar;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -58,10 +59,31 @@ public class ControladorUsuario extends HttpServlet {
 //               while (ca > 0) {
 //                }
         vo.setID(Integer.parseInt(request.getParameter("ID")));
+        ArrayList<UsuarioVO> pru =(ArrayList) dao.consid();
+                if(pru.isEmpty()){
+        }else{
+                    request.setAttribute("Error", 1);
+                    RequestDispatcher vista = request.getRequestDispatcher("views/Error.jsp");
+                    vista.forward(request, response);
+                }
         vo.setNombre(request.getParameter("nombre"));
         vo.setApellido(request.getParameter("apellido"));
         vo.setTelefono(Integer.parseInt(request.getParameter("telefono")));
+        ArrayList<UsuarioVO> pru3 =(ArrayList) dao.constelefono();
+                if(pru3.isEmpty()){
+        }else{
+                    request.setAttribute("Error", 2);
+                    RequestDispatcher vista = request.getRequestDispatcher("views/Error.jsp");
+                    vista.forward(request, response);
+                }
         vo.setEmail(request.getParameter("email"));
+        ArrayList<UsuarioVO> pru2 =(ArrayList) dao.conscorreo();
+                if(pru2.isEmpty()){
+        }else{
+                    request.setAttribute("Error", 3);
+                    RequestDispatcher vista = request.getRequestDispatcher("views/Error.jsp");
+                    vista.forward(request, response);
+                }
         vo.setContrasena(request.getParameter("ID"));
         dao.registrar();
         

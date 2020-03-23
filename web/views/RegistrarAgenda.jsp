@@ -79,7 +79,7 @@
         %>
         
                         <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha del evento">
-                            <input type="date" class="form-control input100" required name="txtfecha" value='<%=fecha%>' placeholder="Fecha del evento">
+                            <input type="date" class="form-control input100" required name="txtfecha" id="txtfecha" value='<%=fecha%>' placeholder="Fecha del evento">
                             <span class="symbol-input100">
                                 <i class="far fa-calendar-alt"></i>
                             </span>
@@ -118,7 +118,7 @@
                                 <a class="peligro"style="right:23%;bottom: 24%;color: firebrick" onclick="return cancelarregistroA()">Cancelar</a>
                             </div>
                         <div style="right:11%;bottom: 22%;position:absolute;" >
-                            <button class="login100-form-btn" type="submit" name="accion" value="Registrar">
+                            <button class="login100-form-btn" onclick="validacion()" type="submit" name="accion" value="Registrar">
                                 <b> Registrar</b>
                             </button> 
                             </div>
@@ -151,6 +151,10 @@
             
             $(document).ready(function () {
             $('.contenido').load('Template/menu.jsp');
+            var error = <%=session.getAttribute("Error")%>;
+            if(error == 1){
+            alert('ya existe un evento con esta hora.');
+            }
        });
       
           break;
@@ -158,10 +162,34 @@
       
             $(document).ready(function () {
       $('.contenido').load('Template/ayudante.jsp');
+      var error = <%=session.getAttribute("Error")%>;
+            if(error == 1){
+            alert('ya existe un evento con esta hora.');
+            }
       });
       
           break;
          } 
+         function validacion(){
+                   let dayInMillis=24*3600000;
+                   var f = new Date(document.getElementById("txtfecha").value);
+                   f.setDate(f.getDate() + 1);
+                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   
+                   var hoy = new Date();
+                   let days2=Math.floor(hoy.getTime()/dayInMillis);
+                   if(days1 < days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else if(days1 === days2){
+                       alert("Por favor ingrese una fecha superior a la actual");
+                       event.preventDefault();
+                   }else{
+                   }
+            }
+            <%
+                session.setAttribute("Error", 0);
+            %>
             </script>
             <!--===============================================================================================-->
             
