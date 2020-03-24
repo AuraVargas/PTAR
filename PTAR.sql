@@ -92,14 +92,18 @@ create PROC Inicio
 @EMAIL varchar(30),
 @PASS varchar(40)
 as
+<<<<<<< HEAD
 select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante', Contrasena)) as'contrasena', Telefono, Nombre, Apellido, Email, Rol, Estado from Usuarios 
 where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
+=======
+select convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', id, nombre, apellido, email, estado,rol, telefono  from Usuarios where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
+>>>>>>> c0ff74a959cd80182975a281129dc7832198254b
 go
 --Consultar contraseña con correo
 create proc adviseWith
 @EMAIL varchar(30)
 as
-select * from Usuarios where Email = @EMAIL
+select convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', id, nombre, apellido, email, estado,rol, telefono from Usuarios where Email = @EMAIL
 go
 --Volver al estado original la contraseña para ser cambiada
 create proc recoverPassword
@@ -113,7 +117,7 @@ go
 create proc estadosUsuarios
 @Estado varchar(20)
 as
-select * from Usuarios
+select convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', id, nombre, apellido, email, estado,rol, telefono from Usuarios
 where Estado = @Estado
 go
 --Cambiar la contraseña 
@@ -159,7 +163,7 @@ go
 create proc consultarUsu
 @ID int
 as
-select * from Usuarios
+select convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', id, nombre, apellido, email, estado,rol, telefono from Usuarios
 where ID = @ID
 go
 
