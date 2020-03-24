@@ -92,12 +92,8 @@ create PROC Inicio
 @EMAIL varchar(30),
 @PASS varchar(40)
 as
-<<<<<<< HEAD
 select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante', Contrasena)) as'contrasena', Telefono, Nombre, Apellido, Email, Rol, Estado from Usuarios 
 where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
-=======
-select convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', id, nombre, apellido, email, estado,rol, telefono  from Usuarios where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
->>>>>>> c0ff74a959cd80182975a281129dc7832198254b
 go
 --Consultar contraseña con correo
 create proc adviseWith
