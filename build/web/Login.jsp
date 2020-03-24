@@ -46,7 +46,7 @@
                             <img class="rana" src="assets/img/acueducto.png" alt=""/>
                         </div>
                         <div>
-                            <img class="P" src="assets/img/Captura233.png" alt=""/>
+                            <img class="P" src="assets/img/iconop.png" alt=""/>
                         </div>
                     </div>
 
