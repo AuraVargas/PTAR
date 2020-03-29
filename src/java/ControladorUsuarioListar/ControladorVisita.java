@@ -219,6 +219,8 @@ for(UsuarioVO obj2 : lista2){
                 try {
             String mensaje="Se ha solicitado una visita con la siguiente entidad: ''"+Evo.getNombreE()+"'' identificada con el siguiente NIT: "+Evo.getNit()+" para "+request.getParameter("txtNumeroPersonas")+" personas, representados por "+Rvo.getNombre()+", correo "+Rvo.getCorreo()+" y teléfono "+Rvo.getTelefono()+" para la fecha "+avo.getFecha()+", por favor contacte con la persona representante y acepte o elimine la solicitud en el sistema.";
             CorreoVO.sendMail(obj2.getEmail(),mensaje,"Solicitud de visita");
+            String mensaje2="Usted ha solicitado una visita con la siguiente información: Entidad ''"+Evo.getNombreE()+"'' identificada con el siguiente NIT: "+Evo.getNit()+" para "+request.getParameter("txtNumeroPersonas")+" personas, representados por "+Rvo.getNombre()+" para la fecha "+avo.getFecha()+", la persona a cargo de las solicitudes se comunicara con usted por medio de este correo o al número telefónico: "+Rvo.getTelefono()+", gracias por solicitar una visita a la Planta de tratamiento de aguas el salitre fase I (PTAR).";
+            CorreoVO.sendMail(Rvo.getCorreo(),mensaje2,"Solicitud a PTAR realizada");
         } catch (Exception ex) {
             Logger.getLogger(ControladorPassword.class.getName()).log(Level.SEVERE, null, ex);
         }

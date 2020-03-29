@@ -38,6 +38,19 @@
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
+        <script src="../assets/js/vex.combined.min.js" type="text/javascript"></script>
+        <script>vex.defaultOptions.className = 'vex-theme-os'</script>
+        <link href="../assets/css/vex-theme-os.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/css/vex.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-default.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-os.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-plain.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-flat-attack.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-top.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-bottom-right-corner.css" />
     </head>
     <body class="tres">
         <%
@@ -204,21 +217,38 @@
       
           break;
          } 
-         function validacion(){
+         function validacion(){ 
                    let dayInMillis=24*3600000;
                    var f = new Date(document.getElementById("txtfecha").value);
                    f.setDate(f.getDate() + 1);
-                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   let days1=Math.floor(f.getTime()/dayInMillis-1);
                    
                    var hoy = new Date();
                    let days2=Math.floor(hoy.getTime()/dayInMillis);
                    if(days1 < days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else if(days1 === days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else{
+                       vex.dialog.confirm({
+    message: 'Al solicitar la visita se le enviara al funcionario a cargo de la gestión social de la planta para que revise la solicitud y se contacte con la persona que sea registrada',
+    className: 'vex-theme-wireframe',
+        callback: function (value) {
+        if (value) {
+            
+        } else {
+            event.preventDefault();
+        }
+    }
+})
                    }
             }
             <%

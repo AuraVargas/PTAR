@@ -224,14 +224,7 @@
                    
                    var hoy = new Date();
                    let days2=Math.floor(hoy.getTime()/dayInMillis);
-                   if(days1 < days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
-                       event.preventDefault();
-                   }else if(days1 === days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
-                       event.preventDefault();
-                   }else{
-                   }
+                   
             }
         </script>
         <!--===============================================================================================-->

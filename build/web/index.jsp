@@ -41,6 +41,15 @@
     <link rel="stylesheet" href="assets/css/icomoon.css">
     <link rel="stylesheet" href="assets/css/style2.css">
     <link rel="stylesheet" href="assets/css/calendar.css">
+    <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-default.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-os.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-plain.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-flat-attack.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-top.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-bottom-right-corner.css" />
   </head>
   <body><nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
           <img class="logo" src="assets/img/ICONOx2.png" style="position: absolute; left: 1%">
@@ -647,6 +656,7 @@
 
     %>
     <script type="text/javascript">
+        
         var vari = new Array();
         <%                for (AgendaVO obj2 : list) {
                                 if(obj2.getEstado().equalsIgnoreCase("Solicitado")){
@@ -661,23 +671,34 @@
                    let dayInMillis=24*3600000;
                    var f = new Date(document.getElementById("txtfecha").value);
                    f.setDate(f.getDate() + 1);
-                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   let days1=Math.floor(f.getTime()/dayInMillis-1);
                    
                    var hoy = new Date();
                    let days2=Math.floor(hoy.getTime()/dayInMillis);
                    if(days1 < days2){
-                       alert("La fecha es anterior");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else if(days1 === days2){
-                       alert("La fecha es anterior");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else{
-                       var a= confirm("Al solicitar la visita se le enviara al funcionario a cargo de la gestión social de la planta para que revise la solicitud y se contacte con la persona que sea registrada");
-                       if (a){
-                           
-                       }else{
-                           event.preventDefault();
-                       }
+                       vex.dialog.confirm({
+    message: 'Al solicitar la visita se le enviara al funcionario a cargo de la gestión social de la planta para que revise la solicitud y se contacte con la persona que sea registrada',
+    className: 'vex-theme-wireframe',
+        callback: function (value) {
+        if (value) {
+            
+        } else {
+            event.preventDefault();
+        }
+    }
+})
                    }
             }
 </script>
