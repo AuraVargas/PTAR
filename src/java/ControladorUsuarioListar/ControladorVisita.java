@@ -172,8 +172,10 @@ for(UsuarioVO obj2 : lista){
                 Vdao.actualizar();
                 acceso=listar;
         }else if(action.equalsIgnoreCase("eliminar")){
-        Vvo.setCodigov(Integer.parseInt(request.getParameter("ccc")));
-        Vdao.eliminar();
+        avo.setCodigoa(Integer.parseInt(request.getParameter("ccc")));
+        avo.setDescripcion(request.getParameter("txtdescription"));
+        adao.actdescripcion();
+        adao.eliminar();
         acceso=listar;
         }else if(action.equalsIgnoreCase("Solicitud")){
                 

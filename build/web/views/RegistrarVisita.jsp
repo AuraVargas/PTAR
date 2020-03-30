@@ -44,13 +44,7 @@
         <link href="../assets/css/vex.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/vex.combined.min.js"></script>
         <link rel="stylesheet" href="assets/css/vex.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-default.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-os.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-plain.css" />
         <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-flat-attack.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-top.css" />
-        <link rel="stylesheet" href="assets/css/vex-theme-bottom-right-corner.css" />
     </head>
     <body class="tres">
         <%
@@ -200,7 +194,10 @@
             $('.contenido').load('Template/menu.jsp');
             var error = <%=session.getAttribute("Error")%>;
             if(error == 1){
-            alert('ya existe un evento con esta hora.');
+            vex.dialog.alert({
+                message: 'Ya existe un evento con esta hora.',
+                className: 'vex-theme-wireframe'
+            });
             }
        });
       
@@ -211,7 +208,10 @@
       $('.contenido').load('Template/ayudante.jsp');
       var error = <%=session.getAttribute("Error")%>;
             if(error == 1){
-            alert('ya existe un evento con esta hora.');
+            vex.dialog.alert({
+                message: 'Ya existe un evento con esta hora.',
+                className: 'vex-theme-wireframe'
+            });
             }
       });
       
@@ -238,17 +238,6 @@
             });
                        event.preventDefault();
                    }else{
-                       vex.dialog.confirm({
-    message: 'Al solicitar la visita se le enviara al funcionario a cargo de la gestión social de la planta para que revise la solicitud y se contacte con la persona que sea registrada',
-    className: 'vex-theme-wireframe',
-        callback: function (value) {
-        if (value) {
-            
-        } else {
-            event.preventDefault();
-        }
-    }
-})
                    }
             }
             <%

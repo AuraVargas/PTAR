@@ -69,7 +69,7 @@
                 <h4>Actualizar datos de Visita<hr>  <div>
                             <button class="btn btn-danger" onclick="event.preventDefault();eliminarVisita(<%=visita.getCodigov()%>)">
                                Eliminar Evento
-                            </button> <br><br>
+                            </button>
                         </div></h4>      
       
                 

@@ -109,7 +109,7 @@ public class VisitasDAO implements Crud {
     public boolean eliminar() {
         try {
             if (this.consultar() != null) {
-                String sentencia = "exec eliminarVisitas ? ";
+                String sentencia = "exec eliminaragenda ? ";
                 PreparedStatement ps = this.cn.prepareStatement(sentencia);
                 ps.setInt(1, vo.getCodigov());
                 ps.execute();
@@ -189,6 +189,7 @@ public class VisitasDAO implements Crud {
                 temp.setNumeroPersonas(resultSet.getInt("NumeroPersonas"));
                 temp.setCodigoa(resultSet.getInt("codia"));
                 temp.setNit(resultSet.getInt("Nit"));
+                temp.setDescripcion(resultSet.getString("descripcion"));
                 temp.setNombreE(resultSet.getString("nombreEmp"));
                 temp.setEncargadoID(resultSet.getInt("idrepresentante"));
                 temp.setNombre(resultSet.getString("nombre"));

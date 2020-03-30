@@ -24,11 +24,23 @@ function eliminarregistroA(id){
           }
 }
 function eliminarVisita(id){
-    var con =confirm('¿Esta seguro de eliminar esta visita?');
-          if(con){
-            location.href = 'ControladorVisita?accion=eliminar&ccc='+id;
-          }
-    
+    vex.dialog.confirm({
+    message: '¿Esta seguro de cancelar esta visita?',
+    className: 'vex-theme-wireframe',
+        callback: function (value) {
+        if (value) {
+            vex.dialog.prompt({
+    message: 'Por favor ingrese la razon por la cual cancela la visita',
+    className: 'vex-theme-wireframe',
+    placeholder: '',
+    callback: function (value) {
+        location.href = 'ControladorVisita?accion=eliminar&ccc='+id+'&txtdescription='+value;
+    }
+})
+            
+        }
+    }
+})
 }
 function cancelarregistroV(){
     return confirm("¿Desea salir sin registrar una visita?");

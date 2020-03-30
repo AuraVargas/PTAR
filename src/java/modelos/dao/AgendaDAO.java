@@ -215,6 +215,28 @@ public class AgendaDAO implements Crud{
 
         return false;
     }
+    public boolean actdescripcion() {
+        try {
+            if (this.consultar() != null) {
+                String sentencia = "exec EdDescripcion "
+                        + "?,?";
+                System.out.println(sentencia);
+                PreparedStatement ps = this.cn.prepareStatement(sentencia);
+                ps.setString(1, vo.getDescripcion());
+                ps.setInt(2, vo.getCodigoa());
+                ps.execute();
+
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return false;
+    }
     public boolean aceptarSolicitud() {
         try {
             if (this.consultar() != null) {
