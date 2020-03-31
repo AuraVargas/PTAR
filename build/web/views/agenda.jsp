@@ -24,7 +24,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Agenda</title>
-        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->

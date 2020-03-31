@@ -42,7 +42,8 @@
     <link rel="stylesheet" href="assets/css/style2.css">
     <link rel="stylesheet" href="assets/css/calendar.css">
   </head>
-  <body><nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
           <img class="logo" src="assets/img/ICONOx2.png" style="position: absolute; left: 1%">
 	    <div class="container d-flex align-items-center">
 				
@@ -51,7 +52,7 @@
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="index.jsp" class="nav-link">INICIO</a></li>
 				<li class="nav-item"><a href="ptar.html" class="nav-link">EMPRESA</a></li>
-	        	<li class="nav-item"><a href="gestion.html" class="nav-link">GESTION</a></li>
+	        	<li class="nav-item"><a href="gestion.html" class="nav-link">GESTIÓN</a></li>
 	        	<li class="nav-item"><a href="fase2.html" class="nav-link">PROYECTOS</a></li>
 	          <li class="nav-item"><a href="contacto.html" class="nav-link">CONTACTO</a></li>
                   <li class="nav-item"><a  href="Login.jsp" class="nav-link">INICIA SESIÓN</a></li>
@@ -67,7 +68,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate mb-md-5">
           	<span class="subheading"></span>
-            <h1 class="mb-4">PLANTA DE TRATAMIENTO DE AGUAS RESIDULES EL SALITRE  FASE I</h1>
+            <h1 class="mb-4">PLANTA DE TRATAMIENTO DE AGUAS RESIDUALES EL SALITRE  FASE I</h1>
           </div>
         </div>
         </div>
@@ -88,30 +89,30 @@
 <br>
 		<section class="ftco-section ftco-no-pt ftco-no-pb ftco-consult">
 			<div class="container">
-				<div class="row d-flex no-gutters align-items-stretch	consult-wrap">
+				<div class="row d-flex  align-items-stretch	consult-wrap">
 					<div class="col-md-5 wrap-about align-items-stretch d-flex">
-						<div class="ftco-animate bg-primary align-self-stretch px-4 py-5 w-100">
-							<h2 class="heading-white mb-4">APARTA TU VISITA</h2>
+						<div class="ftco-animate align-self-stretch px-4 py-5 w-100">
+							<h2 class="heading-dark mb-4">APARTA TU VISITA</h2>
 							<form action="ControladorVisita" class="appointment-form ftco-animate">
 		    				<div class="form-group">
-		    					<input type="text" name="txtnombrerepresentante" class="form-control" placeholder="Nombre Completo del prepresentante" required>
+		    					<input type="text" name="txtnombrerepresentante" class="form-control" placeholder="Nombre Completo del Representante" required>
 		    				</div>
 		    				<div class="form-group">
-		    					<input type="email" name="txtcorreo" class="form-control" placeholder="Correo Electronico" required>
-                                                        <input type="number" name="txttelefono" class="form-control" placeholder="Numero de telefono o celular" required>
-                                                        <input type="number" name="txtidrepresentante" class="form-control" placeholder="Numero de identificación" required>
+		    					<input type="email" name="txtcorreo" class="form-control" placeholder="Correo Electrónico" required>
+                                                        <input type="number" name="txttelefono" class="form-control" placeholder="Número de Télefono o Celular" required>
+                                                        <input type="number" name="txtidrepresentante" class="form-control" placeholder="Número de Identificación" required>
 		    				</div>
 	    					<div class="form-group">
 		    					<div class="form-field">
 	        					<div class="select-wrap">
                           
 	                    <input type="text" class="form-control" name="txtNombre" placeholder="Nombre de la entidad que solicita la visita" required>
-                            <input type="number" class="form-control" name="txtnit" placeholder="NIT de la entidad" required>
+                            <input type="number" class="form-control" name="txtnit" placeholder="NIT de la Entidad" required>
 	                  </div>
 		              </div>
 		    				</div>
 	    					<div class="form-group">
-		              <input type="number" class="form-control" name="txtNumeroPersonas" placeholder="Numero de personas que asistiran a la visita"required>
+		              <input type="number" class="form-control" name="txtNumeroPersonas" placeholder="Número de personas que asistiran a la visita"required>
                               <input type="date" class="form-control"name="txtfecha" id="txtfecha" placeholder="Fecha en la que desea solicitar la visita"required>
 		            </div>
 		            <div class="form-group">
@@ -123,7 +124,7 @@
 					<div class="col-md-7 wrap-about ftco-animate align-items-stretch d-flex">
 						<div class="bg-white p-5">
 							<h2 class="mb-4">AGENDA DE EVENTOS</h2>
-                                                        <label>Los dias que se encuentran coloreados estan ocupados total o parcialmente</label>
+                                                        <label>Los días que se encuentran coloreados están ocupados total o parcialmente. </label>
 							<div class="calendar" style='color: black'>
                                                             
                     <div class="calendar__info">
@@ -143,10 +144,10 @@
                     <div class="calendar__week"id="dias">
                         <div class="calendar__day calendar__item">Lunes</div>
                         <div class="calendar__day calendar__item">Martes</div>
-                        <div class="calendar__day calendar__item">Miercoles</div>
+                        <div class="calendar__day calendar__item">Miércoles</div>
                         <div class="calendar__day calendar__item">Jueves</div>
                         <div class="calendar__day calendar__item">viernes</div>
-                        <div class="calendar__day calendar__item">Sabado</div>
+                        <div class="calendar__day calendar__item">Sábado</div>
                         <div class="calendar__day calendar__item">Domingo</div>
 
                     </div>
@@ -187,10 +188,10 @@
 						<div class="tabulation-2 mt-4">
 							<ul class="nav nav-pills nav-fill d-md-flex d-block">
 							  <li class="nav-item">
-							    <a class="nav-link active py-2" data-toggle="tab" href="#mision"><span class="ion-ios-home mr-2"></span>Mision</a>
+							    <a class="nav-link active py-2" data-toggle="tab" href="#mision"><span class="ion-ios-home mr-2"></span>Misión</a>
 							  </li>
 							  <li class="nav-item px-lg-2">
-							    <a class="nav-link py-2" data-toggle="tab" href="#vision"><span class="ion-ios-person mr-2"></span>Vision</a>
+							    <a class="nav-link py-2" data-toggle="tab" href="#vision"><span class="ion-ios-person mr-2"></span>Visión</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link py-2" data-toggle="tab" href="#plan"><span class="ion-ios-mail mr-2"></span>Plan General</a>
@@ -201,7 +202,7 @@
 							  	<p> Agua para la vida, generando bienestar para la gente.</p>
 							  </div>
 							  <div class="tab-pane container p-0 fade" id="vision">
-							  	<p>Exelencia en la gestion empresarial del agua, compromiso y empresa para todos.</p>
+							  	<p>Excelencia en la gestión empresarial del agua, compromiso y empresa para todos.</p>
 							  </div>
 							  <div class="tab-pane container p-0 fade" id="plan">
 							  <img class="grafica" src="assets/img/plan-estrategico1.png"></img>
@@ -248,7 +249,7 @@
           <div class="col-md-6 text-center heading-section ftco-animate">
           	<span class="subheading">Proyectos</span>
             <h2 class="mb-4"></h2>
-            <p>Proyectos de los caules la parte norte de Bogota tendra el privilegio de ellos.</p>
+            <p>Proyectos de los cuales la parte norte de Bogotá tendrá el privilegio de ellos.</p>
             <p></p>
           </div>
         </div>
@@ -257,9 +258,9 @@
         		<div class="project">
         			<div class="img rounded mb-4" style="background-image: url(assets/img/project-1.jpg);"></div>
         			<div class="text w-100 text-center">
-        				<span class="cat">AMPLIACION</span>
+        				<span class="cat">AMPLIACIÓN</span>
         				<h3><a href="#">FASE II</a></h3>
-        				<p>La planta sera ampliada para un mmejor proceso del agua residual de la parte norte de Bogota </p>
+        				<p>La planta será ampliada para un mejor proceso del agua residual de la parte norte de Bogotá </p>
         			</div>
         		</div>
         	</div>
@@ -269,7 +270,7 @@
         			<div class="text w-100 text-center">
         				<span class="cat">SANEAMIENTO</span>
         				<h3><a href="#">FASE II</a></h3>
-        				<p>Este proyecto traera el privilegio de tener un rio completamnete limpio.</p>
+        				<p>Este proyecto traerá el privilegio de tener un río completamnete limpio.</p>
         			</div>
         		</div>
         	</div>
@@ -277,19 +278,19 @@
         		<div class="project">
         			<div class="img rounded mb-4" style="background-image: url(assets/img/project-3.jpg);"></div>
         			<div class="text w-100 text-center">
-        				<span class="cat">GESTION</span>
-        				<h3><a href="gestion.html">HABITOS SOSTENIBLES</a></h3>
-        				<p>Disposicion adecuada de las basuras, uso inteligente del alcantarillado</p>
+        				<span class="cat">GESTIÓN</span>
+        				<h3><a href="gestion.html">HÁBITOS SOSTENIBLES</a></h3>
+        				<p>Disposición adecuada de las basuras, uso inteligente del alcantarillado</p>
         			</div>
         		</div>
         	</div>
         	<div class="col-md-4">
         		<div class="project">
-        			<div class="img rounded mb-4" style="background-image: url(assets/img/project-4.jpg);"></div>
+        			<div class="img rounded mb-4" style="background-image: url(assets/img/reciclaje.jpeg);"></div>
         			<div class="text w-100 text-center">
-        				<span class="cat">GESTION</span>
+        				<span class="cat">GESTIÓN</span>
         				<h3><a href="gestion.html">RECICLAJE</a></h3>
-        				<p>La mejor manera de utilizacion de los residuos solidos para un mejor ambeinte dentro de la casa, la calle, el estudio u oficina.</p>
+        				<p>La mejor manera de utilización de los residuos sólidos para un mejor ambiente dentro de la casa, la calle, el estudio u oficina.</p>
         			</div>
         		</div>
         	</div>
@@ -297,9 +298,9 @@
         		<div class="project">
         			<div class="img rounded mb-4" style="background-image: url(assets/img/project-5.jpg);"></div>
         			<div class="text w-100 text-center">
-        				<span class="cat">EXPRESION</span>
+        				<span class="cat">EXPRESIÓN</span>
         				<h3><a href="expresion.html">APORTES</a></h3>
-        				<p>Opiniones e ideas sobre la mejor manera de utilizar el sistema de alcanttarillado, los humedales y el cuidado del medio ambiente.</p>
+        				<p>Opiniones e ideas sobre la mejor manera de utilizar el sistema de alcantarillado, los humedales y el cuidado del medio ambiente.</p>
         			</div>
         		</div>
         	</div>
@@ -308,7 +309,7 @@
         			<div class="img rounded mb-4" style="background-image: url(assets/img/project-6.jpg);"></div>
         			<div class="text w-100 text-center">
         				<span class="cat">AULA</span>
-        				<h3><a href="#">PEDAGOGIA</a></h3>
+        				<h3><a href="#">PEDAGOGÍA</a></h3>
         				<p>Talleres de aprendizaje ambiental galeria ambiental, videos para incentivar el cuidado del agua y el medio ambiente.</p>
         			</div>
         		</div>
@@ -322,7 +323,7 @@
     		<div class="row justify-content-center mb-5">
           <div class="col-md-8 text-center heading-section ftco-animate">
           	<span class="subheading"></span>
-            <h2 class="mb-4">Sistema hídrico del Distrito Capital</h2>
+            <h2 class="mb-4">Sistema Hídrico del Distrito Capital</h2>
           </div>
         </div>
   			<div class="row tabulation mt-4 ftco-animate">
@@ -351,7 +352,7 @@
 					<div class="col-md-8">
 						<div class="tab-content">
 						  <div class="tab-pane container p-0 active" id="services-1">
-						  	<div class="img" style="background-image: url(assets/img/cuenca_1.jpg);"></div>
+						  	<div class="img" style="background-image: url(assets/img/mapa.jpeg);"></div>
 						  	<h3><a href="#">Sistema hídrico del Distrito Capital</a></h3>
 						  	<p>Es la red de espacios y corredores que sostienen y conducen la biodiversidad y los procesos ecológicos esenciales a través
 								del territorio, en sus diferentes formas e intensidades de ocupación, dotando al mismo de servicios ambientales para su desarrollo 
@@ -365,7 +366,7 @@
 							  al oriente con los municipios de La Calera y Choachí, y por el sur con la cuenca del río Fucha.</p>
 						  </div>
 						  <div class="tab-pane container p-0 fade" id="services-3">
-						  	<div class="img" style="background-image: url(assets/img/cunca_fucha.jpg);"></div>
+						  	<div class="img" style="background-image: url(assets/img/cunca_fucha.JPG);"></div>
 						  	<h3><a href="#">Cuenca Fucha</a></h3>
 						  	<p>Cuenca del río Fucha, se subdivide en tres sectores, cuenca alta la cual corresponde a la parte montañosa, cuenca media que inicia a la entrada del río al perímetro urbano de la ciudad de Bogotá hasta la avenida
 						    Boyacá y la cuenca baja desde la avenida Boyacá hasta su desembocadura en el Río Bogotá.</p>
@@ -564,7 +565,7 @@
 			  <div class="row mb-5">
 				<div class="col-md-6 col-lg-3">
 				  <div class="ftco-footer-widget mb-5">
-					  <h2 class="ftco-heading-2">Desea saber mas de nosotros?</h2>
+					  <h2 class="ftco-heading-2">Desea saber más de nosotros?</h2>
 					  <div class="block-23 mb-3">
 						<ul>
 						  <li><span class="icon icon-map-marker"></span><span class="text">Calle 80 # 119-60 Int 2-Bogota Colombia/ Codigo PPostal 111011-Consorcio Expansion PTAR SALITRE</span></li>
@@ -639,7 +640,7 @@
   
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<!--  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>-->
   <%
         AgendaVO lo = new AgendaVO();
         AgendaDAO dao = new AgendaDAO(lo);

@@ -22,7 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Usuario</title>
         <!--===============================================================================================-->	
-        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
@@ -54,16 +54,17 @@
             </nav>
         </header>
         <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div class="login100-pic js-tilt" data-tilt>                        
+            <div class="container-login111">
+                <div class="wrap-login111">
+<!--                    <div class="login100-pic js-tilt" data-tilt>                        
                         <img src="assets/img/img-01.png" alt="User"/>
-                    </div>
+                    </div>-->
 
                     <form name="f1" action ="ControladorUsuario" class="login100-form validate-form" method="POST">
                        
                         <span  class="login100-form-title">
-                            <h2> <b> Registrar Usuario</b></h2>      
+                            <h2> <b> Registrar Usuario</b></h2>   
+                            <hr>
                         </span>
                         <div class="wrap-input100 validate-input" data-validate = "Your full name is required">
                             <input class="input100" type="text" name="nombre" placeholder="Nombre Completo ">
@@ -73,7 +74,7 @@
                             </span>
                         </div>
                        <div class="wrap-input100 validate-input" data-validate = "Your full last name is required">
-                            <input class="input100" type="text" name="apellido" placeholder="Apellido Completo ">
+                            <input class="input100" type="text" name="apellido" placeholder="Apellidos  ">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fas fa-pencil-alt"></i>
@@ -111,8 +112,10 @@
                         <div class="container-login100-form-btn">
                             <input class="login100-form-btn" type="submit" name="accion" value="Registrar" />
                         </div>
-                        <!--                        </div>-->
-                        <br>
+
+                          <div class="container-login100-form-btn">
+                            <a class="login10-form-btn"  href="ControladorUsuario?accion=menu">Cancelar</a>
+                        </div>
                     </form>
 
                 </div>

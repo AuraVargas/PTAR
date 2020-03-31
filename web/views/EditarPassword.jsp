@@ -22,7 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Editar Usuario</title>
         <!--===============================================================================================-->	
-        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
@@ -43,66 +43,68 @@
         <!--===============================================================================================-->
     </head>
     <body class="dos">
-        <%
-        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        <%            UsuarioVO u = (UsuarioVO) session.getAttribute("Id");
         %>
         <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
+                    <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
+                <div class="contenido"></div>
+
             </nav>
         </header>
         <br>
-        <div class="container">
-            <form action ="ControladorUsuario" class=" validate-form">
-                <h4><b>Editar Usuario</b></h4>
-                <hr><br>
+      
+            <div class="container-login112">
+                <div class="wrap-login112">
+                    <form action ="ControladorUsuario" class=" validate-form">
+                        <h4><b>Editar Usuario</b></h4>
+                        <hr><br>
 
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input">
-                        <input class="form-control input100" type="number" name="txtID"  placeholder="ID" value="<%=u.getID()%>" readonly>
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card"></i>
-                        </span>
-                    </div>
-
-
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Contraseña necesesaria">
-                        <input class="form-control input100" type="password" id="p1" name="txtpassword" value="<%=u.getContrasena()%>" placeholder="password">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-phone-alt"></i>
-                        </span>
+                        <div class="wrap-input100 validate-input">
+                            <input class="form-control input100" type="number" name="txtID"  placeholder="ID" value="<%=u.getID()%>" readonly>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-address-card"></i>
+                            </span>
                         </div>
-                    
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Confirmacion de contraseña?">
-                        <input class="form-control input100" id="p2" type="password" name="txtpassword1" placeholder="password">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-phone-alt"></i>
-                        </span>
-                    </div>
+
+
+                        <div class="wrap-input100 validate-input" data-validate = "Contraseña necesesaria">
+                            <input class="form-control input100" type="password" id="p1" name="txtpassword" value="<%=u.getContrasena()%>" placeholder="password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-phone-alt"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate = "Confirmacion de contraseña?">
+                            <input class="form-control input100" id="p2" type="password" name="txtpassword1" placeholder="password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-phone-alt"></i>
+                            </span>
+                        </div>
                         <br><br><br>
-                     
-                    <div class="container-login100-form-btn">
-                        <a class="peligro" style="right:27%;bottom: 22%;color: firebrick" href="ControladorUsuario?accion=menu">Cancelar</a>
-                    </div>
+
+                      
                         <div class="container-login100-form-btn">
-                            
-                            <button class="login100-form-btn" onclick="comprobarClave(event)" style="right:15%;bottom: 20%;position: absolute" type="submit" name="accion" value="actualizarpassword2">
-                            <b> Guardar</b>
-                        </button>
-                    </div>
+
+                            <button class="login100-form-btn" onclick="comprobarClave(event)"  type="submit" name="accion" value="actualizarpassword2">
+                                Guardar
+                            </button>
+                        </div>
+                          <div class="container-login100-form-btn">
+                            <a class="login10-form-btn"  href="ControladorUsuario?accion=menu">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
-
-                <br> <br>
-            </form>
+            </div>
         </div>
+                            
 
 
-<a style="display: none" id="roll"><%=u.getRol()%></a>
+        <a style="display: none" id="roll"><%=u.getRol()%></a>
 
 
         <!--===============================================================================================-->	
@@ -116,39 +118,39 @@
         <!--===============================================================================================-->
         <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
         <script >
-            $('.js-tilt').tilt({
-                scale: 1.1
-            });
-         $('.js-tilt').tilt({
-                scale: 1.1
-            })
-         switch($("#roll").html()){
-            case "Funcionario":
-            
-            $(document).ready(function () {
-            $('.contenido').load('Template/menu.jsp');
-       });
-      
-          break;
-          case "Ayudante":
-      
-            $(document).ready(function () {
-      $('.contenido').load('Template/ayudante.jsp');
-      });
-      
-          break;
-         } 
-         
-          function comprobarClave(evt){
-    var clave1 = document.getElementById("p1").value;
-    var clave2 = document.getElementById("p2").value;
-    
+                            $('.js-tilt').tilt({
+                                scale: 1.1
+                            });
+                            $('.js-tilt').tilt({
+                                scale: 1.1
+                            })
+                            switch ($("#roll").html()) {
+                                case "Funcionario":
 
-    if (clave1 != clave2){
-        alert("Las contraseñas no coinciden, intente nuevamente")
-       evt.preventDefault();
-   }
-          }   </script>
+                                    $(document).ready(function () {
+                                        $('.contenido').load('Template/menu.jsp');
+                                    });
+
+                                    break;
+                                case "Ayudante":
+
+                                    $(document).ready(function () {
+                                        $('.contenido').load('Template/ayudante.jsp');
+                                    });
+
+                                    break;
+                            }
+
+                            function comprobarClave(evt) {
+                                var clave1 = document.getElementById("p1").value;
+                                var clave2 = document.getElementById("p2").value;
+
+
+                                if (clave1 != clave2) {
+                                    alert("Las contraseñas no coinciden, intente nuevamente")
+                                    evt.preventDefault();
+                                }
+                            }</script>
         <!--===============================================================================================-->
 
         <script src="assets/js/main.js" type="text/javascript"></script>
