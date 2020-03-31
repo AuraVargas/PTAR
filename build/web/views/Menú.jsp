@@ -317,7 +317,7 @@
         var vari = new Array();
         var ev = new Array();
         <%                for (AgendaVO obj2 : list) {
-                                if(obj2.getEstado().equalsIgnoreCase("Solicitado")){
+                                if(obj2.getEstado().equalsIgnoreCase("Solicitado")|| obj2.getEstado().equalsIgnoreCase("Inactivo")){
                             }else{
         %>
         vari.push('<%=obj2.getFecha()%>');

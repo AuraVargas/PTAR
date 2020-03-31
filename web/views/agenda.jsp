@@ -42,6 +42,9 @@
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
+         <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
 
     </head>
     <body class="editar dos">
@@ -92,7 +95,7 @@
                             ArrayList<AgendaVO> list = (ArrayList) dao.listar();
 
                             for (AgendaVO obj : list) {
-                                if(obj.getEstado().equalsIgnoreCase("Solicitado")){
+                                if(obj.getEstado().equalsIgnoreCase("Solicitado")|| obj.getEstado().equalsIgnoreCase("Inactivo")){
                             }else{
                         %>
                         
@@ -103,7 +106,7 @@
                             <td ><%=obj.getHoraInicio()%> - <%=obj.getHoraFin()%></td>
                             <td ><%=obj.getEstado()%></td>
                             <td > <a class="btn tbn-primary btn-1g" href="ControladorAgenda?accion=editar&codigo=<%=obj.getCodigoa()%>">Editar</a>
-                                <a href="#" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</a> </td>
+                                <button style="color:#CB3234" class="btn tbn-primary btn-1g" onclick="eliminar(<%=obj.getCodigoa()%>);">Eliminar</button> </td>
                         </tr>
                         <%
                             }
@@ -178,7 +181,7 @@ const filtrar = () =>{
                 if(titulo.indexOf(texto) !== -1 || fecha.indexOf(texto) !== -1 
                 || descripcion.indexOf(texto) !== -1 || estado.indexOf(texto) !== -1 
                 || horainicio.indexOf(texto) !== -1 || horafin.indexOf(texto) !== -1){
-            if(estado === "solicitado"){
+            if(estado === "solicitado"||estado === "inactivo"){
                 }else{
                     resultado.innerHTML += '<td >'+titulo+'</div></td>\n\
                     <td >'+fecha+'</td><td ><div class="des">'+descripcion+'</div></td>\n\
@@ -211,7 +214,8 @@ const filtrar = () =>{
       });
       
           break;
-         } 
+         }
+         
         </script>
         <!--===============================================================================================-->
 

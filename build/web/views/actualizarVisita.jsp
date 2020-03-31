@@ -69,7 +69,7 @@
                 <h4>Actualizar datos de Visita<hr>  <div>
                             <button class="btn btn-danger" onclick="event.preventDefault();eliminarVisita(<%=visita.getCodigov()%>)">
                                Eliminar Evento
-                            </button> <br><br>
+                            </button>
                         </div></h4>      
       
                 
@@ -224,14 +224,7 @@
                    
                    var hoy = new Date();
                    let days2=Math.floor(hoy.getTime()/dayInMillis);
-                   if(days1 < days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
-                       event.preventDefault();
-                   }else if(days1 === days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
-                       event.preventDefault();
-                   }else{
-                   }
+                   
             }
         </script>
         <!--===============================================================================================-->

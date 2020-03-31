@@ -38,6 +38,13 @@
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
+        <script src="../assets/js/vex.combined.min.js" type="text/javascript"></script>
+        <script>vex.defaultOptions.className = 'vex-theme-os'</script>
+        <link href="../assets/css/vex-theme-os.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/css/vex.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
     </head>
     <body class="tres">
         <%
@@ -187,7 +194,10 @@
             $('.contenido').load('Template/menu.jsp');
             var error = <%=session.getAttribute("Error")%>;
             if(error == 1){
-            alert('ya existe un evento con esta hora.');
+            vex.dialog.alert({
+                message: 'Ya existe un evento con esta hora.',
+                className: 'vex-theme-wireframe'
+            });
             }
        });
       
@@ -198,25 +208,34 @@
       $('.contenido').load('Template/ayudante.jsp');
       var error = <%=session.getAttribute("Error")%>;
             if(error == 1){
-            alert('ya existe un evento con esta hora.');
+            vex.dialog.alert({
+                message: 'Ya existe un evento con esta hora.',
+                className: 'vex-theme-wireframe'
+            });
             }
       });
       
           break;
          } 
-         function validacion(){
+         function validacion(){ 
                    let dayInMillis=24*3600000;
                    var f = new Date(document.getElementById("txtfecha").value);
                    f.setDate(f.getDate() + 1);
-                   let days1=Math.floor(f.getTime()/dayInMillis);
+                   let days1=Math.floor(f.getTime()/dayInMillis-1);
                    
                    var hoy = new Date();
                    let days2=Math.floor(hoy.getTime()/dayInMillis);
                    if(days1 < days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else if(days1 === days2){
-                       alert("Por favor ingrese una fecha superior a la actual");
+                       vex.dialog.alert({
+                message: "Por favor ingrese una fecha posterior a la actual",
+                className: 'vex-theme-wireframe'
+            });
                        event.preventDefault();
                    }else{
                    }

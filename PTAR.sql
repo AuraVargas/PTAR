@@ -72,7 +72,7 @@ constraint FK_Visitas_empresa foreign key (IDempresa) References empresa(NIT)
 go
 create view visitasCom
 as
-select v.codigoV,a.Titulo, v.numeropersonas,v.CodiA,e.NIT,a.Estado,e.nombre as 'nombreEmp',r.IDRepresentante,
+select a.descripcion, v.codigoV,a.Titulo, v.numeropersonas,v.CodiA,e.NIT,a.Estado,e.nombre as 'nombreEmp',r.IDRepresentante,
 r.Nombre,r.Correo,r.telefono,a.fecha as 'fecha',
 convert(char(5), a.horaInicio, 108)as'horaInicio',
 convert(char(5), a.horaFin, 108)as'horaFin'
@@ -88,31 +88,31 @@ insert into Usuarios values(12345,ENCRYPTBYPASSPHRASE('PalabraImportante',conver
 insert into Usuarios values(13,ENCRYPTBYPASSPHRASE('PalabraImportante',convert(varchar(40), '1234')),45678,'Aura','Vargas','a@gmail.com','Ayudante','Activo')
 
 go
-create PROC Inicio
+alter PROC Inicio
 @EMAIL varchar(30),
 @PASS varchar(40)
 as
-select * from Usuarios where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
+select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', telefono, nombre, apellido, email,rol,estado from Usuarios where Email=@EMAIL AND convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) = @PASS
 go
 --Consultar contraseña con correo
 create proc adviseWith
 @EMAIL varchar(30)
 as
-select * from Usuarios where Email = @EMAIL
+select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', telefono, nombre, apellido, email,rol,estado from Usuarios where Email = @EMAIL
 go
 --Volver al estado original la contraseña para ser cambiada
 create proc recoverPassword
 @Email varchar(30)
 as
 update Usuarios
-set Contrasena = ENCRYPTBYPASSPHRASE('PalabraImportante',ID)
+set Contrasena = ENCRYPTBYPASSPHRASE('PalabraImportante',convert(varchar(40),ID))
 where @Email = Email
 go
 --Consultar actividades
 create proc estadosUsuarios
 @Estado varchar(20)
 as
-select * from Usuarios
+select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', telefono, nombre, apellido, email,rol,estado from Usuarios
 where Estado = @Estado
 go
 --Cambiar la contraseña 
@@ -127,6 +127,7 @@ go
 
 
 select * from usuarios
+go
 create proc crearUsu
 @Id int,
 @Contrasena varchar(40),
@@ -157,7 +158,7 @@ go
 create proc consultarUsu
 @ID int
 as
-select * from Usuarios
+select ID, convert(varchar,DecryptByPassPhrase('PalabraImportante',Contrasena)) as 'contrasena', telefono, nombre, apellido, email,rol,estado from Usuarios
 where ID = @ID
 go
 
@@ -206,8 +207,6 @@ create proc actualizarcolor
 as
 update agenda set color=@color where Fecha= @fecha
 
-GO
-select * from agenda
 go
 create proc consultaragenda
 @codigoe int
@@ -240,10 +239,16 @@ or horaInicio <= @horaInicio and horaFin >= @horaFin and fecha = @fecha and codi
 go
 
 create proc eliminaragenda
-@codigoe int
+@codigoa int
 as
-delete from visitas where codia=@codigoe
-delete agenda where codigoe= @codigoe
+update agenda set Estado='Inactivo' where CodigoE=@codigoa
+
+GO
+create proc EdDescripcion
+@Descripcion varchar(300),
+@codigoa int
+as
+update agenda set Estado='Inactivo', descripcion = @Descripcion where CodigoE=@codigoa
 
 GO
 

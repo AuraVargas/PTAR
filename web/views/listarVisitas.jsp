@@ -42,6 +42,9 @@
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
     </head>
     <body class="dos">
         <%
@@ -64,7 +67,9 @@
                 <form class="form-inline"accion="ControladorAgenda">
                     <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
             <button type="button" onclick="Solicitudes()" class="btn btn-success form-control mr-sm-2">Ver solicitudes de visitas</button>
+            <button type="button" onclick="canceladas()" class="btn btn-success form-control mr-sm-2">Ver visitas canceladas</button>
             <button type="button" onclick="visitas()" class="btn btn-success form-control mr-sm-2">Volver a las visitas</button>
+            
                     </nav>
             <form class="text-center" action="ControladorVisita">
                 <br>
@@ -90,7 +95,7 @@
                         pru = (ArrayList) dao.listar();
                         
                         for (VisitasVO obj : pru) {
-                            if(obj.getEstado().equalsIgnoreCase("Solicitado")){
+                            if(obj.getEstado().equalsIgnoreCase("Solicitado")|| obj.getEstado().equalsIgnoreCase("Inactivo")){
                             }else{
                     %>
                     <tr>
@@ -102,7 +107,7 @@
                         <td> <%=obj.getEstado()%></td>
                         
                         <td><a name ="codigov "class="btn tbn-primary btn-1g"value="<%=obj.getCodigov()%>"href="ControladorVisita?accion=editar&codigo=<%=obj.getCodigov()%>">Editar</a>
-                            <a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita(<%=obj.getCodigov()%>)">Eliminar</a></td>
+                            <button class="btn tbn-primary btn-1g" style="color: #CB3234" onclick="eliminarVisita(<%=obj.getCodigoa()%>)">Cancelar</button></td>
                     </tr>
                             
                     <%
@@ -181,7 +186,7 @@
                             for (VisitasVO obj : pru) {
                         %>
                 {descripcion: '<%=obj.getNombreE()%>',personas: '<%=obj.getNumeroPersonas()%>',nombre: '<%=obj.getNombre()%>',correo: '<%=obj.getCorreo()%>'
-                    ,codigo: '<%=obj.getCodigov()%>',estado: '<%=obj.getEstado()%>',codigoE: '<%=obj.getCodigoa()%>',Titulo:'<%=obj.getTitulo()%>'},
+                    ,codigo: '<%=obj.getCodigov()%>',codigoa: '<%=obj.getCodigoa()%>',estado: '<%=obj.getEstado()%>',codigoE: '<%=obj.getCodigoa()%>',Titulo:'<%=obj.getTitulo()%>',des:'<%=obj.getDescripcion()%>'},
                 <%
                             }
                         %>
@@ -198,9 +203,11 @@ const filtrar = () =>{
                 let nombre = evento.nombre.toLowerCase();
                 let correo = evento.correo.toLowerCase();
                 let codigo = evento.codigo.toLowerCase();
+                let codigoa = evento.codigoa.toLowerCase();
                 let estado = evento.estado.toLowerCase();
                 let Titulo = evento.Titulo.toLowerCase();
                 let codigoE = evento.codigoE.toLowerCase();
+                let des = evento.des.toLowerCase();
                 
                 if(descripcion.indexOf(texto) !== -1 || personas.indexOf(texto) !== -1 
                 || nombre.indexOf(texto) !== -1 || correo.indexOf(texto) !== -1 
@@ -210,10 +217,17 @@ const filtrar = () =>{
                     resultado.innerHTML += '<td>'+Titulo+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
                             '</td><td>'+nombre+'</td><td>'+correo+
                             '</td><td>'+estado+
-                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"onclick="set('+codigoE+')" href="#ventana1" data-toggle="modal" >Aceptar Solicitud</a><a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita('+codigo+')">Eliminar</a></td>';
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"onclick="set('+codigoE+')" href="#ventana1" data-toggle="modal" >Aceptar Solicitud</a><button class="btn tbn-primary btn-1g" style="color: #CB3234" onclick="eliminarVisita('+codigoa+')">cancelar</button></td>';
 
                 }
-                
+            }else if(estado === "inactivo"){
+                if(prueba2){
+                    resultado.innerHTML += '<td>'+des+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
+                            '</td><td>'+nombre+'</td><td>'+correo+
+                            '</td><td>'+estado+
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"onclick="set('+codigoE+')" href="#ventana1" data-toggle="modal" >Aceptar Solicitud</a></td>';
+
+                }
             }else{
                 if(prueba){
                     
@@ -221,7 +235,7 @@ const filtrar = () =>{
                     resultado.innerHTML += '<td>'+Titulo+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
                             '</td><td>'+nombre+'</td><td>'+correo+
                             '</td><td>'+estado+
-                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"value="'+codigo+'"href="ControladorVisita?accion=editar&codigo='+codigo+'">Editar</a><a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita('+codigo+')">Eliminar</a></td>';
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"value="'+codigo+'"href="ControladorVisita?accion=editar&codigo='+codigo+'">Editar</a><button class="btn tbn-primary btn-1g" style="color: #CB3234" onclick="eliminarVisita('+codigoa+')">Cancelar</button></td>';
                 }
                 }    
             }
@@ -231,6 +245,7 @@ const filtrar = () =>{
             }
         }
         prueba = false;
+        prueba2 = false;
         const Solicitudes = () =>{
             prueba = true;
             resultado.innerHTML = '';
@@ -240,6 +255,7 @@ const filtrar = () =>{
                 let nombre = evento.nombre.toLowerCase();
                 let correo = evento.correo.toLowerCase();
                 let codigo = evento.codigo.toLowerCase();
+                let codigoa = evento.codigoa.toLowerCase();
                 let estado = evento.estado.toLowerCase();
                 let Titulo = evento.Titulo.toLowerCase();
                 let codigoE = evento.codigoE.toLowerCase();
@@ -248,7 +264,35 @@ const filtrar = () =>{
                 resultado.innerHTML += '<td>'+Titulo+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
                             '</td><td>'+nombre+'</td><td>'+correo+
                             '</td><td>'+estado+
-                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"onclick="set('+codigoE+')" href="#ventana1" data-toggle="modal" >Aceptar Solicitud</a><a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita('+codigo+')">Eliminar</a></td>';
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"onclick="set('+codigoE+')" href="#ventana1" data-toggle="modal" >Aceptar Solicitud</a><button class="btn tbn-primary btn-1g" style="color: #CB3234" onclick="eliminarVisita('+codigoa+')">Cancelar</button></td>';
+
+            
+            }
+            }
+            if (resultado.innerHTML == ''){
+                resultado.innerHTML += '<td > Evento no encontrado </td>'
+            }
+        }
+        const canceladas = () =>{
+            prueba = true;
+            resultado.innerHTML = '';
+            for(let evento of eventos){
+                let descripcion = evento.descripcion.toLowerCase();
+                let personas = evento.personas.toLowerCase();
+                let nombre = evento.nombre.toLowerCase();
+                let correo = evento.correo.toLowerCase();
+                let codigo = evento.codigo.toLowerCase();
+                let codigoa = evento.codigoa.toLowerCase();
+                let estado = evento.estado.toLowerCase();
+                let Titulo = evento.Titulo.toLowerCase();
+                let codigoE = evento.codigoE.toLowerCase();
+                let des = evento.des.toLowerCase();
+                
+            if(estado === "inactivo"){
+                resultado.innerHTML += '<td>'+des+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
+                            '</td><td>'+nombre+'</td><td>'+correo+
+                            '</td><td>'+estado+
+                            '</td><td></td>';
 
             
             }
@@ -266,15 +310,16 @@ const filtrar = () =>{
                 let nombre = evento.nombre.toLowerCase();
                 let correo = evento.correo.toLowerCase();
                 let codigo = evento.codigo.toLowerCase();
+                let codigoa = evento.codigoa.toLowerCase();
                 let estado = evento.estado.toLowerCase();
                 let Titulo = evento.Titulo.toLowerCase();
                 
-            if(estado === "solicitado"){
+            if(estado === "solicitado"||estado === "inactivo"){
                 }else{
                     resultado.innerHTML += '<td>'+Titulo+'</td><td ><div class="des">'+descripcion+'</div></td><td >'+personas+
                             '</td><td>'+nombre+'</td><td>'+correo+
                             '</td><td>'+estado+
-                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"value="'+codigo+'"href="ControladorVisita?accion=editar&codigo='+codigo+'">Editar</a><a class="btn tbn-primary btn-1g" href="#" onclick="eliminarVisita('+codigo+')">Eliminar</a></td>';
+                            '</td><td><a name ="codigov "class="btn tbn-primary btn-1g"value="'+codigo+'"href="ControladorVisita?accion=editar&codigo='+codigo+'">Editar</a><button class="btn tbn-primary btn-1g" style="color: #CB3234" onclick="eliminarVisita('+codigoa+')">Cancelar</button></td>';
 
                 }
             }

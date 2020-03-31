@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/views/Menú.jsp</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/src/java/Conexion/Conexion.java</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/assets/css/style2.css</file>
@@ -13,6 +14,9 @@
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/views/Usuario.jsp</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/assets/css/main.css</file>
             <file>file:/C:/Users/GOMEZ/Documents/Proyecto%20clonado/PTAR/web/assets/css/Style.css</file>
+=======
+            <file>file:/C:/Users/HP/Downloads/proyecto/CASI%20TERMINADO/PTAR/src/java/ControladorUsuarioListar/ControladorAgenda.java</file>
+>>>>>>> 3d849e7bf22a51467ada1a8f44bcf384884c003a
         </group>
     </open-files>
 </project-private>
