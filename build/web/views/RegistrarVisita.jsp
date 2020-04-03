@@ -20,7 +20,7 @@
 <html>
     <head>
         <title>Registrar Visita </title>
-        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
@@ -46,129 +46,128 @@
         <link rel="stylesheet" href="assets/css/vex.css" />
         <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
     </head>
-    <body class="tres">
-        <%
-        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+    <body >
+        <%            UsuarioVO u = (UsuarioVO) session.getAttribute("Id");
         %>
         <div class="contenido"></div>
 
-                <br><br><br><br>
+                <br><br><br>
 
+        <div class="container-login115">
+            <div class="wrap-login115" style="height: 100%;">
+                <div class="container">
 
-        <div class="container">
+                    <form action="ControladorVisita" action ="" class=" validate-form"method="POST"> 
+                        <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
 
-            <form action="ControladorVisita" action ="" class=" validate-form"method="POST"> 
-                <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
+                        <h4><b>Registro de Visita</b></h4><hr>
+                        <p class="sub">Información sobre la empresa o institución: </p>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "NIT de la Empresa">
+                                <input class="form-control input100" type="number" name ="txtnit" placeholder="NIT">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-building"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Escribe el Número de personas que asistirán a la visita">
+                                <input class="form-control input100" type="number"name="txtNumeroPersonas" placeholder="N° de personas que asistirán">
+                                <input type="hidden" name="txtIdUs" value="<%=u.getID()%>">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-users"></i>
+                                </span>
+                            </div>
+                            <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Dirección, nombre de la empresa etc">
+                                <input class="form-control input100" type="text" name="txtNombre" placeholder="Nombre de la empresa ">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-envelope-open-text"></i>
+                                </span>
+                            </div> 
+                            <%
+                                Calendar c1 = Calendar.getInstance();
+                                String dia = Integer.toString(c1.get(Calendar.DATE));
+                                String mes = Integer.toString(c1.get(Calendar.MONTH));
+                                if (mes.length() == 1) {
+                                    mes = "0" + mes;
+                                }
+                                if (dia.length() == 1) {
+                                    dia = "0" + dia;
+                                }
+                            %>
+                            <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha de la visita">
+                                <!--                                <label>Fecha de la Visita</label>-->
+                                <input type="date" class="form-control input100" name="txtfecha" id="txtfecha" value="<%=c1.getWeekYear() + "/" + mes + "/" + dia%>"placeholder="Fecha de la visita">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
+                                    <p style="font-size: medium">Hora de inicio: </p>
+                                    <input type="time" class="form-control input100" required name="txtincio" placeholder="hora de inicio">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
 
-                <h5>Registro de Visita</h5><br>
-                <h6>Información sobre la empresa o institución: </h6><br>
-                <div class="form-row">
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "NIT de la Empresa">
-                        <input class="form-control input100" type="number" name ="txtnit" placeholder="NIT">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-building"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Escribe el Número de personas que asistirán a la visita">
-                        <input class="form-control input100" type="number"name="txtNumeroPersonas" placeholder="Número de personas que asistirán a la visita">
-                        <input type="hidden" name="txtIdUs" value="<%=u.getID()%>">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-users"></i>
-                        </span>
-                    </div>
-                    <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "Dirección, nombre de la empresa etc">
-                        <input class="form-control input100" type="text" name="txtNombre" placeholder="Nombre de la empresa ">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-envelope-open-text"></i>
-                        </span>
-                    </div> 
-                                                           <%
-                        Calendar c1 = Calendar.getInstance();
-                        String dia = Integer.toString(c1.get(Calendar.DATE));
-                        String mes = Integer.toString(c1.get(Calendar.MONTH));
-                        if (mes.length() == 1) {
-                            mes = "0" + mes;
-                        }
-                        if (dia.length() == 1) {
-                            dia = "0" + dia;
-                        }
-                    %>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "Fecha de la visita">
-                        <label>Fecha de la Visita</label>
-                        <input type="date" class="form-control input100" name="txtfecha" id="txtfecha" value="<%=c1.getWeekYear()+"/"+mes+"/"+dia%>"placeholder="Fecha de la visita">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="far fa-calendar-alt"></i>
-                        </span>
-                    </div>
-                         <div class="col-md-6 mb-3">
-                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
-                                <input type="time" class="form-control input100" required name="txtincio" placeholder="hora de inicio">
+<p style="font-size: medium">Hora de finalización: </p>
+                                    <input type="time" class="form-control input100" required name="txtfin" placeholder="hora de finalizacion">
+
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
-                                
-                                <input type="time" class="form-control input100" required name="txtfin" placeholder="hora de finalizacion">
-                                
+                        <p class="sub1">Persona que representará la empresa para realizar esta visita:</p>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es el nombre de la persona encargada?">
+                                <input type="text" class="form-control input100" name="txtnombrerepresentante"  placeholder="Nombre Completo" >
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-portrait"></i>
+                                </span>
+                            </div>
+                            <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu DI?">
+                                <input class="form-control input100" type="number" name="txtidrepresentante"  placeholder="Número de Identificación">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-address-card"></i>
+                                </span>
+                            </div>
+                            <div class=" wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu Email, ex@abc.xyz?">
+                                <input class="input100" type="text" name="txtcorreo" placeholder="Email ">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-at"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu Tel?">
+                                <input class="input100" type="number" name="txttelefono" placeholder="Teléfono">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-phone-alt"></i>
+                                </span>
+                            </div>
+                           
+                            <div class="container-login100-form-btn">
+                                <button onclick="validacion()" class="login100-form-btn" type="submit" name="accion" value="Registrar">
+                                     Registrar
+                                </button>
+                                 <div class="container-login100-form-btn">
+                                <a class="login11-form-btn" style="margin-bottom: 200px;" onclick="return cancelarregistroV()"> Cancelar</a>
+                            </div>
                             </div>
                         </div>
+                    </form>
                 </div>
-                <h6>Pesona que representará la empresa para realizar esta visita:</h6><br>
-                <div class="form-row">
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es el nombre de la persona encargada?">
-                        <input type="text" class="form-control input100" name="txtnombrerepresentante"  placeholder="Nombre Completo" >
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-portrait"></i>
-                        </span>
-                    </div>
-                    <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu DI?">
-                        <input class="form-control input100" type="number" name="txtidrepresentante"  placeholder="Número de Identificación">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card"></i>
-                        </span>
-                    </div>
-                    <div class=" wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu Email, ex@abc.xyz?">
-                        <input class="input100" type="text" name="txtcorreo" placeholder="Email ">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-at"></i>
-                        </span>
-                    </div>
- 
-                    <div class="wrap-input100 validate-input col-md-6 mb-3" data-validate = "¿Cuál es tu Tel?">
-                        <input class="input100" type="number" name="txttelefono" placeholder="Teléfono">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-phone-alt"></i>
-                        </span>
-                    </div>
-
-
-                    
-                    <div class="container-login100-form-btn">
-                        <a class="peligro" onclick="return cancelarregistroV()"style="right:27%;bottom: 3%;color: firebrick"> Cancelar
-                        </a>
-                    </div>
-                    <div class="container-login100-form-btn">
-                        <button onclick="validacion()" class="login100-form-btn"  style="right:15%;bottom: 1%;position: absolute" type="submit" name="accion" value="Registrar">
-                            <b> Registrar</b>
-                        </button>
-                    </div>
-                </div>
-
-            </form>
-
+            </div>
         </div>
-<a style="display: none" id="roll"><%=u.getRol()%></a>
+        <a style="display: none" id="roll"><%=u.getRol()%></a>
 
         <!--===============================================================================================-->	
-        
+
         <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
         <script src="assets/js/alertas.js" charset="UTF-8" type="text/javascript"></script>
         <!--===============================================================================================-->
@@ -179,62 +178,62 @@
         <!--===============================================================================================-->
         <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
         <script >
-            $('.js-tilt').tilt({
-                scale: 1.1
-            })
-         switch($("#roll").html()){
-            case "Funcionario":
-            
-            $(document).ready(function () {
-            $('.contenido').load('Template/menu.jsp');
-            var error = <%=session.getAttribute("Error")%>;
-            if(error == 1){
-            vex.dialog.alert({
-                message: 'Ya existe un evento con esta hora.',
-                className: 'vex-theme-wireframe'
-            });
-            }
-       });
-      
-          break;
-          case "Ayudante":
-      
-            $(document).ready(function () {
-      $('.contenido').load('Template/ayudante.jsp');
-      var error = <%=session.getAttribute("Error")%>;
-            if(error == 1){
-            vex.dialog.alert({
-                message: 'Ya existe un evento con esta hora.',
-                className: 'vex-theme-wireframe'
-            });
-            }
-      });
-      
-          break;
-         } 
-         function validacion(){ 
-                   let dayInMillis=24*3600000;
-                   var f = new Date(document.getElementById("txtfecha").value);
-                   f.setDate(f.getDate() + 1);
-                   let days1=Math.floor(f.getTime()/dayInMillis-1);
-                   
-                   var hoy = new Date();
-                   let days2=Math.floor(hoy.getTime()/dayInMillis);
-                   if(days1 < days2){
-                       vex.dialog.alert({
-                message: "Por favor ingrese una fecha posterior a la actual",
-                className: 'vex-theme-wireframe'
-            });
-                       event.preventDefault();
-                   }else if(days1 === days2){
-                       vex.dialog.alert({
-                message: "Por favor ingrese una fecha posterior a la actual",
-                className: 'vex-theme-wireframe'
-            });
-                       event.preventDefault();
-                   }else{
-                   }
-            }
+                                    $('.js-tilt').tilt({
+                                        scale: 1.1
+                                    })
+                                    switch ($("#roll").html()) {
+                                        case "Funcionario":
+
+                                            $(document).ready(function () {
+                                                $('.contenido').load('Template/menu.jsp');
+                                                var error = <%=session.getAttribute("Error")%>;
+                                                if (error == 1) {
+                                                    vex.dialog.alert({
+                                                        message: 'Ya existe un evento con esta hora.',
+                                                        className: 'vex-theme-wireframe'
+                                                    });
+                                                }
+                                            });
+
+                                            break;
+                                        case "Ayudante":
+
+                                            $(document).ready(function () {
+                                                $('.contenido').load('Template/ayudante.jsp');
+                                                var error = <%=session.getAttribute("Error")%>;
+                                                if (error == 1) {
+                                                    vex.dialog.alert({
+                                                        message: 'Ya existe un evento con esta hora.',
+                                                        className: 'vex-theme-wireframe'
+                                                    });
+                                                }
+                                            });
+
+                                            break;
+                                    }
+                                    function validacion() {
+                                        let dayInMillis = 24 * 3600000;
+                                        var f = new Date(document.getElementById("txtfecha").value);
+                                        f.setDate(f.getDate() + 1);
+                                        let days1 = Math.floor(f.getTime() / dayInMillis - 1);
+
+                                        var hoy = new Date();
+                                        let days2 = Math.floor(hoy.getTime() / dayInMillis);
+                                        if (days1 < days2) {
+                                            vex.dialog.alert({
+                                                message: "Por favor ingrese una fecha posterior a la actual",
+                                                className: 'vex-theme-wireframe'
+                                            });
+                                            event.preventDefault();
+                                        } else if (days1 === days2) {
+                                            vex.dialog.alert({
+                                                message: "Por favor ingrese una fecha posterior a la actual",
+                                                className: 'vex-theme-wireframe'
+                                            });
+                                            event.preventDefault();
+                                        } else {
+                                        }
+                                    }
             <%
                 session.setAttribute("Error", 0);
             %>
@@ -243,7 +242,7 @@
         <!--===============================================================================================-->
 
         <script src="assets/js/main.js" type="text/javascript"></script>
-    
-            </body>
+
+    </body>
 </html>
 

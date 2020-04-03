@@ -57,7 +57,7 @@
 
                     <form name="f1" action ="ControladorUsuario" class="login100-form validate-form" method="POST">
                        
-                        <span  class="login100-form-title">
+                        <span  class="login100-form-titler">
                             <h2> <b> Registrar Usuario</b></h2>   
                             <hr>
                         </span>

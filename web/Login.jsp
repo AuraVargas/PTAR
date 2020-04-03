@@ -39,14 +39,14 @@
             <div class="container-login100">
                 <div class="wrap-login100">
                     <span class="login100-form-title">
-                        <b> INICIA SESIÓN</b>
+                        <b> INICIA SESIÓN</b><hr>
                     </span>
                     <div class="login100-pic js-tilt" data-tilt>
                         <div>
-                            <img class="rana" src="assets/img/acueducto.png" alt=""/>
+                            <img class="rana" src="assets/img/acueductob.png" alt=""/>
                         </div>
                         <div>
-                            <img class="P" src="assets/img/iconop.png" alt=""/>
+                            <img class="P" src="assets/img/ICONOB.png" alt=""/>
                         </div>
                     </div>
 

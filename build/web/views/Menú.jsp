@@ -43,9 +43,11 @@
         <link href="assets/css/util.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
+
         <script src="assets/js/vex.combined.min.js"></script>
         <link rel="stylesheet" href="assets/css/vex.css" />
         <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
+
         <!--===============================================================================================-->
 
     </head>
@@ -60,7 +62,7 @@
                 
             } else if (estado.equalsIgnoreCase(u.getEstado())) {
         %>
-            
+
                 <div class="contenido"></div>
 
                 <br><br>
@@ -73,8 +75,10 @@
         } else if (numCadena.equalsIgnoreCase(u.getContrasena())) {
         %>
         <header class="menu">
+
             
                 <div class="contenido"></div>
+
         </header>
         
        
@@ -174,6 +178,7 @@
 
 
     <header class="menu">
+
             <div class="contenido"></div>
     </header>
 <br><br>
@@ -264,10 +269,10 @@
                 </div>
                 <div  class="modal-body" style="background-color: #a3d5d1">
                     <div class="form-group">
-                        <label id="descripcion">Informacion de los eventos</label><br>
+                        <label id="descripcion">Información de los eventos</label><br>
 
-                        <label id="fecha">Informacion de los eventos</label><br>
-                        <label id="estado">Informacion de los eventos</label><br>
+                        <label id="fecha">Información de los eventos</label><br>
+                        <label id="estado">Información de los eventos</label><br>
                         <a class="peligro" style="color: firebrick" onclick="elim()">Eliminar</a>
                         <a id="editar" class="btn btn-success abajo-derecha"href="">Editar</a>
                     </div>
@@ -339,7 +344,9 @@
 
     </script>
     <script src="assets/js/Calendario.js"></script>
+
     <script src="assets/js/acciones.js"charset="UTF-8" type="text/javascript"></script>
+
     <!--===============================================================================================-->
 
     <script src="assets/js/main.js" type="text/javascript"></script>
