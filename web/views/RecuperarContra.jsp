@@ -36,9 +36,9 @@
 
         <div class="limiter">
             <div class="container-login100">
-                <div class="wrap-login1001">
+                <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="../assets/img/emo.png" alt="IMG">
+                        <img src="../assets/img/ICONOB.png" alt="IMG" >
                     </div>
 
                     <form class="login100-form validate-form" action="../ControladorPassword" method="post">

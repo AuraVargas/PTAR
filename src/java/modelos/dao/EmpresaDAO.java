@@ -49,7 +49,6 @@ public class EmpresaDAO implements Crud{
             rs=ps.executeQuery();
             if(rs.next()==true){
                 r=1;
-                cn.close();
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());

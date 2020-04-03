@@ -88,7 +88,7 @@ insert into Usuarios values(12345,ENCRYPTBYPASSPHRASE('PalabraImportante',conver
 insert into Usuarios values(13,ENCRYPTBYPASSPHRASE('PalabraImportante',convert(varchar(40), '1234')),45678,'Aura','Vargas','a@gmail.com','Ayudante','Activo')
 
 go
-alter PROC Inicio
+create PROC Inicio
 @EMAIL varchar(30),
 @PASS varchar(40)
 as

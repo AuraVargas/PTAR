@@ -72,7 +72,7 @@
                             <span class="txt1">
                                  <b>Olvidé mi </b>
                             </span>
-                            <a class="txt2" href="views/RecuperarContra.jsp" target="_blank">
+                            <a class="txt2" href="views/RecuperarContra.jsp">
                                 <b> Usuario / Contraseña?</b>
                             </a>
                         </div>

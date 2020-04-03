@@ -34,8 +34,8 @@ public class CorreoVO {
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         
-        String myAccountEmail = "lromero89989@gmail.com";
-        String myAcountPassword = "auratienestecorreo888";
+        String myAccountEmail = "ptar.salitre2020@gmail.com";
+        String myAcountPassword = "12345PTAR";
         
         Session session = Session.getInstance(properties, new Authenticator(){
            @Override
