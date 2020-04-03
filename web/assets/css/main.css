@@ -391,6 +391,14 @@ iframe {
     /*    margin-top: 90px;*/
     margin-left: 90px;
 }
+.login-pic {
+    width: 63%;
+    /*    margin-left: 250px;*/
+        margin-top: 5%;
+/*    margin-left: 5%;*/
+    /*padding-right: 30%;*/
+    text-align: center;
+}
 .rana{
     float: left;
     width: 130px;

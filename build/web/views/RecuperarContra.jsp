@@ -37,17 +37,19 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <div class="login100-pic js-tilt" data-tilt>
-                        <img src="../assets/img/ICONOB.png" alt="IMG" >
+                    <div class="login-pic js-tilt" data-tilt>
+                        <img style="width: 63%;" src="../assets/img/emo.png" alt="IMG">
                     </div>
 
                     <form class="login100-form validate-form" action="../ControladorPassword" method="post">
-                        <span class="login100-form-title">
-                            <b> ¿Olvidaste tu contraseña? </b>
+                        <br><br><span>
+                            <h1 Style="color:white;font-family: Antipasto;font-size:270%; font-weight: bold;">  ¿Olvidaste tu contraseña? </h1>
                         </span>
-                        <span class="login100-form-title1">
+                        <hr>
+                        <span Style="color:gainsboro;" class="login100-form-title1">
                             <b> Ingresa tu correo electrónico para enviarte las instrucciones a seguir... </b>
                         </span>
+                        <br>
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                             <input class="input100" type="email" name="email" placeholder="Correo electrónico ">
                             <span class="focus-input100"></span>
@@ -56,7 +58,7 @@
                             </span>
                         </div>
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
+                            <button Style="float: left" class="login100-form-btn">
                                 Aceptar <br>
                             </button>
                         </div>
