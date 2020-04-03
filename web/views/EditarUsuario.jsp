@@ -22,7 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Editar Usuario</title>
         <!--===============================================================================================-->	
-        <link rel="shortcut icon" href="assets/img/acueducto.png" type="image/x-icon"/>
+        <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
@@ -43,103 +43,108 @@
         <!--===============================================================================================-->
     </head>
     <body class="dos">
-                <%
-        UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
+        <%                    UsuarioVO u = (UsuarioVO) session.getAttribute("Id");
         %>
         <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
+                    <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
+                <div class="contenido"></div>
+
             </nav>
         </header>
         <br>
-        <div class="container">
-            <form action ="ControladorUsuario" class=" validate-form">
-                <%
-                UsuarioVO vo= new UsuarioVO();
-                UsuarioDAO dao=new UsuarioDAO(vo);
-                vo.setID(Integer.parseInt((String)request.getAttribute("IDv")));
-                UsuarioVO temp = (UsuarioVO)dao.consultar();
-                temp.getID();
-                %>
-                <h4><b>Editar Usuario</b></h4>
-                <hr><br>
+        <div class="container-login111">
+            <div class="wrap-login114">
+                <form action ="ControladorUsuario" class=" validate-form">
+                    <%
+                        UsuarioVO vo = new UsuarioVO();
+                        UsuarioDAO dao = new UsuarioDAO(vo);
+                        vo.setID(Integer.parseInt((String) request.getAttribute("IDv")));
+                        UsuarioVO temp = (UsuarioVO) dao.consultar();
+                        temp.getID();
+                    %>
+                    <h4><b>Editar Usuario</b></h4>
+                    <hr><br>
 
-                <div class="form-row">
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
-                        <input type="text" class="form-control input100" name="txtnombre" value="<%=temp.getNombre()%>" placeholder="Nombres Y Apellidos" >
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-pencil-alt"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
-                        <input type="text" class="form-control input100" name="txtapellido" value="<%=temp.getApellido()%>" placeholder="Nombres Y Apellidos" >
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fas fa-pencil-alt"></i>
-                        </span>
-                    </div>
-
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input">
-                        <input class="form-control input100" type="number" name="txtID"  placeholder="ID" value="<%=temp.getID()%>" readonly>
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input">
-                        <input class="form-control input100" type="true" name="txtrol" value="<%=temp.getRol()%>" readonly>
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-address-card"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es tu Email?">
-                        <input class="input100" type="email" name="txtemail" value="<%=temp.getEmail()%>" placeholder="Email ">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es tu Tel?">
-                        <input class="form-control input100" type="number" name="txttelefono" value="<%=temp.getTelefono()%>" placeholder="Teléfono">
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-phone-alt"></i>
-                        </span>
-                        </div>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid esto is required">
-                        <select class="selectpicker input100 " data-live-search="true" name="txtestado" value="<%=temp.getEstado()%>" placeholder="Estado"> 
-                            <option data-tokens="ketchup mustard"> Selecciona estado</option>
-                            <option data-tokens="mustard">Activo</option>
-                            <option data-tokens="frosting">Inactivo</option>
-                        </select>
-                              <span class="symbol-input100">
-                             <i class="fas fa-user-tag"></i>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
+                            <input type="text" class="form-control input100" name="txtnombre" value="<%=temp.getNombre()%>" placeholder="Nombres Y Apellidos" >
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-pencil-alt"></i>
                             </span>
-                    </div>
-                        <br><br><br>
-                     
-                    <div class="container-login100-form-btn">
-                        <a class="peligro" style="right:27%;bottom: 22%;color: firebrick" href="ControladorUsuario?accion=listar">Cancelar</a>
-                    </div>
-                        <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" style="right:15%;bottom: 20%;position: absolute" type="submit" name="accion" value="Actualizar">
-                            <b> Guardar</b>
-                        </button>
-                    </div>
-                </div>
+                        </div>
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cómo te llamas?">
+                            <input type="text" class="form-control input100" name="txtapellido" value="<%=temp.getApellido()%>" placeholder="Nombres Y Apellidos" >
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </div>
 
-                <br> <br>
-            </form>
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input">
+                            <input class="form-control input100" type="number" name="txtID"  placeholder="ID" value="<%=temp.getID()%>" readonly>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-address-card"></i>
+                            </span>
+                        </div>
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input">
+                            <input class="form-control input100" type="true" name="txtrol" value="<%=temp.getRol()%>" readonly>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-address-card"></i>
+                            </span>
+                        </div>
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es tu Email?">
+                            <input class="input100" type="email" name="txtemail" value="<%=temp.getEmail()%>" placeholder="Email ">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="col-md-6 mb-3 wrap-input100 validate-input" data-validate = "¿Cuál es tu Tel?">
+                            <input class="form-control input100" type="number" name="txttelefono" value="<%=temp.getTelefono()%>" placeholder="Teléfono">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-phone-alt"></i>
+                            </span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate = "Valid esto is required">
+                            <select class="selectpicker input100 " data-live-search="true" name="txtestado" value="<%=temp.getEstado()%>" placeholder="Estado"> 
+                                <option data-tokens="ketchup mustard"> Selecciona estado</option>
+                                <option data-tokens="mustard">Activo</option>
+                                <option data-tokens="frosting">Inactivo</option>
+                            </select>
+                            <span class="symbol-input100">
+                                <i class="fas fa-user-tag"></i>
+                            </span>
+                        </div>
+                        <br>
+
+<!--                        <div class="container-login100-form-btn">
+                            <a class="peligro" style="right:27%;bottom: 22%;color: firebrick" href="">Cancelar</a>
+                        </div>-->
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit" name="accion" value="Actualizar">
+                                 Guardar
+                            </button>
+                               <a class="login190-form-btn"  href="ControladorUsuario?accion=listar">Cancelar</a>
+                        </div>
+<!--                          <div class="container-login100-form-btn">
+                            <a class="login10-form-btn"  href="ControladorUsuario?accion=listar">Cancelar</a>
+                        </div>-->
+                    </div>
+
+                    <br> <br>
+                </form>
+            </div>
         </div>
 
 
 
-<a style="display: none" id="roll"><%=u.getRol()%></a>
+        <a style="display: none" id="roll"><%=u.getRol()%></a>
 
         <!--===============================================================================================-->	
         <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -155,22 +160,22 @@
             $('.js-tilt').tilt({
                 scale: 1.1
             });
-         switch($("#roll").html()){
-            case "Funcionario":
-            
-            $(document).ready(function () {
-            $('.contenido').load('Template/menu.jsp');
-       });
-      
-          break;
-          case "Ayudante":
-      
-            $(document).ready(function () {
-      $('.contenido').load('Template/ayudante.jsp');
-      });
-      
-          break;
-         } 
+            switch ($("#roll").html()) {
+                case "Funcionario":
+
+                    $(document).ready(function () {
+                        $('.contenido').load('Template/menu.jsp');
+                    });
+
+                    break;
+                case "Ayudante":
+
+                    $(document).ready(function () {
+                        $('.contenido').load('Template/ayudante.jsp');
+                    });
+
+                    break;
+            }
         </script>
         <!--===============================================================================================-->
 

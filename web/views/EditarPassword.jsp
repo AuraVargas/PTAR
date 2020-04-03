@@ -58,7 +58,7 @@
             <div class="container-login112">
                 <div class="wrap-login112">
                     <form action ="ControladorUsuario" class=" validate-form">
-                        <h4><b>Editar Usuario</b></h4>
+                        <h4><b>Actualizar Contraseña</b></h4>
                         <hr><br>
 
                         <div class="wrap-input100 validate-input">

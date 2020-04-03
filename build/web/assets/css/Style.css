@@ -35,7 +35,7 @@ a{
     left: 0;
     right: 0;
     opacity: 0.5;
-     background-color: #5FA7B7;
+       background-color: #f7f7f7;
 }
 .tres::after {
     content: "";
@@ -45,7 +45,7 @@ a{
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #5FA7B7;
+       background-color: #f7f7f7;
 }
 .dos::after {
     content: "";
@@ -55,7 +55,7 @@ a{
     bottom: 0;
     left: 0;
     right: 0;
- background-color: #5FA7B7;
+    background-color: #f7f7f7;
 }
 #informacion{
     font-weight: bold;
@@ -237,16 +237,19 @@ h3 {
 }
 
 
-.menu{
-    color:rgba(58, 58, 189, 0.671);
+/*.menu{
+    color:#2557b1;
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 100;
-
-}
+background-color: #2557b1;
+}*/
 
 #items{
+    margin-left: 350px;
+}
+#items:hover{
     margin-left: 350px;
 }
 .logo{

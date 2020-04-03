@@ -177,6 +177,7 @@ img {
     vertical-align: middle;
     border-style: none;
     width: 100px;
+    margin: 0px 0px 0px 57px;
 }
 .grafica{
     width: 100%;
@@ -2532,7 +2533,8 @@ input[type="button"].btn-block {
     opacity: 0; }
 
 .collapse:not(.show) {
-    display: none; }
+    display: none; 
+    margin: 0px 0px 0px 227px;}
 
 .collapsing {
     position: relative;
@@ -6672,7 +6674,7 @@ button.bg-dark:focus {
 }
 .mt-5,block-23 mb-3
 .my-5 {
-    margin-top: 3rem !important;
+    margin: 32px 12px 0px 9px;
     width:auto; }
 
 .mr-5,
@@ -8160,7 +8162,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
     font-family: Antipasto;
-    background: #bfb6b645;
+    background: #ffffff;
     font-size: 15px;
     line-height: 1.8;
     font-weight: 400;
@@ -8274,9 +8276,11 @@ h1, h2, h3, h4, h5,
     font-size: 20px; }
 
 .ftco-navbar-light {
-    background: #2580e29c;
+    background: #2557b1;
     z-index: 3;
-    padding: 0; }
+    padding: 0;
+    position: fixed;
+    width: 100%;}
 @media (max-width: 991.98px) {
     .ftco-navbar-light {
         background: (5, 201, 245);
@@ -8664,7 +8668,7 @@ h1, h2, h3, h4, h5,
     background: #233e62 !important; }
 
 .bg-white {
-    background: #c0d3e4 !important; }
+    background: #ffffff !important; }
 
 .bg-primary {
     background: #00bdaa; }
@@ -8785,11 +8789,12 @@ h1, h2, h3, h4, h5,
 .wrap-about h2 {
     font-weight: 600; 
     margin: 1em 1em 1em 3em;
+    color:#2557b1;
 }
 .wrap-about .img {
     width: 100%;
     margin-bottom: 20px;
-margin: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
 }
 @media (max-width: 767.98px) {
     .wrap-about {
@@ -8895,8 +8900,8 @@ margin: 5px 0px 5px 0px;
     color: #00bdaa; }
 .tabulation-2 .nav-pills .nav-item .nav-link.active {
     color: #fff;
-    background: #00bdaa;
-    border: 1px solid #00bdaa; }
+    background: #2557b1;
+    border: 1px solid #2557b1; }
 .tabulation-2 .nav-pills .nav-item .nav-link.active span {
     color: #fff; }
 
@@ -8925,18 +8930,18 @@ margin: 5px 0px 5px 0px;
     font-size: 30px; }
 .tabulation .nav-pills .nav-item .nav-link.active {
     color: #fff;
-    background: #00bdaa;
-    border: 1px solid #00bdaa; }
+    background: #2557b1;
+    border: 1px solid #2557b1; }
 .tabulation .nav-pills .nav-item .nav-link.active span {
     color: #fff; }
 
 .tabulation .tab-content {
-    background: #c0d3e4;
+    background: #ffffff;
     padding: 0; }
 .tabulation .tab-content .img {
     width: 100%;
     height: 400px;
-margin: 10px 0px 18px 0px; }
+    margin: 10px 0px 18px 0px; }
 .tabulation .tab-content h3 {
     font-weight: 600; }
 .tabulation .tab-content h3 a {
@@ -9160,10 +9165,12 @@ textarea.form-control {
 .ftco-animate {
     opacity: 0;
     visibility: hidden; 
-    background-color: #c0d3e4;
+    background-color: #ffffff;
     font-weight: bold;
-        margin: 8px 0px 9px 0px;
+    margin: 8px 0px 9px 0px;
+    box-shadow: 3px 4px 4px 3px rgba(0, 0, 0, 0.2);
 }
+
 .ftco-animate1 {
     opacity: 0;
     visibility: hidden; 
@@ -9190,9 +9197,11 @@ textarea.form-control {
 
 .ftco-footer {
     font-size: 15px;
-    /*    height:400px;*/
-    background: black;
-    padding: 1em 0; }
+    height:386px;
+    background: #2557b1;
+    padding: 1em 0;
+    margin: 31px 0px 0px 0px;
+}
 .ftco-footer .ftco-footer-widget {
     width: 100%;
     display: block;
@@ -9372,7 +9381,7 @@ textarea.form-control {
     margin-top: 19px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #00bdaa;
+    color: #2557b1;
     position: relative; }
 
 .heading-section h2 {
@@ -9564,7 +9573,7 @@ textarea.form-control {
     z-index: -1;
     opacity: .9;
     height: 70px;
-    background: #61a7d0;
+    background: #2557b1;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48a7f0', endColorstr='#00bdaa', GradientType=1 ); }
 .ftco-intro .btn {
     width: 100%; }
@@ -9598,7 +9607,7 @@ textarea.form-control {
 .ftco-counter .text strong.number {
     font-weight: 400;
     font-size: 50px;
-    color: #00bdaa;
+    color: #2557b1;
     display: block;
     position: relative;
     line-height: 1; }

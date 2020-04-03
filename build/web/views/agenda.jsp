@@ -62,14 +62,15 @@
         <br>
         <div class="container">
 
-            <h4>Eventos</h4><hr>
-            <a href="ControladorAgenda?accion=add">Registrar</a><br>
-
+           <h4><b>Lista de Eventos Registrados</b></h4><hr>
+       
+           
             <nav class="navbar navbar-light bg-">
                 <form class="form-inline" >
                     <input class="form-control mr-sm-2" id="formulario" type="search" placeholder="Buscar" aria-label="Search">
+                     <a class="btn btn-success form-control mr-sm-2" href="ControladorAgenda?accion=add">Registrar un evento</a><br>
                 </form>
-            </nav>
+            </nav> <br>
 
             <form class="form-inline" action ="ControladorAgenda">
                 <center>

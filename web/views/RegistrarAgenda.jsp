@@ -74,7 +74,7 @@
                                             <i class="fab fa-elementor"></i>
                                         </span>
                                     </div>
-                                                                    </div>
+                                </div>
                                 <%
                                     String fecha = ((String) request.getAttribute("fecha"));
 
@@ -91,11 +91,17 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
                                         <input type="time" class="form-control input100" required name="txtincio" placeholder="hora de inicio">
+                                        <span class="symbol-input100">
+                                        <i class="fas fa-hourglass-start"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="wrap-input3 validate-input" data-validate = "¿Cuál es el Evento?">
                                         <input type="time" class="form-control input100" required name="txtfin" placeholder="hora de finalizacion">
+                                            <span class="symbol-input100">
+                                        <i class="fas fa-hourglass-end"></i>
+                                         </span>
                                     </div>
                                 </div>
 
@@ -113,22 +119,16 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class=" mr-md-3">
-                                <!--                                <div class="container-login100-form-btn">
-                                                                    <a class="login100-form-btn" onclick="return cancelarregistroA()">Cancelar</a>
-                                                                </div>-->
+                                <br>
+                            <div>
+                                <button class="login100-form-btn" onclick="validacion()" type="submit" name="accion" value="Registrar">
+                                    Registrar
+                                </button> 
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <a class="login118-form-btn"  href="ControladorUsuario?accion=menu">Cancelar</a>
+                            </div>
 
-
-                                <div>
-                                    <button class="login100-form-btn" onclick="validacion()" type="submit" name="accion" value="Registrar">
-                                        Registrar
-                                    </button> 
-                                </div>
-                                  </div>
-                                <div class="container-login100-form-btn">
-                                    <a class="login11-form-btn"  href="ControladorUsuario?accion=menu">Cancelar</a>
-                                </div>
-                          
 
                         </div>
                     </center>
@@ -153,64 +153,64 @@
         <!--===============================================================================================-->
         <script src="assets/vendor/tilt/tilt.jquery.min.js" type="text/javascript"></script>
         <script >
-                                        $('.js-tilt').tilt({
-                                            scale: 1.1
-                                        })
+                                            $('.js-tilt').tilt({
+                                                scale: 1.1
+                                            })
 
-         switch($("#roll").html()){
-            case "Funcionario":
-            
-            $(document).ready(function () {
-            $('.contenido').load('Template/menu.jsp');
-            var error = <%=session.getAttribute("Error")%>;
-            if(error == 1){
-            vex.dialog.alert({
-                message: 'Ya existe un evento con esta hora.',
-                className: 'vex-theme-wireframe'
-            });
-            }
-       });
-      
-          break;
-          case "Ayudante":
-      
-            $(document).ready(function () {
-      $('.contenido').load('Template/ayudante.jsp');
-      var error = <%=session.getAttribute("Error")%>;
-            if(error == 1){
-            vex.dialog.alert({
-                message: 'Ya existe un evento con esta hora.',
-                className: 'vex-theme-wireframe'
-            });
-            }
-      });
-      
-          break;
-         } 
-         function validacion(){ 
-                   let dayInMillis=24*3600000;
-                   var f = new Date(document.getElementById("txtfecha").value);
-                   f.setDate(f.getDate() + 1);
-                   let days1=Math.floor(f.getTime()/dayInMillis-1);
-                   
-                   var hoy = new Date();
-                   let days2=Math.floor(hoy.getTime()/dayInMillis);
-                   if(days1 < days2){
-                       vex.dialog.alert({
-                message: "Por favor ingrese una fecha posterior a la actual",
-                className: 'vex-theme-wireframe'
-            });
-                       event.preventDefault();
-                   }else if(days1 === days2){
-                       vex.dialog.alert({
-                message: "Por favor ingrese una fecha posterior a la actual",
-                className: 'vex-theme-wireframe'
-            });
-                       event.preventDefault();
-                   }else{
-                       
-                   }
-            }
+                                            switch ($("#roll").html()) {
+                                                case "Funcionario":
+
+                                                    $(document).ready(function () {
+                                                        $('.contenido').load('Template/menu.jsp');
+                                                        var error = <%=session.getAttribute("Error")%>;
+                                                        if (error == 1) {
+                                                            vex.dialog.alert({
+                                                                message: 'Ya existe un evento con esta hora.',
+                                                                className: 'vex-theme-wireframe'
+                                                            });
+                                                        }
+                                                    });
+
+                                                    break;
+                                                case "Ayudante":
+
+                                                    $(document).ready(function () {
+                                                        $('.contenido').load('Template/ayudante.jsp');
+                                                        var error = <%=session.getAttribute("Error")%>;
+                                                        if (error == 1) {
+                                                            vex.dialog.alert({
+                                                                message: 'Ya existe un evento con esta hora.',
+                                                                className: 'vex-theme-wireframe'
+                                                            });
+                                                        }
+                                                    });
+
+                                                    break;
+                                            }
+                                            function validacion() {
+                                                let dayInMillis = 24 * 3600000;
+                                                var f = new Date(document.getElementById("txtfecha").value);
+                                                f.setDate(f.getDate() + 1);
+                                                let days1 = Math.floor(f.getTime() / dayInMillis - 1);
+
+                                                var hoy = new Date();
+                                                let days2 = Math.floor(hoy.getTime() / dayInMillis);
+                                                if (days1 < days2) {
+                                                    vex.dialog.alert({
+                                                        message: "Por favor ingrese una fecha posterior a la actual",
+                                                        className: 'vex-theme-wireframe'
+                                                    });
+                                                    event.preventDefault();
+                                                } else if (days1 === days2) {
+                                                    vex.dialog.alert({
+                                                        message: "Por favor ingrese una fecha posterior a la actual",
+                                                        className: 'vex-theme-wireframe'
+                                                    });
+                                                    event.preventDefault();
+                                                } else {
+
+                                                }
+                                            }
             <%
                 session.setAttribute("Error", 0);
             %>

@@ -42,6 +42,7 @@
         <link href="assets/css/util.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/css/nav.css" rel="stylesheet" type="text/css"/>
         <!--===============================================================================================-->
 
     </head>
@@ -57,8 +58,8 @@
             } else if (estado.equalsIgnoreCase(u.getEstado())) {
         %>
         <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/iconop.png" alt=""/>
+            <nav class="navbar navbar-expand-lg ">
+                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="../assets/img/iconop.png" alt=""/>
                     <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
                 <div class="contenido"></div>
 
@@ -74,12 +75,14 @@
         } else if (numCadena.equalsIgnoreCase(u.getContrasena())) {
         %>
         <header class="menu">
-            <nav class="navbar  navbar-light bg-light">
+            <nav class="navbar  ">
+              
                 <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/iconop.png" alt=""/>
                     <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
                 <div class="contenido"></div>
 
             </nav>
+                
         </header>
         <br>
         
@@ -174,8 +177,9 @@
 
 
     <header class="menu">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            
+            <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/iconop.png" alt=""/>
                 <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
             <div class="contenido"></div>
 
@@ -269,10 +273,10 @@
                 </div>
                 <div class="modal-body" style="background-color: #a3d5d1">
                     <div class="form-group">
-                        <label id="descripcion">Informacion de los eventos</label><br>
+                        <label id="descripcion">Información de los eventos</label><br>
 
-                        <label id="fecha">Informacion de los eventos</label><br>
-                        <label id="estado">Informacion de los eventos</label><br>
+                        <label id="fecha">Información de los eventos</label><br>
+                        <label id="estado">Información de los eventos</label><br>
                         <a class="peligro" style="color: firebrick" onclick="elim()">Eliminar</a>
                         <a id="editar" class="btn btn-success abajo-derecha"href="">Editar</a>
                     </div>
@@ -345,6 +349,7 @@
     </script>
     <script src="assets/js/Calendario.js"></script>
     <script src="assets/js/acciones.js"></script>
+    <script src="../assets/js/nav.js" type="text/javascript"></script>
     <!--===============================================================================================-->
 
     <script src="assets/js/main.js" type="text/javascript"></script>

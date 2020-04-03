@@ -10,12 +10,12 @@
     UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
 %>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
+                    <span><img class="logo" src="assets/img/iconop.png" alt=""/> </span>
                 </button>
                 
 
-                <div  class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
+                
+                    <ul id="items" class="navbar-nav mr-auto children">
                         <li class="nav-item active">
                             <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
                         </li>
