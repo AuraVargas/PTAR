@@ -40,19 +40,17 @@
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
         <script src="Validaciones.js" type="text/javascript"></script>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
     </head>
     <body style="background-attachment: fixed ;background-image: url(assets/img/Fondo_4.png);"  >
        <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
-        <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
-            </nav>
-        </header>
+        <div class="contenido"></div>
+
+                <br><br><br><br>
         
      
         <div class="container">
@@ -67,7 +65,7 @@
             <form action="ControladorVisita" action ="" class=" validate-form" method="POST" > 
                 <input class="form-control" name="ruta" value="PTAR/SolicitarVisita/Empresa"style = "opacity: 0;">
                 <h4>Actualizar datos de Visita<hr>  <div>
-                            <button class="btn btn-danger" onclick="event.preventDefault();eliminarVisita(<%=visita.getCodigov()%>)">
+                            <button class="btn btn-danger" onclick="event.preventDefault();eliminarVisita(<%=visita.getCodigoa()%>)">
                                Eliminar Evento
                             </button>
                         </div></h4>      
@@ -186,7 +184,7 @@
 
 <a style="display: none" id="roll"><%=u.getRol()%></a>
         <!--===============================================================================================-->	
-        <script src="assets/js/alertas.js" type="text/javascript"></script>
+        <script src="assets/js/alertas.js" charset="UTF-8" type="text/javascript"></script>
         <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
         <!--===============================================================================================-->

@@ -18,10 +18,16 @@ function cancelarregistroA(){
     }
 }
 function eliminarregistroA(id){
-    var con =confirm('¿Esta seguro de eliminar este evento?');
-          if(con){
+          vex.dialog.confirm({
+    message: '¿Esta seguro de eliminar esta visita?',
+    className: 'vex-theme-wireframe',
+        callback: function (value) {
+        if (value) {
             location.href = 'ControladorAgenda?accion=eliminar&txtcodigo='+id;
-          }
+            
+        }
+    }
+})
 }
 function eliminarVisita(id){
     vex.dialog.confirm({

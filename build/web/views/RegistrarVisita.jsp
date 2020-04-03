@@ -50,14 +50,9 @@
         <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
-        <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
-            </nav>
-        </header>
+        <div class="contenido"></div>
+
+                <br><br><br><br>
 
 
         <div class="container">
@@ -175,7 +170,7 @@
         <!--===============================================================================================-->	
         
         <script src="assets/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <script src="assets/js/alertas.js" type="text/javascript"></script>
+        <script src="assets/js/alertas.js" charset="UTF-8" type="text/javascript"></script>
         <!--===============================================================================================-->
         <script src="assets/vendor/bootstrap/js/popper.js" type="text/javascript"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

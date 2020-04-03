@@ -26,6 +26,7 @@
 body, html {
     height: 100%;
     font-family: Antipasto;
+    background-color: #e7f2f5;
 }
 
 /*---------------------------------------------*/
@@ -184,7 +185,7 @@ iframe {
     background-position: center;
     background-size: 1300px;
     /* background-image: url(../img/fondot.jpeg);*/
-    background-color: #5FA7B7;
+    
 
 }
 .container-login112 {

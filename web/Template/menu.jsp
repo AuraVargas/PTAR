@@ -1,65 +1,88 @@
 <%-- 
-    Document   : menu
-    Created on : 15/03/2020, 11:40:13 AM
-    Author     : Santi
+    Document   : nav
+    Created on : 02-abr-2020, 13:46:32
+    Author     : HP
 --%>
 
-
 <%@page import="modelos.vo.UsuarioVO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="assets/css/nav.css">
+  <link rel="shortcut icon" href="imagenes/favicon.png" type="image/png">
+  <title>nav</title>
+</head>
 <%
     UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
 %>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><img class="logo" src="assets/img/acueducto.png" alt=""/> </span>
-                </button>
-                
+<body>
+  <header>
+    <div class="menu_bar">
+      <a href="#"><img src="assets/img/ICONOB.png"title="Menú" alt="" /></a>
+      
+    </div>
+    <nav style="height: 80px;">
+        <span class="odin" ><a href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/Acueducto_Logo_Blanco.png" title="Ir a Inicio" /></a></span>
+        <span class="odin" ><a href="ControladorUsuario?accion=menu"><img class="logo" src="assets/img/ICONOB.png" title="Ir a Inicio" /></a></span>
+        
+      <div class="menu_bar">
+      <a href="#"><img  src="assets/img/ICONOB.png"title="Menú" alt="" /></a>
+      
+    </div>
+<!--        <ul>
+            <li style="text-align: left;">
+                 <a Style="color:white"></a>
+            </li>
+            
+            </ul>-->
+        <ul>
+            <a Style="color:white;float: left;font-family: Antipasto;font-size:larger;font-weight: bold;"><%=u.getNombre()%> <%=u.getApellido()%></a>
+             <li>
+          <a href="#">Usuarios</a>
+          <ul class="children">
+            <li>
+              <a style="font-size:large;" href="ControladorUsuario?accion=add" title="Ir a Registrar Usuario">Registrar Usuario</a>
+            </li>
+            <li>
+              <a style=" font-size:large;" href="ControladorUsuario?accion=listar" title="Ir a Lista de Usuario">Lista de Usuarios
+              </a>
+            </li>
+            <li>
+              <a style=" font-size:large;" href="ControladorUsuario?accion=editarpassword&Id=<%=u.getID()%>" title="Ir a Actualizar Contraseña">Actualizar Contraseña
+              </a>
+            </li>
+           
+          </ul>
+        </li>
+        <li>
+          <a href="#">Eventos</a>
+          <ul class="children">
+            <li><a style=" font-size:large;" href="ControladorAgenda?accion=add" title="Ir a Registrar Evento">Registrar Evento </a></li>
+            <li><a style=" font-size:large;" href="ControladorAgenda?accion=listar" title="Ir a Lista de Evento">Lista de Evento </a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Visitas</a>
+          <ul class="children">
+            <li><a style=" font-size:large;" href="ControladorVisita?accion=add" title="Ir a Registrar Visita">Registrar Visita</a></li>
+            <li><a style=" font-size:large;" href="ControladorVisita?accion=listar"title="Ir a Lista de Visita">Lista de Visitas </a></li>
+          </ul>
+        </li>
+        <li><a href="CerrarSesion">Cerrar Sesión<span class="sr-only">(current)</span></a></li>
+      </ul>
+    </nav>
+  </header>
 
-                <div  class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="items" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="ControladorUsuario?accion=menu"> <i class="fa fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
-                        </li>
+ 
+      
+  <script src="assets/js/nav.js"></script>
 
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-users"></i> Usuarios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorUsuario?accion=add">Registrar Usuario</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorUsuario?accion=listar">Lista de Usuarios</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" id="yy" href="ControladorUsuario?accion=editarpassword&Id=<%=u.getID()%>" >Actualizar contrase�a</a>
-                                
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-address-book"></i> Eventos
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorAgenda?accion=add"> Registrar Evento</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorAgenda?accion=listar"> Lista de Evento</a>
+</body>
 
-                            </div>
-                        </li>
-
-                        <li class="nav-item active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-eye"></i> Visitas
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ControladorVisita?accion=add"> Registrar Visita</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="ControladorVisita?accion=listar"> Lista de Visitas</a>
-                                <!--                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="actualizarVisita.jsp"> Editar Visita</a>-->
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="CerrarSesion"> <i class="fas fa-power-off"></i> Cerrar Sesi�n <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-
-                </div>
+</html>

@@ -45,17 +45,12 @@
         <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
-        <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
-            </nav>
-        </header>
+        <div class="contenido"></div>
+
+                <br><br>
         <div class="limiter">
             <div class="container-login111">
-                <div class="wrap-login111">
+                <div>
 <!--                    <div class="login100-pic js-tilt" data-tilt>                        
                         <img src="assets/img/img-01.png" alt="User"/>
                     </div>-->
@@ -146,11 +141,20 @@
             $('.contenido').load('Template/menu.jsp');
             var error = <%=session.getAttribute("Error")%>;
             if(error == 1){
-            alert('Ya se encuentra una persona registrada con este numero de identificación.');
+                vex.dialog.alert({
+                message: 'Ya se encuentra una persona registrada con este numero de identificación.',
+                className: 'vex-theme-wireframe'
+            });
             }else if(error == 3){
-            alert('Ya se encuentra una persona registrada con este correo electronico.');
+                vex.dialog.alert({
+                message: 'Ya se encuentra una persona registrada con este correo electronico.',
+                className: 'vex-theme-wireframe'
+            });
             }else if(error == 2){
-            alert('Ya se encuentra una persona registrada con este telefono.');
+                vex.dialog.alert({
+                message: 'Ya se encuentra una persona registrada con este telefono.',
+                className: 'vex-theme-wireframe'
+            });
             }
        });
       

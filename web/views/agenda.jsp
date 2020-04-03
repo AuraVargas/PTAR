@@ -51,14 +51,9 @@
         <%
         UsuarioVO u = (UsuarioVO)session.getAttribute("Id");
         %>
-        <header class="menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() +" "+ u.getApellido()+"\n \t");%>    </a>
-               <div class="contenido"></div>
-                
-            </nav>
-        </header>
+        <div class="contenido"></div>
+
+                <br><br><br>
         <br>
         <div class="container">
 

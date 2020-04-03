@@ -24,6 +24,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menú Principal</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <!--===============================================================================================-->	
         <link rel="shortcut icon" href="assets/img/ICONO.png" type="image/x-icon"/>
         <!--===============================================================================================-->
@@ -42,6 +43,9 @@
         <link href="assets/css/util.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
         <!--===============================================================================================-->
 
     </head>
@@ -56,14 +60,9 @@
                 
             } else if (estado.equalsIgnoreCase(u.getEstado())) {
         %>
-        <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/iconop.png" alt=""/>
-                    <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
+            
                 <div class="contenido"></div>
 
-            </nav>
-        </header>
                 <br><br>
         <h3>Su usario se encuentra inactivo por el momento, por favor comuniquese con el funcionario para poder ingresar al sistema</h3>
         <div class="container-login100-form-btn">
@@ -74,14 +73,9 @@
         } else if (numCadena.equalsIgnoreCase(u.getContrasena())) {
         %>
         <header class="menu">
-            <nav class="navbar  navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/iconop.png" alt=""/>
-                    <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
+            
                 <div class="contenido"></div>
-
-            </nav>
         </header>
-        <br>
         
        
         
@@ -140,7 +134,10 @@
         <br> <br>
     </div>
     <script >
-        alert("Por favor acepte los terminos y condiciones");
+        vex.dialog.alert({
+                message: "Por favor acepte los terminos y condiciones",
+                className: 'vex-theme-wireframe'
+            });
         $(document).ready(function () {
             $('.contenido').load('Template/ayudante.jsp');
         });
@@ -160,7 +157,10 @@
 
 
             if (clave1 != clave2) {
-                alert("Las contraseñas no coinciden, intente nuevamente")
+                vex.dialog.alert({
+                message: "Las contraseñas no coinciden, intente nuevamente",
+                className: 'vex-theme-wireframe'
+            });
                 evt.preventDefault();
             }
         }</script>
@@ -174,14 +174,9 @@
 
 
     <header class="menu">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
             <div class="contenido"></div>
-
-        </nav>
     </header>
-
+<br><br>
     <div class="container">
         <div class="row" style="padding-top: 100px">
             <div class="col-8">
@@ -217,8 +212,8 @@
 
             <div class="col-4">
                 <hr>
-                <button href="ControladorVisita?accion=listar" id="botong" class="btn btn-outline-success h-25 w-100"><i class="fas fa-male"></i>  Gestionar visitas  </button>
-                <button href="ControladorUsuario?accion=listar" id="botong" class="btn btn-outline-success h-25 w-100"><i class="fas fa-user"></i>  Gestionar usuarios </button>
+                <a href="ControladorVisita?accion=listar"><button id="botong" class="btn btn-outline-success h-25 w-100"><i class="fas fa-male"></i>  Gestionar visitas  </button></a>
+                <a href="ControladorUsuario?accion=listar"><button id="botong" class="btn btn-outline-success h-25 w-100"><i class="fas fa-user"></i>  Gestionar usuarios </button></a>
             </div>
         </div>
     </div>
@@ -226,7 +221,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 id="uno" class="modal-title" id="exampleModalLabel"></h5>
+                    <h5 id="uno" style="font-size: larger" class="modal-title" id="exampleModalLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -257,17 +252,17 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="ventana2">
+    <div class="modal " id="ventana2">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div aria-hidden="true" href="#ventana1" style="cursor: default" type="button" data-toggle="modal" onclick="$('#ventana2').modal('hide');">&#9664;</div>
-                    <h5 id="Titulo" class="modal-title"></h5>
+                    <div aria-hidden="true" href="#ventana1" style="cursor: default" type="button" data-toggle="modal" onclick="$('#ventana2').modal('hiden');">&#9664;</div>
+                    <h5 id="Titulo" style="font-size: larger"  class="modal-title"></h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="background-color: #a3d5d1">
+                <div  class="modal-body" style="background-color: #a3d5d1">
                     <div class="form-group">
                         <label id="descripcion">Informacion de los eventos</label><br>
 
@@ -344,7 +339,7 @@
 
     </script>
     <script src="assets/js/Calendario.js"></script>
-    <script src="assets/js/acciones.js"></script>
+    <script src="assets/js/acciones.js"charset="UTF-8" type="text/javascript"></script>
     <!--===============================================================================================-->
 
     <script src="assets/js/main.js" type="text/javascript"></script>

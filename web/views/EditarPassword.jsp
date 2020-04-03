@@ -40,19 +40,17 @@
         <link href="assets/css/util.css" rel="stylesheet" type="text/css"/><!--
         --><link href="assets/css/main.css" rel="stylesheet" type="text/css"/><!--
         --><link href="assets/css/Style.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/vex.combined.min.js"></script>
+        <link rel="stylesheet" href="assets/css/vex.css" />
+        <link rel="stylesheet" href="assets/css/vex-theme-wireframe.css" />
         <!--===============================================================================================-->
     </head>
     <body class="dos">
         <%            UsuarioVO u = (UsuarioVO) session.getAttribute("Id");
         %>
-        <header class="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" id="informacion" href="#"><img class="logo" src="assets/img/acueducto.png" alt=""/>
-                    <%out.println(" " + u.getNombre() + " " + u.getApellido() + "\n \t");%>    </a>
-                <div class="contenido"></div>
+        <div class="contenido"></div>
 
-            </nav>
-        </header>
+                <br><br><br>
         <br>
       
             <div class="container-login112">
@@ -147,7 +145,10 @@
 
 
                                 if (clave1 != clave2) {
-                                    alert("Las contraseñas no coinciden, intente nuevamente")
+                                    vex.dialog.alert({
+                message: "Las contraseñas no coinciden, intente nuevamente",
+                className: 'vex-theme-wireframe'
+            });
                                     evt.preventDefault();
                                 }
                             }</script>

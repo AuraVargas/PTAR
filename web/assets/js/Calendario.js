@@ -166,7 +166,7 @@ function lista(fecha){
         }
     };
     if(!$(".eventolis").length){
-    modal.innerHTML += `<br class="eventolis"type="hidden"><h5 class='eventolis'>No se encuentran eventos registrados para este dia</h5><br class="eventolis">`;
+    modal.innerHTML += `<br class="eventolis"type="hidden"><h5 style="font-size: larger"  class='eventolis'>No se encuentran eventos registrados para este dia</h5><br class="eventolis">`;
     }
 }
 function anterior(){
